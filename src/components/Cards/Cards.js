@@ -9,7 +9,7 @@ import "./Cards.css";
 const Cards = ({ image, name, year, pegi, platform }) => {
   return (
     <div className="games-section d-flex justify-content-between">
-      <Card sx={{ maxWidth: 345 }}>
+      <Card sx={{ maxWidth: 200 }}>
         <CardActionArea>
           <CardMedia component="img" height="250" image={image} />
 
