@@ -1,9 +1,7 @@
 .App {
-  text-align: center;
-}
+  overflow-x: hidden;
 
-.games-section {
-  display: flex;
-  justify-content: space-between;
-  margin: 1rem;
+  overflow-y: hidden;
+
+  text-align: center;
 }
