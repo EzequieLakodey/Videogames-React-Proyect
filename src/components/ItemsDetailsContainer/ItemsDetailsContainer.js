@@ -14,9 +14,12 @@ const ItemsDetailsContainer = () => {
   const [loading, setLoading] = useState(true);
 
   const { id } = useParams();
+
   useEffect(() => {
     axios("https://fakestoreapi.com/products")
-      .then((data) => setItemsInfo(data.find((data) => data.id === id)))
+      .then((res) =>
+        setItemsInfo(res.data.find((data) => data.id === parseInt(id)))
+      )
 
       .catch((error) => console.log(error))
 

@@ -18,7 +18,7 @@ import Container from "@mui/material/Container";
 
 import Button from "@mui/material/Button";
 
-import { useNavigate as Redirect, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 
 const Item = ({ product }) => {
   const Redirect = useNavigate();
@@ -30,13 +30,9 @@ const Item = ({ product }) => {
       <Card
         sx={{
           height: 1,
-          justifyContent: "space-between",
-          alignContent: "center",
-          flexWrap: "wrap",
-          flexDirection: "column",
         }}>
-        <CardActionArea>
-          <Container sx={{ width: "0.75" }}>
+        <CardActionArea sx={{ height: "0.9" }}>
+          <Container sx={{ width: "1" }}>
             <CardMedia
               component="img"
               image={image}
@@ -44,31 +40,18 @@ const Item = ({ product }) => {
             />
           </Container>
 
-          <CardContent
-            sx={{
-              justifyContent: "center",
-              alignContent: "center",
-              flexWrap: "wrap",
-              flexDirection: "column",
-            }}>
+          <CardContent>
             <Typography gutterBottom variant="h5" component="div">
               {title}
             </Typography>
 
-            <Typography gutterBottom variant="h5" component="div">
+            <Typography gutterBottom variant="h6" component="div">
               {price + " U$D"}
             </Typography>
           </CardContent>
         </CardActionArea>
 
-        <CardActions
-          sx={{
-            display: "flex",
-            justifyContent: "space-around",
-            alignContent: "flex-end",
-            flexWrap: "wrap",
-            flexDirection: "column",
-          }}>
+        <CardActions>
           <Button
             variant="contained"
             fullWidth

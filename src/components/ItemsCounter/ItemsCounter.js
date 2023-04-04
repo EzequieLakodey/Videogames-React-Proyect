@@ -10,7 +10,7 @@ import RemoveIcon from "@mui/icons-material/Remove";
 
 import TextField from "@mui/material/TextField";
 
-const ItemsCounter = ({ stock, initial, onAdd }) => {
+const ItemsCounter = ({ initial }) => {
   const [count, setCount] = useState(initial);
 
   const remove = () => {
@@ -20,7 +20,7 @@ const ItemsCounter = ({ stock, initial, onAdd }) => {
   };
 
   const add = () => {
-    if (count <= stock) {
+    if (count >= 0) {
       setCount(count + 1);
     }
   };
@@ -35,10 +35,10 @@ const ItemsCounter = ({ stock, initial, onAdd }) => {
         <TextField
           id="filled-basic"
           label="Quantity"
-          placeholder="0"
+          placeholder="max 99"
           variant="filled"
-          disabled
-          sx={{ width: "0.3" }}
+          value={count}
+          sx={{ width: 0.2 }}
         />
 
         <IconButton onClick={add}>
