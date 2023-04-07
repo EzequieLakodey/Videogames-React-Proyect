@@ -8,9 +8,7 @@ import NavBar from "./components/NavBar/NavBar";
 
 //PAGES
 import Home from "./pages/Home/Home";
-
-import ItemsListContainer from "./components/ItemsDetailsContainer/ItemsDetailsContainer";
-
+import ItemsListContainer from "./components/ItemsListContainer/ItemsListContainer";
 import ItemsDetailsContainer from "./components/ItemsDetailsContainer/ItemsDetailsContainer";
 
 function App() {

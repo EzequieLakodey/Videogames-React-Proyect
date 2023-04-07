@@ -78,16 +78,16 @@ function NavBar() {
             <InputLabel>Category</InputLabel>
             <Select label="Category">
               <MenuItem>
-                <Link to={"/category/mensclothing"}>Men's Clothing</Link>
+                <Link to={"/category/men's clothing"}>Men's Clothing</Link>
               </MenuItem>
               <MenuItem>
-                <Link to={"/category/womenclothing"}>Women's Clothing</Link>
+                <Link to={"/category/women's clothing"}>Women's Clothing</Link>
               </MenuItem>
               <MenuItem>
                 <Link to={"/category/jewelery"}>Jewelery</Link>
               </MenuItem>
               <MenuItem>
-                <Link to={"/category/electronic"}>Electronics</Link>
+                <Link to={"/category/electronics"}>Electronics</Link>
               </MenuItem>
             </Select>
           </FormControl>
