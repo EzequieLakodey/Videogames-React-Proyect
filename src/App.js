@@ -9,6 +9,8 @@ import NavBar from "./components/NavBar/NavBar";
 //PAGES
 import Home from "./pages/Home/Home";
 
+import ItemsListContainer from "./components/ItemsDetailsContainer/ItemsDetailsContainer";
+
 import ItemsDetailsContainer from "./components/ItemsDetailsContainer/ItemsDetailsContainer";
 
 function App() {
@@ -19,6 +21,11 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Home />} />
+
+          <Route
+            path="/category/:categoryId"
+            element={<ItemsListContainer />}
+          />
 
           <Route path="/item/:id" element={<ItemsDetailsContainer />} />
 

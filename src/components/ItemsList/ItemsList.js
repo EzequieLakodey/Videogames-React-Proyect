@@ -1,7 +1,5 @@
 import React from "react";
-
 import Items from "../Items/Item";
-
 import Grid from "@mui/material/Unstable_Grid2";
 
 export const ItemsList = ({ data }) => {

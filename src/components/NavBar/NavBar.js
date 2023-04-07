@@ -1,8 +1,8 @@
 //  IMPORTS
 
 import * as React from "react";
-
-import ItemsCategories from "../ItemsCategories/ItemsCategories";
+import { Link, useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 // MATERIAL UI
 
@@ -19,6 +19,9 @@ import MenuItem from "@mui/material/MenuItem";
 import Badge from "@mui/material/Badge";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import InsightsIcon from "@mui/icons-material/Insights";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import InputLabel from "@mui/material/InputLabel";
 
 //  IMPORTS
 
@@ -71,7 +74,23 @@ function NavBar() {
             </IconButton>
           </MenuItem>
 
-          <ItemsCategories />
+          <FormControl sx={{ width: "0.1" }}>
+            <InputLabel>Category</InputLabel>
+            <Select label="Category">
+              <MenuItem>
+                <Link to={"/category/mensclothing"}>Men's Clothing</Link>
+              </MenuItem>
+              <MenuItem>
+                <Link to={"/category/womenclothing"}>Women's Clothing</Link>
+              </MenuItem>
+              <MenuItem>
+                <Link to={"/category/jewelery"}>Jewelery</Link>
+              </MenuItem>
+              <MenuItem>
+                <Link to={"/category/electronic"}>Electronics</Link>
+              </MenuItem>
+            </Select>
+          </FormControl>
 
           <Box sx={{ flexGrow: 1 }}>
             <Tooltip title="Open settings">

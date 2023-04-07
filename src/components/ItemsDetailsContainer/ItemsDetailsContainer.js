@@ -1,12 +1,9 @@
 import React from "react";
-
 import axios from "axios";
-
 import { useEffect, useState } from "react";
-
 import ItemsDetails from "../ItemsDetails/ItemsDetails";
-
 import { useParams } from "react-router";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const ItemsDetailsContainer = () => {
   const [ItemsInfo, setItemsInfo] = useState([]);
@@ -29,7 +26,7 @@ const ItemsDetailsContainer = () => {
   return (
     <div>
       {loading ? (
-        <strong> Loading . . . </strong>
+        <CircularProgress color="success" />
       ) : (
         <ItemsDetails ItemsInfo={ItemsInfo} />
       )}
