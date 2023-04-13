@@ -1,24 +1,25 @@
+// React
 import * as React from "react";
 
+// Components
+
+// Router Dom
+import { useNavigate } from "react-router";
+
+// Axios
+
+// Material Ui
+import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
-
 import CardContent from "@mui/material/CardContent";
-
 import CardMedia from "@mui/material/CardMedia";
-
-import Typography from "@mui/material/Typography";
-
+import CardActions from "@mui/material/CardActions";
+import Container from "@mui/material/Container";
 import Grid from "@mui/material/Unstable_Grid2";
-
+import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 
-import CardActions from "@mui/material/CardActions";
-
-import Container from "@mui/material/Container";
-
-import Button from "@mui/material/Button";
-
-import { useNavigate } from "react-router";
+/* Imports */
 
 const Item = ({ product }) => {
   const Redirect = useNavigate();

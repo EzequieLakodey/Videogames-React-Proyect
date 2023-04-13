@@ -1,11 +1,14 @@
-//  IMPORTS
-
+// React
 import * as React from "react";
-import { Link, useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
 
-// MATERIAL UI
+// Components
 
+// Router Dom
+import { Link } from "react-router-dom";
+
+// Axios
+
+// Material Ui
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -23,21 +26,17 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
 
-//  IMPORTS
+/* Imports */
 
 const settings = ["Profile", "Account", "Help", "Settings"];
-
 function NavBar() {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
-
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-
   return (
     <AppBar position="relative" color="inherit">
       <Container maxWidth="xl">
@@ -57,7 +56,6 @@ function NavBar() {
             }}>
             BoombleGoom
           </Typography>
-
           <MenuItem>
             <IconButton>
               <Badge badgeContent={0} color="error">
@@ -65,7 +63,6 @@ function NavBar() {
               </Badge>
             </IconButton>
           </MenuItem>
-
           <MenuItem>
             <IconButton>
               <Badge badgeContent={0} color="error">
@@ -73,7 +70,6 @@ function NavBar() {
               </Badge>
             </IconButton>
           </MenuItem>
-
           <FormControl sx={{ width: "0.1" }}>
             <InputLabel>Category</InputLabel>
             <Select label="Category">
@@ -91,14 +87,12 @@ function NavBar() {
               </MenuItem>
             </Select>
           </FormControl>
-
           <Box sx={{ flexGrow: 1 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 1 }}>
                 <Avatar alt="User profile image" />
               </IconButton>
             </Tooltip>
-
             <Menu
               sx={{ mt: "50px" }}
               id="menu-appbar"

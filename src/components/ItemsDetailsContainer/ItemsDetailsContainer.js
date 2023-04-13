@@ -1,9 +1,20 @@
+// React
 import React from "react";
-import axios from "axios";
 import { useEffect, useState } from "react";
+
+// Components
 import ItemsDetails from "../ItemsDetails/ItemsDetails";
+
+// Router Dom
 import { useParams } from "react-router";
+
+// Axios
+import axios from "axios";
+
+// Material Ui
 import CircularProgress from "@mui/material/CircularProgress";
+
+/* Imports */
 
 const ItemsDetailsContainer = () => {
   const [ItemsInfo, setItemsInfo] = useState([]);

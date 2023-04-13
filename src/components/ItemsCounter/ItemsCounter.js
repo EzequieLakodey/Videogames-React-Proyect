@@ -1,14 +1,20 @@
+// React
+import React from "react";
 import { useState } from "react";
 
-import React from "react";
+// Components
 
+// Router Dom
+
+// Axios
+
+// Material Ui
 import IconButton from "@mui/material/IconButton";
-
 import AddIcon from "@mui/icons-material/Add";
-
 import RemoveIcon from "@mui/icons-material/Remove";
-
 import TextField from "@mui/material/TextField";
+
+/* Imports */
 
 const ItemsCounter = ({ initial }) => {
   const [count, setCount] = useState(initial);
@@ -35,10 +41,9 @@ const ItemsCounter = ({ initial }) => {
         <TextField
           id="filled-basic"
           label="Quantity"
-          placeholder="max 99"
           variant="filled"
           value={count}
-          sx={{ width: 0.2 }}
+          sx={{ width: 0.1 }}
         />
 
         <IconButton onClick={add}>

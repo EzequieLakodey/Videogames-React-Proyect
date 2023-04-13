@@ -1,8 +1,19 @@
-import axios from "axios";
+// React
 import React, { useEffect, useState } from "react";
+
+// Components
 import { ItemsList } from "../ItemsList/ItemsList";
-import CircularProgress from "@mui/material/CircularProgress";
+
+// Router Dom
 import { useParams } from "react-router";
+
+// Axios
+import axios from "axios";
+
+// Material Ui
+import CircularProgress from "@mui/material/CircularProgress";
+
+/* Imports */
 
 export const ProductsApi = () => {
   const [loading, setLoading] = useState(true);
@@ -10,8 +21,6 @@ export const ProductsApi = () => {
   const [data, setData] = useState([]);
 
   const { categoryId } = useParams();
-
-  console.log(data);
 
   useEffect(() => {
     axios("https://fakestoreapi.com/products")

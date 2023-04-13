@@ -1,8 +1,17 @@
+// React
 import React from "react";
 
+// Components
 import ItemsListContainer from "../../components/ItemsListContainer/ItemsListContainer";
 
+// Router Dom
+
+// Axios
+
+// Material Ui
 import Container from "@mui/material/Container";
+
+/* Imports */
 
 const Home = () => {
   return (
@@ -13,5 +22,4 @@ const Home = () => {
     </div>
   );
 };
-
 export default Home;

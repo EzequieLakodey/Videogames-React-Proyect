@@ -1,9 +1,13 @@
+// CSS
 import "./App.css";
 
 // REACT ROUTER DOM
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-//COMPONENTS
+// CONTEXT
+import { cartProvider } from "./contexts/CartContext";
+
+// COMPONENTS
 import NavBar from "./components/NavBar/NavBar";
 
 //PAGES
@@ -14,22 +18,24 @@ import ItemsDetailsContainer from "./components/ItemsDetailsContainer/ItemsDetai
 function App() {
   return (
     <Router>
-      <div className="App">
-        <NavBar />
+      <cartProvider>
+        <div className="App">
+          <NavBar />
 
-        <Routes>
-          <Route path="/" element={<Home />} />
+          <Routes>
+            <Route path="/" element={<Home />} />
 
-          <Route
-            path="/category/:categoryId"
-            element={<ItemsListContainer />}
-          />
+            <Route
+              path="/category/:categoryId"
+              element={<ItemsListContainer />}
+            />
 
-          <Route path="/item/:id" element={<ItemsDetailsContainer />} />
+            <Route path="/item/:id" element={<ItemsDetailsContainer />} />
 
-          <Route path="*" />
-        </Routes>
-      </div>
+            <Route path="*" />
+          </Routes>
+        </div>
+      </cartProvider>
     </Router>
   );
 }
