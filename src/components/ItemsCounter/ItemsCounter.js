@@ -24,18 +24,18 @@ import Container from "@mui/material/Container";
 /* Imports */
 
 const ItemsCounter = ({ initial }) => {
-  const { cart, AddItemsToCart } = useContext(CartContext);
-
   const [count, setCount] = useState(initial);
 
+  const { cart, setCart, AddItemsToCart } = useContext(CartContext);
+
   const remove = () => {
-    if (count > 0) {
+    if (count > 1) {
       setCount(count - 1);
     }
   };
 
   const add = () => {
-    if (count >= 0) {
+    if (count >= 1) {
       setCount(count + 1);
     }
   };
@@ -66,7 +66,7 @@ const ItemsCounter = ({ initial }) => {
             justifyContent: "center",
           }}>
           <CardActions>
-            <Button variant="contained" onClick={AddItemsToCart}>
+            <Button variant="contained" onClick={() => OnAdd(count)}>
               Add to cart
             </Button>
           </CardActions>

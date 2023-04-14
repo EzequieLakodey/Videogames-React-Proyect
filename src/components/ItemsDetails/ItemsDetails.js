@@ -25,6 +25,12 @@ import Grid from "@mui/material/Unstable_Grid2";
 const ItemsDetails = ({ ItemsInfo }) => {
   const { id, title, description, price, image, category } = ItemsInfo;
 
+  const { cart, setCart, AddItemsToCart } = useContext(CartContext);
+
+  const OnAdd = (count) => {
+    AddItemsToCart(title, count);
+  };
+
   return (
     <Grid sx={{ display: "flex", justifyContent: "center" }}>
       <Card sx={{ maxWidth: 1, marginTop: 5 }}>
@@ -58,7 +64,7 @@ const ItemsDetails = ({ ItemsInfo }) => {
           </Container>
         </CardContent>
 
-        <ItemsCounter initial={1} onAdd></ItemsCounter>
+        <ItemsCounter initial={1} OnAdd={OnAdd}></ItemsCounter>
       </Card>
     </Grid>
   );

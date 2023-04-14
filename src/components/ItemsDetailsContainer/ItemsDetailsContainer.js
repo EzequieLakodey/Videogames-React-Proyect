@@ -16,7 +16,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 
 /* Imports */
 
-const ItemsDetailsContainer = () => {
+export const ItemsDetailsContainer = () => {
   const [ItemsInfo, setItemsInfo] = useState([]);
 
   const [loading, setLoading] = useState(true);
@@ -39,7 +39,6 @@ const ItemsDetailsContainer = () => {
       ) : (
         <ItemsDetails ItemsInfo={ItemsInfo} />
       )}
-      ;
     </div>
   );
 };

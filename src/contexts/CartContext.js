@@ -12,22 +12,23 @@ import React from "react";
 
 /* Imports */
 
-export const CartContext = createContext(null);
+export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
-  const AddItemsToCart = (title, count) => {
+  const AddItemsToCart = ({ title, count }) => {
     setCart({ title, count });
 
     console.log(title);
 
     console.log(count);
-    //alert(`${ItemsInfo.title} ${count}`);
+
+    alert(`${title} ${count}`);
   };
 
   return (
-    <CartContext.Provider value={{ cart, AddItemsToCart }}>
+    <CartContext.Provider value={{ cart, setCart, AddItemsToCart }}>
       {children}
     </CartContext.Provider>
   );
