@@ -12,7 +12,7 @@ import React from "react";
 
 /* Imports */
 
-export const CartContext = createContext();
+export const CartContext = createContext(null);
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
