@@ -5,7 +5,7 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // CONTEXT
-import { cartProvider } from "./contexts/CartContext";
+import { CartProvider } from "./contexts/CartContext";
 
 // COMPONENTS
 import NavBar from "./components/NavBar/NavBar";
@@ -18,7 +18,7 @@ import ItemsDetailsContainer from "./components/ItemsDetailsContainer/ItemsDetai
 function App() {
   return (
     <Router>
-      <cartProvider>
+      <CartProvider>
         <div className="App">
           <NavBar />
 
@@ -35,7 +35,7 @@ function App() {
             <Route path="*" />
           </Routes>
         </div>
-      </cartProvider>
+      </CartProvider>
     </Router>
   );
 }

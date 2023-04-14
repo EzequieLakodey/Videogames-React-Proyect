@@ -29,8 +29,6 @@ const ItemsDetailsContainer = () => {
         setItemsInfo(res.data.find((data) => data.id === parseInt(id)))
       )
 
-      .catch((error) => console.log(error))
-
       .finally(() => setLoading(false));
   }, [id]);
 

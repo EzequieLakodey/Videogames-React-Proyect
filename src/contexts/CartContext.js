@@ -1,13 +1,12 @@
 // React
-import { createContext, UseState, useEffect } from "react";
+import { createContext, useState } from "react";
 import React from "react";
 
 // Components
 
-// Router Dom
-
 // Axios
-import axios from "axios";
+
+// Router Dom
 
 // Material Ui
 
@@ -15,14 +14,21 @@ import axios from "axios";
 
 export const CartContext = createContext();
 
-const CartProvider = ({ children }) => {
-  const [cart, setCart] = UseState([]);
+export const CartProvider = ({ children }) => {
+  const [cart, setCart] = useState([]);
 
-  const AddToCart = (item, count) => {
-    setCart([...cart, { ...item, count }]);
+  const AddItemsToCart = (title, count) => {
+    setCart({ title, count });
+
+    console.log(title);
+
+    console.log(count);
+    //alert(`${ItemsInfo.title} ${count}`);
   };
 
   return (
-    <CartContext.Provider value={{ cart }}>{children}</CartContext.Provider>
+    <CartContext.Provider value={{ cart, AddItemsToCart }}>
+      {children}
+    </CartContext.Provider>
   );
 };
