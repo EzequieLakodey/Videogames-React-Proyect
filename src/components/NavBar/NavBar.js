@@ -1,6 +1,10 @@
 // React
 import * as React from "react";
 
+// Context
+import { CartContext } from "../../contexts/CartContext";
+import { useContext } from "react";
+
 // Components
 
 // Router Dom
@@ -37,6 +41,9 @@ function NavBar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const { GetItemsCount } = useContext(CartContext);
+
   return (
     <AppBar position="relative" color="inherit">
       <Container maxWidth="xl">
@@ -56,13 +63,7 @@ function NavBar() {
             }}>
             BoombleGoom
           </Typography>
-          <MenuItem>
-            <IconButton>
-              <Badge badgeContent={0} color="error">
-                <ShoppingCartIcon fontSize="large" />
-              </Badge>
-            </IconButton>
-          </MenuItem>
+          <MenuItem>{GetItemsCount()}</MenuItem>
           <MenuItem>
             <IconButton>
               <Badge badgeContent={0} color="error">

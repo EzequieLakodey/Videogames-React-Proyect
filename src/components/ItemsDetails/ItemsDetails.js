@@ -28,7 +28,7 @@ const ItemsDetails = ({ ItemsInfo }) => {
   const { cart, setCart, AddItemsToCart } = useContext(CartContext);
 
   const OnAdd = (count) => {
-    AddItemsToCart(title, count);
+    AddItemsToCart(ItemsInfo, count);
   };
 
   return (
