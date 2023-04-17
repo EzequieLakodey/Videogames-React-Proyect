@@ -29,6 +29,7 @@ import InsightsIcon from "@mui/icons-material/Insights";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
+import { Icon } from "@mui/material";
 
 /* Imports */
 
@@ -54,16 +55,26 @@ function NavBar() {
             href="/"
             sx={{
               mr: 2,
+
               display: { xs: "none", md: "flex" },
+
               fontFamily: "monospace",
+
               fontWeight: 400,
+
               letterSpacing: ".3rem",
+
               color: "inherit",
+
               textDecoration: "none",
             }}>
             BoombleGoom
           </Typography>
-          <MenuItem>{GetItemsCount()}</MenuItem>
+
+          <MenuItem>
+            <IconButton>{GetItemsCount()}</IconButton>
+          </MenuItem>
+
           <MenuItem>
             <IconButton>
               <Badge badgeContent={0} color="error">
@@ -71,40 +82,49 @@ function NavBar() {
               </Badge>
             </IconButton>
           </MenuItem>
+
           <FormControl sx={{ width: "0.1" }}>
             <InputLabel>Category</InputLabel>
+
             <Select label="Category">
               <MenuItem>
                 <Link to={"/category/men's clothing"}>Men's Clothing</Link>
               </MenuItem>
+
               <MenuItem>
                 <Link to={"/category/women's clothing"}>Women's Clothing</Link>
               </MenuItem>
+
               <MenuItem>
                 <Link to={"/category/jewelery"}>Jewelery</Link>
               </MenuItem>
+
               <MenuItem>
                 <Link to={"/category/electronics"}>Electronics</Link>
               </MenuItem>
             </Select>
           </FormControl>
+
           <Box sx={{ flexGrow: 1 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 1 }}>
                 <Avatar alt="User profile image" />
               </IconButton>
             </Tooltip>
+
             <Menu
               sx={{ mt: "50px" }}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
                 vertical: "top",
+
                 horizontal: "right",
               }}
               keepMounted
               transformOrigin={{
                 vertical: "top",
+
                 horizontal: "right",
               }}
               open={Boolean(anchorElUser)}
