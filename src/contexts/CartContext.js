@@ -17,8 +17,10 @@ export const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
-  const AddItemsToCart = ({ title, count }) => {
-    setCart({ title, count });
+  const AddItemsToCart = (title, count, storageCart) => {
+    storageCart = "Cart";
+
+    setCart(localStorage.setItem(storageCart, [title, count]));
 
     console.log(title);
 

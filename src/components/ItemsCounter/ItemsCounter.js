@@ -23,7 +23,7 @@ import Container from "@mui/material/Container";
 
 /* Imports */
 
-const ItemsCounter = ({ initial }) => {
+const ItemsCounter = ({ initial, OnAdd }) => {
   const [count, setCount] = useState(initial);
 
   const { cart, setCart, AddItemsToCart } = useContext(CartContext);
