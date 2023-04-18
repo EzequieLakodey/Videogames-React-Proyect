@@ -13,30 +13,37 @@ import { Link } from "react-router-dom";
 // Axios
 
 // Material Ui
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
-import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
-import Badge from "@mui/material/Badge";
+
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  IconButton,
+  Typography,
+  Menu,
+  Container,
+  Avatar,
+  Tooltip,
+  MenuItem,
+  Badge,
+  FormControl,
+  Select,
+  InputLabel,
+} from "@mui/material";
+
 import InsightsIcon from "@mui/icons-material/Insights";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
-import InputLabel from "@mui/material/InputLabel";
 
 /* Imports */
 
 const settings = ["Profile", "Account", "Help", "Settings"];
+
 function NavBar() {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
+
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
@@ -50,7 +57,6 @@ function NavBar() {
           <Link to={"/"}>
             <Typography
               variant="h6"
-              component="a"
               sx={{
                 mr: 2,
 

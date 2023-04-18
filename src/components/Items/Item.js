@@ -28,39 +28,41 @@ const Item = ({ product }) => {
 
   return (
     <Grid xs={12} sm={6} xl={3}>
-      <Card
-        sx={{
-          height: 1,
-        }}>
-        <CardActionArea sx={{ height: "0.9" }}>
-          <Container sx={{ width: "1", flexGrow: 1 }}>
+      <CardActionArea sx={{ width: 1, height: 1 }}>
+        <Card
+          onClick={() => Redirect(`/item/${id}`)}
+          sx={{
+            maxWidth: "345px",
+
+            height: "1",
+
+            display: "flex",
+
+            flexDirection: "column",
+
+            justifyContent: "space-between",
+
+            alignContent: "center",
+          }}>
+          <CardContent sx={{ maxWidth: 1 }}>
             <CardMedia
               component="img"
               image={image}
               alt={"image" + title + id}
             />
-          </Container>
+          </CardContent>
 
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
+            <Typography variant="h5" component="h5">
               {title}
             </Typography>
 
-            <Typography gutterBottom variant="h6" component="div">
+            <Typography variant="h5" component="h5">
               {price + " U$D"}
             </Typography>
           </CardContent>
-        </CardActionArea>
-
-        <CardActions>
-          <Button
-            variant="contained"
-            fullWidth
-            onClick={() => Redirect(`/item/${id}`)}>
-            Add to cart
-          </Button>
-        </CardActions>
-      </Card>
+        </Card>
+      </CardActionArea>
     </Grid>
   );
 };
