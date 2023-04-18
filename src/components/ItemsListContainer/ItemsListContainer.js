@@ -10,6 +10,10 @@ import { useParams } from "react-router";
 // Axios
 import axios from "axios";
 
+// FireStore
+import { collection, query, getDocs } from "firebase/firestore";
+import { db } from "../../firebase/FireBaseConfig";
+
 // Material Ui
 import CircularProgress from "@mui/material/CircularProgress";
 
@@ -34,8 +38,6 @@ export const ProductsApi = () => {
 
       .finally(() => setLoading(false));
   }, [categoryId]);
-
-  console.log(data);
 
   return (
     <>
