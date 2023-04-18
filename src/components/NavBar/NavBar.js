@@ -24,12 +24,10 @@ import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import Badge from "@mui/material/Badge";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import InsightsIcon from "@mui/icons-material/Insights";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
-import { Icon } from "@mui/material";
 
 /* Imports */
 
@@ -49,27 +47,28 @@ function NavBar() {
     <AppBar position="relative" color="inherit">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Typography
-            variant="h6"
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
+          <Link to={"/"}>
+            <Typography
+              variant="h6"
+              component="a"
+              sx={{
+                mr: 2,
 
-              display: { xs: "none", md: "flex" },
+                display: { xs: "none", md: "flex" },
 
-              fontFamily: "monospace",
+                fontFamily: "monospace",
 
-              fontWeight: 400,
+                fontWeight: 400,
 
-              letterSpacing: ".3rem",
+                letterSpacing: ".3rem",
 
-              color: "inherit",
+                color: "inherit",
 
-              textDecoration: "none",
-            }}>
-            BoombleGoom
-          </Typography>
+                textDecoration: "none",
+              }}>
+              BoombleGoom
+            </Typography>
+          </Link>
 
           <MenuItem>
             <IconButton>{GetItemsCount()}</IconButton>
@@ -87,21 +86,21 @@ function NavBar() {
             <InputLabel>Category</InputLabel>
 
             <Select label="Category">
-              <MenuItem>
-                <Link to={"/category/men's clothing"}>Men's Clothing</Link>
-              </MenuItem>
+              <Link to={"/category/men's clothing"}>
+                <MenuItem>Men's Clothing</MenuItem>
+              </Link>
 
-              <MenuItem>
-                <Link to={"/category/women's clothing"}>Women's Clothing</Link>
-              </MenuItem>
+              <Link to={"/category/women's clothing"}>
+                <MenuItem>Women's Clothing</MenuItem>
+              </Link>
 
-              <MenuItem>
-                <Link to={"/category/jewelery"}>Jewelery</Link>
-              </MenuItem>
+              <Link to={"/category/jewelery"}>
+                <MenuItem>Jewelery</MenuItem>
+              </Link>
 
-              <MenuItem>
-                <Link to={"/category/electronics"}>Electronics</Link>
-              </MenuItem>
+              <Link to={"/category/electronics"}>
+                <MenuItem>Electronics</MenuItem>
+              </Link>
             </Select>
           </FormControl>
 

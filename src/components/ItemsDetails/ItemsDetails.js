@@ -1,5 +1,4 @@
 // React
-import React, { useState } from "react";
 
 // Context
 import { useContext } from "react";
@@ -25,7 +24,7 @@ import Grid from "@mui/material/Unstable_Grid2";
 const ItemsDetails = ({ ItemsInfo }) => {
   const { id, title, description, price, image, category } = ItemsInfo;
 
-  const { cart, setCart, AddItemsToCart } = useContext(CartContext);
+  const { AddItemsToCart } = useContext(CartContext);
 
   const OnAdd = (count) => {
     AddItemsToCart(ItemsInfo, count);

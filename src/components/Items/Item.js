@@ -33,7 +33,7 @@ const Item = ({ product }) => {
           height: 1,
         }}>
         <CardActionArea sx={{ height: "0.9" }}>
-          <Container sx={{ width: "1" }}>
+          <Container sx={{ width: "1", flexGrow: 1 }}>
             <CardMedia
               component="img"
               image={image}

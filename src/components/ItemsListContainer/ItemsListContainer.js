@@ -35,6 +35,8 @@ export const ProductsApi = () => {
       .finally(() => setLoading(false));
   }, [categoryId]);
 
+  console.log(data);
+
   return (
     <>
       {loading ? (
