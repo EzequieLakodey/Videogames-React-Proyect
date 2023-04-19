@@ -23,22 +23,17 @@ const Item = ({ product }) => {
 
   return (
     <Grid xs={12} sm={6} xl={3}>
-      <CardActionArea sx={{ width: 1, height: 1 }}>
-        <Card
-          onClick={() => Redirect(`/item/${id}`)}
-          sx={{
-            maxWidth: "345px",
-
-            height: "1",
-
-            display: "flex",
-
-            flexDirection: "column",
-
-            justifyContent: "space-between",
-
-            alignContent: "center",
-          }}>
+      <Card
+        onClick={() => Redirect(`/item/${id}`)}
+        sx={{
+          maxWidth: "345px",
+          height: "1",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          alignContent: "center",
+        }}>
+        <CardActionArea sx={{ width: 1, height: 1 }}>
           <CardContent sx={{ maxWidth: 1 }}>
             <CardMedia
               component="img"
@@ -56,8 +51,8 @@ const Item = ({ product }) => {
               {price + " U$D"}
             </Typography>
           </CardContent>
-        </Card>
-      </CardActionArea>
+        </CardActionArea>
+      </Card>
     </Grid>
   );
 };

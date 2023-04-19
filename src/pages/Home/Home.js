@@ -9,17 +9,14 @@ import ItemsListContainer from "../../components/ItemsListContainer/ItemsListCon
 // Axios
 
 // Material Ui
-import Container from "@mui/material/Container";
 
 /* Imports */
 
 const Home = () => {
   return (
-    <div>
-      <Container maxWidth="xl">
-        <ItemsListContainer />
-      </Container>
-    </div>
+    <main>
+      <ItemsListContainer />
+    </main>
   );
 };
 export default Home;

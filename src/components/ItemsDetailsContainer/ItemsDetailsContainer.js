@@ -8,29 +8,15 @@ import ItemsDetails from "../ItemsDetails/ItemsDetails";
 // Router Dom
 import { useParams } from "react-router";
 
-// Axios
-import axios from "axios";
-
 // Material Ui
 import CircularProgress from "@mui/material/CircularProgress";
 
 /* Imports */
 
 export const ItemsDetailsContainer = () => {
-  const [ItemsInfo, setItemsInfo] = useState([]);
-
   const [loading, setLoading] = useState(true);
-
+  const [data, setData] = useState([]);
   const { id } = useParams();
-
-  useEffect(() => {
-    axios("https://fakestoreapi.com/products")
-      .then((res) =>
-        setItemsInfo(res.data.find((data) => data.id === parseInt(id)))
-      )
-
-      .finally(() => setLoading(false));
-  }, [id]);
 
   return (
     <div>

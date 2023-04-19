@@ -16,13 +16,10 @@ import CircularProgress from "@mui/material/CircularProgress";
 
 /* Imports */
 
-export const ProductsApi = () => {
+export const ItemsListContainer = () => {
   const [loading, setLoading] = useState(true);
-
   const [data, setData] = useState([]);
-
   const { categoryId } = useParams();
-
   useEffect(() => {
     const GetItems = async () => {
       const QueryRef = !categoryId
@@ -32,26 +29,19 @@ export const ProductsApi = () => {
 
             where("category", "==", categoryId)
           );
-
       const QuerySnapshot = await getDocs(QueryRef);
-
       const Items = [];
-
       QuerySnapshot.forEach((i) => {
         Items.push({ ...i.data(), id: i.id });
       });
-
       setTimeout(() => {
         setData(Items);
 
         setLoading(false);
       }, 1000);
-
       console.log(Items);
-
       setData(Items);
     };
-
     GetItems();
   }, [categoryId]);
 
@@ -66,4 +56,4 @@ export const ProductsApi = () => {
   );
 };
 
-export default ProductsApi;
+export default ItemsListContainer;
