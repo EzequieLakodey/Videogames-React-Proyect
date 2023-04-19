@@ -5,13 +5,10 @@ import React, { useEffect, useState } from "react";
 import { ItemsList } from "../ItemsList/ItemsList";
 
 // Router Dom
-import { useParams } from "react-router";
-
-// Axios
-import axios from "axios";
+import { useParams } from "react-router-dom";
 
 // FireStore
-import { collection, query, getDocs } from "firebase/firestore";
+import { collection, query, getDocs, where } from "firebase/firestore";
 import { db } from "../../firebase/FireBaseConfig";
 
 // Material Ui
@@ -27,16 +24,35 @@ export const ProductsApi = () => {
   const { categoryId } = useParams();
 
   useEffect(() => {
-    axios("https://fakestoreapi.com/products")
-      .then((show) => {
-        if (categoryId) {
-          setData(show.data.filter((s) => s.category === categoryId));
-        } else {
-          setData(show.data);
-        }
-      })
+    const GetItems = async () => {
+      const QueryRef = !categoryId
+        ? collection(db, "Fake Store Api ")
+        : query(
+            collection(db, "Fake Store Api"),
 
-      .finally(() => setLoading(false));
+            where("category", "==", categoryId)
+          );
+
+      const QuerySnapshot = await getDocs(QueryRef);
+
+      const Items = [];
+
+      QuerySnapshot.forEach((i) => {
+        Items.push({ ...i.data(), id: i.id });
+      });
+
+      setTimeout(() => {
+        setData(Items);
+
+        setLoading(false);
+      }, 1000);
+
+      console.log(Items);
+
+      setData(Items);
+    };
+
+    GetItems();
   }, [categoryId]);
 
   return (
