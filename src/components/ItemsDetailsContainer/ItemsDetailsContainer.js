@@ -5,37 +5,31 @@ import { useEffect, useState, React } from "react";
 import ItemsDetails from "../ItemsDetails/ItemsDetails";
 
 // FireStore
-import {
-  collection,
-  query,
-  getDocs,
-  where,
-  QuerySnapshot,
-} from "firebase/firestore";
+import { collection, query, getDoc, where, doc } from "firebase/firestore";
 import { db } from "../../firebase/FireBaseConfig";
 
 // Material Ui
 import CircularProgress from "@mui/material/CircularProgress";
+
+// React Router Dom
+import { useParams } from "react-router";
 
 /* Imports */
 
 export const ItemsDetailsContainer = () => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
+  const { id } = useParams();
 
   useEffect(() => {
-    const setData = async () => {
-      const q = query(
-        collection(db, "Fake Store Api"),
-        where("id", "==", true)
-      );
-      const QuerySnapshot = await getDocs(q);
-      QuerySnapshot.forEach((doc) => {
-        console.log(doc.id, " => ", doc.data());
-      });
-      setLoading(false);
-    };
-    setData(QuerySnapshot);
+    const getCollection = collection(db, "Fake Store Api");
+    const docReference = doc(getCollection, id);
+    getDoc(docReference)
+      .then((result) => {
+        setData({ ...result.data(), id: result.id });
+      })
+      .catch((error) => console.log(error))
+      .finally(() => setLoading(false));
   }, []);
 
   console.log(data);
