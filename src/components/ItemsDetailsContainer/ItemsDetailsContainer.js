@@ -1,12 +1,8 @@
 // React
-import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, React } from "react";
 
 // Components
 import ItemsDetails from "../ItemsDetails/ItemsDetails";
-
-// Router Dom
-import { useParams } from "react-router";
 
 // FireStore
 import {
@@ -26,26 +22,21 @@ import CircularProgress from "@mui/material/CircularProgress";
 export const ItemsDetailsContainer = () => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
-  const { id } = useParams();
 
   useEffect(() => {
-    const GetItems = async () => {
-      const QueryRef = query(
+    const fetchData = async () => {
+      const q = query(
         collection(db, "Fake Store Api"),
-        where("id", "==", id)
+        where("id", "==", true)
       );
-      const QuerySnapshot = await getDocs(QueryRef);
-      const Item = [];
-      QuerySnapshot.forEach((i) => {
-        Item.push({ ...i.data(), id: i.id });
+      const QuerySnapshot = await getDocs(q);
+      QuerySnapshot.forEach((doc) => {
+        console.log(doc.id, " => ", doc.data());
       });
-      setTimeout(() => {
-        setLoading(false);
-      });
-      setData(Item);
+      setLoading(false);
     };
-    GetItems();
-  }, [id]);
+    fetchData();
+  }, []);
 
   console.log(data);
 
