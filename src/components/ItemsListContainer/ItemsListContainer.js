@@ -36,9 +36,8 @@ export const ItemsListContainer = () => {
       });
       setTimeout(() => {
         setData(Items);
-
         setLoading(false);
-      }, 1000);
+      });
       console.log(Items);
       setData(Items);
     };

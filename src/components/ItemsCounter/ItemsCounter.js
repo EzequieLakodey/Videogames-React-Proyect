@@ -21,7 +21,6 @@ import RemoveIcon from "@mui/icons-material/Remove";
 
 const ItemsCounter = ({ initial, OnAdd }) => {
   const [count, setCount] = useState(initial);
-  const { cart, setCart, AddItemsToCart } = useContext(CartContext);
 
   const remove = () => {
     if (count > 1) {
