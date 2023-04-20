@@ -24,7 +24,7 @@ export const ItemsDetailsContainer = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const setData = async () => {
       const q = query(
         collection(db, "Fake Store Api"),
         where("id", "==", true)
@@ -35,7 +35,7 @@ export const ItemsDetailsContainer = () => {
       });
       setLoading(false);
     };
-    fetchData();
+    setData(QuerySnapshot);
   }, []);
 
   console.log(data);
