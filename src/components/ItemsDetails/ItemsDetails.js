@@ -21,20 +21,23 @@ import Grid from "@mui/material/Unstable_Grid2";
 
 /* Imports */
 
-const ItemsDetails = ({ ItemsInfo }) => {
-  const { id, title, description, price, image, category } = ItemsInfo;
-
+const ItemsDetails = ({ data }) => {
   const { AddItemsToCart } = useContext(CartContext);
+  const { id, title, description, price, category, image } = data;
 
   const OnAdd = (count) => {
-    AddItemsToCart(ItemsInfo, count);
+    AddItemsToCart(data, count);
   };
 
   return (
     <Grid sx={{ display: "flex", justifyContent: "center" }}>
       <Card sx={{ maxWidth: 1, marginTop: 5 }}>
         <Container sx={{ width: 0.25 }}>
-          <CardMedia component="img" image={image} alt={"image" + title + id} />
+          <CardMedia
+            component="img"
+            image={image}
+            alt={"image" + data.title + data.id}
+          />
         </Container>
 
         <CardContent>

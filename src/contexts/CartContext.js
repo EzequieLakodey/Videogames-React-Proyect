@@ -19,21 +19,21 @@ export const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
-  const AddItemsToCart = (ItemsInfo, count) => {
-    const existingItem = cart.find((item) => item.id === ItemsInfo.id);
+  const AddItemsToCart = (data, count) => {
+    const existingItem = cart.find((item) => item.id === data.id);
 
     if (existingItem) {
       setCart(
         cart.map(() => {
-          if (ItemsInfo.id) {
-            return { ...ItemsInfo.title, count: ItemsInfo.count + count };
+          if (data.id) {
+            return { ...data.title, count: data.count + count };
           } else {
-            return ItemsInfo.title;
+            return data.title;
           }
         })
       );
     } else {
-      setCart([...cart, { ...ItemsInfo.title, count: count }]);
+      setCart([...cart, { ...data.title, count: count }]);
     }
   };
 

@@ -1,31 +1,26 @@
-// React
-import React from "react";
-import { useState } from "react";
+// REACT
+import { useState, useContext, React } from "react";
 
-// Context
-import { useContext } from "react";
+// CONTEXT
 import { CartContext } from "../../contexts/CartContext";
 
-// Components
+// MUI
+import {
+  IconButton,
+  TextField,
+  Button,
+  CardActions,
+  Container,
+} from "@mui/material";
 
-// Router Dom
-
-// Axios
-
-// Material Ui
-import IconButton from "@mui/material/IconButton";
+// MUI ICONS
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import CardActions from "@mui/material/CardActions";
-import Container from "@mui/material/Container";
 
 /* Imports */
 
 const ItemsCounter = ({ initial, OnAdd }) => {
   const [count, setCount] = useState(initial);
-
   const { cart, setCart, AddItemsToCart } = useContext(CartContext);
 
   const remove = () => {
@@ -62,7 +57,6 @@ const ItemsCounter = ({ initial, OnAdd }) => {
         <Container
           sx={{
             display: "flex",
-
             justifyContent: "center",
           }}>
           <CardActions>
