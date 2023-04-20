@@ -22,7 +22,7 @@ export const ItemsDetailsContainer = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    const docReference = doc(db, "Fake Store Api", id);
+    const docReference = doc(db, "Fake Store Api ", id);
     getDoc(docReference)
       .then((result) => {
         setData({ ...result.data(), id: result.id });

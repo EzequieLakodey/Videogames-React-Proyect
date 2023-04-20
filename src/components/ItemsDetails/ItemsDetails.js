@@ -32,7 +32,26 @@ const ItemsDetails = ({ data }) => {
   return (
     <Grid sx={{ display: "flex", justifyContent: "center" }}>
       <Card sx={{ maxWidth: 1, marginTop: 5 }}>
-        <Container sx={{ width: 0.25 }}>
+        <CardContent>
+          <Container>
+            <Typography
+              gutterBottom
+              variant="overline"
+              component="h6"
+              fontSize={"100%"}>
+              {title}
+            </Typography>
+
+            <Typography
+              gutterBottom
+              variant="overline"
+              component="h5"
+              fontSize={"100%"}>
+              {category}
+            </Typography>
+          </Container>
+        </CardContent>
+        <Container sx={{ width: "30rem" }}>
           <CardMedia
             component="img"
             image={image}
@@ -42,20 +61,8 @@ const ItemsDetails = ({ data }) => {
 
         <CardContent>
           <Container>
-            <Typography gutterBottom variant="h5" component="div">
-              {title}
-            </Typography>
-          </Container>
-
-          <Container>
             <Typography gutterBottom variant="h6" component="div">
               {price} $
-            </Typography>
-          </Container>
-
-          <Container>
-            <Typography variant="body" color="text.secondary">
-              Type: {category}
             </Typography>
           </Container>
 

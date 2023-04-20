@@ -25,8 +25,7 @@ export const ItemsListContainer = () => {
       const QueryRef = !categoryId
         ? collection(db, "Fake Store Api ")
         : query(
-            collection(db, "Fake Store Api"),
-
+            collection(db, "Fake Store Api "),
             where("category", "==", categoryId)
           );
       const QuerySnapshot = await getDocs(QueryRef);

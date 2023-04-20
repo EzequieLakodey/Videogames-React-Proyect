@@ -80,14 +80,6 @@ function NavBar() {
             <IconButton>{GetItemsCount()}</IconButton>
           </MenuItem>
 
-          <MenuItem>
-            <IconButton>
-              <Badge badgeContent={0} color="error">
-                <InsightsIcon fontSize="large" />
-              </Badge>
-            </IconButton>
-          </MenuItem>
-
           <FormControl sx={{ width: "0.1" }}>
             <InputLabel>Category</InputLabel>
 

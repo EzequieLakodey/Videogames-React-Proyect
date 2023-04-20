@@ -12,8 +12,8 @@ import NavBar from "./components/NavBar/NavBar";
 
 //PAGES
 import Home from "./pages/Home/Home";
-import ItemsListContainer from "./components/ItemsListContainer/ItemsListContainer";
-import ItemsDetailsContainer from "./components/ItemsDetailsContainer/ItemsDetailsContainer";
+import ItemsCateogries from "./pages/Categories/ItemsCateogries";
+import ItemDetail from "./pages/ItemDetail/ItemDetail";
 
 function App() {
   return (
@@ -21,17 +21,10 @@ function App() {
       <CartProvider>
         <div className="App">
           <NavBar />
-
           <Routes>
             <Route path="/" element={<Home />} />
-
-            <Route
-              path="/category/:categoryId"
-              element={<ItemsListContainer />}
-            />
-
-            <Route path="/item/:id" element={<ItemsDetailsContainer />} />
-
+            <Route path="/category/:categoryId" element={<ItemsCateogries />} />
+            <Route path="/item/:id" element={<ItemDetail />} />
             <Route path="*" />
           </Routes>
         </div>

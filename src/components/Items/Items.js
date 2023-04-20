@@ -11,6 +11,7 @@ import {
   CardMedia,
   Typography,
   CardActionArea,
+  Button,
 } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 
@@ -34,8 +35,16 @@ const Item = ({ product }) => {
             justifyContent: "space-between",
             alignContent: "center",
           }}>
+          <CardContent>
+            <Typography variant="h5" component="h5">
+              {title}
+            </Typography>
+          </CardContent>
+
           <CardContent
             sx={{
+              display: "flex",
+              flexDirection: "row",
               justifyContent: "center",
               alignContent: "center",
             }}>
@@ -48,11 +57,7 @@ const Item = ({ product }) => {
           </CardContent>
 
           <CardContent>
-            <Typography variant="h5" component="h5">
-              {title}
-            </Typography>
-
-            <Typography variant="h5" component="h5">
+            <Typography variant="button" component="h6" fontSize={"2em"}>
               {price + " U$D"}
             </Typography>
           </CardContent>
