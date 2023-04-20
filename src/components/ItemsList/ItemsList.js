@@ -2,7 +2,7 @@
 import React from "react";
 
 // Components
-import Items from "../Items/Item";
+import Items from "../Items/Items";
 
 // Router Dom
 
@@ -17,8 +17,8 @@ export const ItemsList = ({ data }) => {
   return (
     <div>
       <Grid container spacing={5} sx={{ marginTop: 5 }}>
-        {data.map((product) => (
-          <Items key={product.id} product={product} />
+        {data.map((item) => (
+          <Items key={item.id} product={item} />
         ))}
       </Grid>
     </div>

@@ -5,7 +5,7 @@ import { useEffect, useState, React } from "react";
 import ItemsDetails from "../ItemsDetails/ItemsDetails";
 
 // FireStore
-import { collection, query, getDoc, where, doc } from "firebase/firestore";
+import { getDoc, doc } from "firebase/firestore";
 import { db } from "../../firebase/FireBaseConfig";
 
 // Material Ui
@@ -22,15 +22,14 @@ export const ItemsDetailsContainer = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    const getCollection = collection(db, "Fake Store Api");
-    const docReference = doc(getCollection, id);
+    const docReference = doc(db, "Fake Store Api", id);
     getDoc(docReference)
       .then((result) => {
         setData({ ...result.data(), id: result.id });
       })
       .catch((error) => console.log(error))
       .finally(() => setLoading(false));
-  }, []);
+  }, [id]);
 
   console.log(data);
 
