@@ -12,18 +12,20 @@ import ItemsCounter from "../ItemsCounter/ItemsCounter";
 // Axios
 
 // Material Ui
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  Container,
+} from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 
 /* Imports */
 
 const ItemsDetails = ({ data }) => {
   const { AddItemsToCart } = useContext(CartContext);
-  const { id, title, description, price, category, image } = data;
+  const { title, description, price, category, image } = data;
 
   const OnAdd = (count) => {
     AddItemsToCart(data, count);
@@ -51,7 +53,7 @@ const ItemsDetails = ({ data }) => {
             </Typography>
           </Container>
         </CardContent>
-        <Container sx={{ width: "30rem" }}>
+        <Container sx={{ width: 0.25 }}>
           <CardMedia
             component="img"
             image={image}

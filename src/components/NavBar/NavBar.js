@@ -5,15 +5,10 @@ import * as React from "react";
 import { CartContext } from "../../contexts/CartContext";
 import { useContext } from "react";
 
-// Components
-
 // Router Dom
 import { Link } from "react-router-dom";
 
-// Axios
-
 // Material Ui
-
 import {
   AppBar,
   Box,
@@ -25,13 +20,10 @@ import {
   Avatar,
   Tooltip,
   MenuItem,
-  Badge,
   FormControl,
   Select,
   InputLabel,
 } from "@mui/material";
-
-import InsightsIcon from "@mui/icons-material/Insights";
 
 /* Imports */
 
@@ -51,91 +43,90 @@ function NavBar() {
   const { GetItemsCount } = useContext(CartContext);
 
   return (
-    <AppBar position="relative" color="inherit">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Link to={"/"}>
-            <Typography
-              variant="h6"
-              sx={{
-                mr: 2,
+    <header>
+      <AppBar position="relative" color="inherit">
+        <Container maxWidth="xl">
+          <Toolbar disableGutters>
+            <Link to={"/"}>
+              <Typography
+                variant="h1"
+                element="h1"
+                sx={{
+                  fontSize: "2rem",
+                  mr: 2,
+                  display: { xs: "none", md: "flex" },
+                  fontFamily: "monospace",
+                  fontWeight: 300,
+                  letterSpacing: "1",
+                  color: "black",
+                  textDecoration: "none",
+                  listStyle: "none",
+                }}>
+                BoombleGoom
+              </Typography>
+            </Link>
 
-                display: { xs: "none", md: "flex" },
+            <MenuItem>
+              <IconButton>{GetItemsCount()}</IconButton>
+            </MenuItem>
 
-                fontFamily: "monospace",
+            <FormControl sx={{ width: 0.1 }}>
+              <InputLabel>Category</InputLabel>
 
-                fontWeight: 400,
+              <Select label="Category">
+                <Link to={"/category/men's clothing"}>
+                  <MenuItem>Men's Clothing</MenuItem>
+                </Link>
 
-                letterSpacing: ".3rem",
+                <Link to={"/category/women's clothing"}>
+                  <MenuItem>Women's Clothing</MenuItem>
+                </Link>
 
-                color: "inherit",
+                <Link to={"/category/jewelery"}>
+                  <MenuItem>Jewelery</MenuItem>
+                </Link>
 
-                textDecoration: "none",
-              }}>
-              BoombleGoom
-            </Typography>
-          </Link>
+                <Link to={"/category/electronics"}>
+                  <MenuItem>Electronics</MenuItem>
+                </Link>
+              </Select>
+            </FormControl>
 
-          <MenuItem>
-            <IconButton>{GetItemsCount()}</IconButton>
-          </MenuItem>
+            <Box sx={{ flexGrow: 1 }}>
+              <Tooltip title="Open settings">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 1 }}>
+                  <Avatar alt="User profile image" />
+                </IconButton>
+              </Tooltip>
 
-          <FormControl sx={{ width: "0.1" }}>
-            <InputLabel>Category</InputLabel>
+              <Menu
+                sx={{ mt: "50px" }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: "top",
 
-            <Select label="Category">
-              <Link to={"/category/men's clothing"}>
-                <MenuItem>Men's Clothing</MenuItem>
-              </Link>
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
 
-              <Link to={"/category/women's clothing"}>
-                <MenuItem>Women's Clothing</MenuItem>
-              </Link>
-
-              <Link to={"/category/jewelery"}>
-                <MenuItem>Jewelery</MenuItem>
-              </Link>
-
-              <Link to={"/category/electronics"}>
-                <MenuItem>Electronics</MenuItem>
-              </Link>
-            </Select>
-          </FormControl>
-
-          <Box sx={{ flexGrow: 1 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 1 }}>
-                <Avatar alt="User profile image" />
-              </IconButton>
-            </Tooltip>
-
-            <Menu
-              sx={{ mt: "50px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}>
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
+                  horizontal: "right",
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}>
+                {settings.map((setting) => (
+                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">{setting}</Typography>
+                  </MenuItem>
+                ))}
+              </Menu>
+            </Box>
+          </Toolbar>
+        </Container>
+      </AppBar>
+    </header>
   );
 }
 

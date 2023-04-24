@@ -1,19 +1,20 @@
 // CSS
 import "./App.css";
 
-// REACT ROUTER DOM
+// React Router Dom
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-// CONTEXT
+// Context
 import { CartProvider } from "./contexts/CartContext";
 
-// COMPONENTS
+// Components
 import NavBar from "./components/NavBar/NavBar";
 
-//PAGES
+// Pages
 import Home from "./pages/Home/Home";
 import ItemsCateogries from "./pages/Categories/ItemsCateogries";
 import ItemDetail from "./pages/ItemDetail/ItemDetail";
+import Cart from "./pages/Cart/Cart";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path="/category/:categoryId" element={<ItemsCateogries />} />
             <Route path="/item/:id" element={<ItemDetail />} />
             <Route path="*" />
+            <Route path="/cart" element={<Cart />} />
           </Routes>
         </div>
       </CartProvider>

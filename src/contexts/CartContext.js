@@ -2,11 +2,8 @@
 import { createContext, useState } from "react";
 import React from "react";
 
-// Components
-
-// Axios
-
 // Router Dom
+import { useNavigate } from "react-router";
 
 // Material Ui
 import Badge from "@mui/material/Badge";
@@ -39,14 +36,13 @@ export const CartProvider = ({ children }) => {
 
   function GetItemsCount() {
     let total = 0;
-
     cart.forEach((item) => {
       total += item.count;
     });
-
+    const Redirect = useNavigate();
     return (
-      <Badge badgeContent={total} color="error">
-        <ShoppingCartIcon fontSize="large" />
+      <Badge badgeContent={total} color="info">
+        <ShoppingCartIcon fontSize="large" onClick={() => Redirect("/cart")} />
       </Badge>
     );
   }
