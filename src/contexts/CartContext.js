@@ -21,16 +21,16 @@ export const CartProvider = ({ children }) => {
 
     if (existingItem) {
       setCart(
-        cart.map(() => {
-          if (data.id) {
-            return { ...data.title, count: data.count + count };
+        cart.map((item) => {
+          if (item.id === data.id) {
+            return { ...item, count: item.count + count };
           } else {
-            return data.title;
+            return item;
           }
         })
       );
     } else {
-      setCart([...cart, { ...data.title, count: count }]);
+      setCart([...cart, { ...data, count }]);
     }
   };
 
