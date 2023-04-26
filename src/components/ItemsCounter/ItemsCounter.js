@@ -35,7 +35,7 @@ const ItemsCounter = ({ initial, OnAdd }) => {
   };
 
   return (
-    <div>
+    <section>
       <div>
         <IconButton onClick={remove}>
           <RemoveIcon fontSize="large" />
@@ -65,7 +65,7 @@ const ItemsCounter = ({ initial, OnAdd }) => {
           </CardActions>
         </Container>
       </div>
-    </div>
+    </section>
   );
 };
 

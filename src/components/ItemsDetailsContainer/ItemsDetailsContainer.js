@@ -27,11 +27,9 @@ export const ItemsDetailsContainer = () => {
       .then((result) => {
         setData({ ...result.data(), id: result.id });
       })
-      .catch((error) => console.log(error))
+
       .finally(() => setLoading(false));
   }, [id]);
-
-  console.log(data);
 
   return (
     <div>

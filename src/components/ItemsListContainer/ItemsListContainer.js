@@ -40,7 +40,7 @@ export const ItemsListContainer = () => {
         setData(Items);
         setLoading(false);
       });
-      console.log(Items);
+
       setData(Items);
     };
     GetItems();

@@ -15,6 +15,7 @@ import Home from "./pages/Home/Home";
 import ItemsCateogries from "./pages/Categories/ItemsCateogries";
 import ItemDetail from "./pages/ItemDetail/ItemDetail";
 import Cart from "./pages/Cart/Cart";
+import OrderForm from "./pages/OrderForm/OrderForm";
 
 // Tanstack React Query
 
@@ -24,12 +25,19 @@ function App() {
       <CartProvider>
         <div className="App">
           <NavBar />
+
           <Routes>
             <Route path="/" element={<Home />} />
+
             <Route path="/category/:categoryId" element={<ItemsCateogries />} />
+
             <Route path="/item/:id" element={<ItemDetail />} />
+
             <Route path="*" />
+
             <Route path="/cart" element={<Cart />} />
+
+            <Route path="/order" element={<OrderForm />} />
           </Routes>
         </div>
       </CartProvider>

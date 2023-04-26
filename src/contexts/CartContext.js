@@ -34,6 +34,11 @@ export const CartProvider = ({ children }) => {
     }
   };
 
+  const removeItems = (data) => {
+    const refreshCart = cart.filter((i) => i.id !== data.id);
+    setCart(refreshCart);
+  };
+
   function GetItemsCount() {
     let total = 0;
     cart.forEach((item) => {
@@ -47,11 +52,9 @@ export const CartProvider = ({ children }) => {
     );
   }
 
-  console.log(cart);
-
   return (
     <CartContext.Provider
-      value={{ cart, setCart, AddItemsToCart, GetItemsCount }}>
+      value={{ cart, setCart, AddItemsToCart, GetItemsCount, removeItems }}>
       {children}
     </CartContext.Provider>
   );
