@@ -17,8 +17,6 @@ import ItemDetail from "./pages/ItemDetail/ItemDetail";
 import Cart from "./pages/Cart/Cart";
 import OrderForm from "./pages/OrderForm/OrderForm";
 
-// Tanstack React Query
-
 function App() {
   return (
     <Router>
