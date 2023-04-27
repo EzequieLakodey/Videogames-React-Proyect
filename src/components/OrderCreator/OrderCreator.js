@@ -4,8 +4,18 @@ import React, { useState } from "react";
 // Components
 import OrderSuccess from "../OrderSuccess/OrderSuccess";
 
+// React Router Dom
+import { useNavigate } from "react-router";
+
 // Material ui
-import { Typography, Container, Button, TextField } from "@mui/material";
+import {
+  Typography,
+  Container,
+  Button,
+  TextField,
+  Alert,
+  Stack,
+} from "@mui/material";
 
 // Firebase
 import { collection, addDoc } from "firebase/firestore";
@@ -18,10 +28,10 @@ import { Formik } from "formik";
 import * as yup from "yup";
 
 const yupSchema = yup.object({
-  name: yup.string().min(2).max(30).required(),
-  lastName: yup.string().min(2).max(30).required(),
-  city: yup.string().min(2).max(30).required(),
-  postalCode: yup.string().min(2).max(30).required(),
+  name: yup.string().min(4).max(20).required(),
+  lastName: yup.string().min(4).max(20).required(),
+  city: yup.string().min(4).max(20).required(),
+  postalCode: yup.string().min(4).max(20).required(),
   email: yup.string().email().required(),
 });
 
@@ -33,32 +43,24 @@ const initialState = {
   email: "",
 };
 
-const submitForm = async (values, resetform) => {
-  const docRef = await addDoc(collection(db, "Orders"), {
-    values,
-  });
-};
-
 const Order = () => {
-  const [orderValues, setOrderValues] = useState(initialState);
+  const Redirect = useNavigate();
   const [orderID, setOrderID] = useState("");
 
-  const onChange = (e) => {
-    const { value, name } = e.target;
-    setOrderValues({ ...orderValues, [name]: value });
-  };
-
-  const onSubmit = async (e) => {
-    e.preventDefault();
+  const submitForm = async (values, resetform) => {
     const docRef = await addDoc(collection(db, "Orders"), {
-      orderValues,
+      values,
     });
     setOrderID(docRef.id);
-    setOrderValues(initialState);
+    resetform();
+    Redirect("/");
   };
 
   return (
-    <Formik initialValues={initialState}>
+    <Formik
+      initialValues={initialState}
+      onSubmit={(values, { resetForm }) => submitForm(values, resetForm)}
+      validationSchema={yupSchema}>
       {({
         values,
         errors,
@@ -83,9 +85,18 @@ const Order = () => {
                   variant="standard"
                   name="name"
                   value={values.name}
-                  onChange={handleChange}
-                />
+                  onChange={handleChange}></TextField>
               </Container>
+
+              {errors.name && (
+                <Container sx={{ width: "25em", mt: "1em" }}>
+                  <Stack>
+                    <Alert variant="outlined" severity="error">
+                      {errors.name}
+                    </Alert>
+                  </Stack>
+                </Container>
+              )}
 
               <Container sx={{ marginTop: "2em" }}>
                 <TextField
@@ -97,6 +108,16 @@ const Order = () => {
                 />
               </Container>
 
+              {errors.lastName && (
+                <Container sx={{ width: "25em", mt: "1em" }}>
+                  <Stack>
+                    <Alert variant="outlined" severity="error">
+                      {errors.lastName}
+                    </Alert>
+                  </Stack>
+                </Container>
+              )}
+
               <Container sx={{ marginTop: "2em" }}>
                 <TextField
                   label="City"
@@ -106,6 +127,16 @@ const Order = () => {
                   onChange={handleChange}
                 />
               </Container>
+
+              {errors.city && (
+                <Container sx={{ width: "25em", mt: "1em" }}>
+                  <Stack>
+                    <Alert variant="outlined" severity="error">
+                      {errors.city}
+                    </Alert>
+                  </Stack>
+                </Container>
+              )}
 
               <Container sx={{ marginTop: "2em" }}>
                 <TextField
@@ -117,6 +148,16 @@ const Order = () => {
                 />
               </Container>
 
+              {errors.postalCode && (
+                <Container sx={{ width: "25em", mt: "1em" }}>
+                  <Stack>
+                    <Alert variant="outlined" severity="error">
+                      {errors.postalCode}
+                    </Alert>
+                  </Stack>
+                </Container>
+              )}
+
               <Container sx={{ marginTop: "2em" }}>
                 <TextField
                   label="Email"
@@ -127,9 +168,23 @@ const Order = () => {
                 />
               </Container>
 
+              {errors.email && (
+                <Container sx={{ width: "25em", mt: "1em" }}>
+                  <Stack>
+                    <Alert variant="outlined" severity="error">
+                      {errors.email}
+                    </Alert>
+                  </Stack>
+                </Container>
+              )}
+
               <Container sx={{ marginTop: "2em" }}>
-                <Button variant="contained" color="secondary" type="submit">
-                  Order
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  type="submit"
+                  disabled={!(isValid && dirty)}>
+                  Submit order
                 </Button>
               </Container>
             </Container>

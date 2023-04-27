@@ -13,7 +13,6 @@ import {
   CardActionArea,
   Container,
   Button,
-
 } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import RemoveIcon from "@mui/icons-material/Remove";
@@ -23,7 +22,7 @@ import { useContext } from "react";
 import { CartContext } from "../../contexts/CartContext";
 
 const Cart = () => {
-  const { cart, removeItems } = useContext(CartContext);
+  const { cart, removeItems, emptyCart } = useContext(CartContext);
 
   const Redirect = useNavigate();
 
@@ -60,25 +59,31 @@ const Cart = () => {
                       Total {i.price * i.count + " $"}
                     </Typography>
                   </Container>
-                  <Button
-                    variant="outlined"
+
+                  <RemoveIcon
+                    fontSize="large"
                     onClick={() => {
                       removeItems(i);
-                    }}>
-                    <RemoveIcon fontSize="large" />
-                  </Button>
+                    }}
+                  />
                 </CardContent>
               </CardActionArea>
             </Card>
           </Container>
         ))}
+
         <Container sx={{ marginTop: "2em" }}>
           <Button
-            variant="contained"
+            sx={{ mr: "1em" }}
+            variant="outlined"
             onClick={() => {
               Redirect("/order");
             }}>
             Proceed
+          </Button>
+
+          <Button sx={{ ml: "1em" }} variant="outlined" onClick={emptyCart}>
+            Empty Cart
           </Button>
         </Container>
       </Grid>

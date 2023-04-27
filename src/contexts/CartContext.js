@@ -1,6 +1,5 @@
 // React
-import { createContext, useState } from "react";
-import React from "react";
+import React, { createContext, useState } from "react";
 
 // Router Dom
 import { useNavigate } from "react-router";
@@ -15,6 +14,7 @@ export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
+  const Redirect = useNavigate();
 
   const AddItemsToCart = (data, count) => {
     const existingItem = cart.find((item) => item.id === data.id);
@@ -32,11 +32,18 @@ export const CartProvider = ({ children }) => {
     } else {
       setCart([...cart, { ...data, count }]);
     }
+    localStorage.setItem(cart);
   };
 
   const removeItems = (data) => {
     const refreshCart = cart.filter((i) => i.id !== data.id);
     setCart(refreshCart);
+    localStorage.removeItem(cart);
+  };
+
+  const emptyCart = () => {
+    setCart("");
+    Redirect("/");
   };
 
   function GetItemsCount() {
@@ -44,7 +51,7 @@ export const CartProvider = ({ children }) => {
     cart.forEach((item) => {
       total += item.count;
     });
-    const Redirect = useNavigate();
+
     return (
       <Badge badgeContent={total} color="info">
         <ShoppingCartIcon fontSize="large" onClick={() => Redirect("/cart")} />
@@ -54,7 +61,14 @@ export const CartProvider = ({ children }) => {
 
   return (
     <CartContext.Provider
-      value={{ cart, setCart, AddItemsToCart, GetItemsCount, removeItems }}>
+      value={{
+        cart,
+        setCart,
+        AddItemsToCart,
+        GetItemsCount,
+        removeItems,
+        emptyCart,
+      }}>
       {children}
     </CartContext.Provider>
   );
