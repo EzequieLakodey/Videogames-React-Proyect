@@ -1,4 +1,5 @@
 // React
+import React from "react";
 
 // Context
 import { useContext } from "react";
@@ -7,9 +8,8 @@ import { CartContext } from "../../contexts/CartContext";
 // Components
 import ItemsCounter from "../ItemsCounter/ItemsCounter";
 
-// Router Dom
-
-// Axios
+// React Router Dom
+import { useNavigate } from "react-router";
 
 // Material Ui
 import {
@@ -26,9 +26,11 @@ import Grid from "@mui/material/Unstable_Grid2";
 const ItemsDetails = ({ data }) => {
   const { AddItemsToCart } = useContext(CartContext);
   const { title, description, price, category, image } = data;
+  const Redirect = useNavigate();
 
   const OnAdd = (count) => {
     AddItemsToCart(data, count);
+    Redirect("/");
   };
 
   return (

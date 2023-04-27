@@ -1,11 +1,11 @@
 // React
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+
+// Context
+import { CartContext } from "../../contexts/CartContext";
 
 // Components
 import OrderSuccess from "../OrderSuccess/OrderSuccess";
-
-// React Router Dom
-import { useNavigate } from "react-router";
 
 // Material ui
 import {
@@ -27,6 +27,8 @@ import { Formik } from "formik";
 // Yup
 import * as yup from "yup";
 
+/* Imports */
+
 const yupSchema = yup.object({
   name: yup.string().min(4).max(20).required(),
   lastName: yup.string().min(4).max(20).required(),
@@ -44,7 +46,7 @@ const initialState = {
 };
 
 const Order = () => {
-  const Redirect = useNavigate();
+  const { setCart } = useContext(CartContext);
   const [orderID, setOrderID] = useState("");
 
   const submitForm = async (values, resetform) => {
@@ -53,7 +55,7 @@ const Order = () => {
     });
     setOrderID(docRef.id);
     resetform();
-    Redirect("/");
+    setCart([]);
   };
 
   return (
@@ -61,15 +63,7 @@ const Order = () => {
       initialValues={initialState}
       onSubmit={(values, { resetForm }) => submitForm(values, resetForm)}
       validationSchema={yupSchema}>
-      {({
-        values,
-        errors,
-        touched,
-        handleChange,
-        handleSubmit,
-        isValid,
-        dirty,
-      }) => (
+      {({ values, errors, handleChange, handleSubmit, isValid, dirty }) => (
         <section>
           <Container sx={{ marginTop: "2rem" }}>
             <Typography variant="h4" component="h6">

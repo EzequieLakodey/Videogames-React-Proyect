@@ -23,7 +23,7 @@ const Item = ({ product }) => {
 
   return (
     <Grid xs={12} sm={6} xl={4}>
-      <CardActionArea sx={{ width: "1", height: "1" }}>
+      <CardActionArea sx={{ width: "1", height: "50rem" }}>
         <Card
           onClick={() => Redirect(`/item/${id}`)}
           sx={{
@@ -35,9 +35,7 @@ const Item = ({ product }) => {
             alignContent: "center",
           }}>
           <CardContent>
-            <Typography variant="h5" component="h5">
-              {title}
-            </Typography>
+            <Typography component="h5">{title}</Typography>
           </CardContent>
 
           <CardContent
@@ -56,8 +54,8 @@ const Item = ({ product }) => {
           </CardContent>
 
           <CardContent>
-            <Typography variant="button" component="h6" fontSize={"2em"}>
-              {price + " U$D"}
+            <Typography component="h6" fontSize={"2em"}>
+              {price + " $"}
             </Typography>
           </CardContent>
         </Card>

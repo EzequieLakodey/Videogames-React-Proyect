@@ -32,17 +32,17 @@ export const CartProvider = ({ children }) => {
     } else {
       setCart([...cart, { ...data, count }]);
     }
-    localStorage.setItem(cart);
+    localStorage.setItem("cart", cart);
   };
 
   const removeItems = (data) => {
     const refreshCart = cart.filter((i) => i.id !== data.id);
     setCart(refreshCart);
-    localStorage.removeItem(cart);
+    localStorage.removeItem("cart", cart);
   };
 
   const emptyCart = () => {
-    setCart("");
+    setCart([]);
     Redirect("/");
   };
 

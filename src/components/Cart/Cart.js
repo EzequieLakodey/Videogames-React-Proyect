@@ -1,5 +1,5 @@
 // React
-import React from "react";
+import React, { useContext } from "react";
 
 // React Router Dom
 import { useNavigate } from "react-router";
@@ -18,12 +18,12 @@ import Grid from "@mui/material/Unstable_Grid2";
 import RemoveIcon from "@mui/icons-material/Remove";
 
 // Context
-import { useContext } from "react";
 import { CartContext } from "../../contexts/CartContext";
+
+/* Imports */
 
 const Cart = () => {
   const { cart, removeItems, emptyCart } = useContext(CartContext);
-
   const Redirect = useNavigate();
 
   return (

@@ -1,10 +1,7 @@
-// REACT
-import { useState, useContext, React } from "react";
+// React
+import { useState, React } from "react";
 
-// CONTEXT
-import { CartContext } from "../../contexts/CartContext";
-
-// MUI
+// Material Ui
 import {
   IconButton,
   TextField,
@@ -13,7 +10,7 @@ import {
   Container,
 } from "@mui/material";
 
-// MUI ICONS
+// Mui Icons
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 

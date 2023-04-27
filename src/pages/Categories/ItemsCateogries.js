@@ -4,6 +4,8 @@ import React from "react";
 // Components
 import ItemsListContainer from "../../components/ItemsListContainer/ItemsListContainer";
 
+/* Imports */
+
 const ItemsCateogries = () => {
   return (
     <main>

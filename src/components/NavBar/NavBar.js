@@ -70,7 +70,7 @@ function NavBar() {
               <IconButton>{GetItemsCount()}</IconButton>
             </MenuItem>
 
-            <FormControl sx={{ width: 0.1 }}>
+            <FormControl sx={{ width: "10rem" }}>
               <InputLabel>Category</InputLabel>
 
               <Select label="Category">

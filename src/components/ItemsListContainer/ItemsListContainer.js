@@ -14,9 +14,6 @@ import { db } from "../../firebase/FireBaseConfig";
 // Material Ui
 import CircularProgress from "@mui/material/CircularProgress";
 
-// Tanstack React Query
-import { useQuery } from "@tanstack/react-query";
-
 /* Imports */
 
 export const ItemsListContainer = () => {

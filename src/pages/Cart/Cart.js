@@ -1,6 +1,10 @@
+// React
 import React from "react";
 
+// Components
 import Cart from "../../components/Cart/Cart";
+
+/* Imports */
 
 const cart = () => {
   return (

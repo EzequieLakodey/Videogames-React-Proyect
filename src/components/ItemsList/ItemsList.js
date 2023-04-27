@@ -4,10 +4,6 @@ import React from "react";
 // Components
 import Items from "../Items/Items";
 
-// Router Dom
-
-// Axios
-
 // Material Ui
 import Grid from "@mui/material/Unstable_Grid2";
 
