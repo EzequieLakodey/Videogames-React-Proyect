@@ -1,56 +1,24 @@
 // React
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 // Components
-import { ItemsList } from "../ItemsList/ItemsList";
-
-// Router Dom
-import { useParams } from "react-router-dom";
-
-// FireStore
-import { collection, query, getDocs, where } from "firebase/firestore";
-import { db } from "../../firebase/FireBaseConfig";
+import ItemsList from "../ItemsList/ItemsList";
 
 // Material Ui
 import CircularProgress from "@mui/material/CircularProgress";
 
+// Data
+import useGetProducts from "../GetFireBaseData/GetFireBaseData";
+
 /* Imports */
 
-export const ItemsListContainer = () => {
-  const [loading, setLoading] = useState(true);
-  const [data, setData] = useState([]);
-  const { categoryId } = useParams();
-  useEffect(() => {
-    const GetItems = async () => {
-      const QueryRef = !categoryId
-        ? collection(db, "Fake Store Api ")
-        : query(
-            collection(db, "Fake Store Api "),
-            where("category", "==", categoryId)
-          );
-      const QuerySnapshot = await getDocs(QueryRef);
-      const Items = [];
-      QuerySnapshot.forEach((i) => {
-        Items.push({ ...i.data(), id: i.id });
-      });
-      setTimeout(() => {
-        setData(Items);
-        setLoading(false);
-      });
-
-      setData(Items);
-    };
-    GetItems();
-  }, [categoryId]);
+const ItemsListContainer = (categoryId) => {
+  const { isLoading } = useGetProducts();
 
   return (
-    <>
-      {loading ? (
-        <CircularProgress color="success" />
-      ) : (
-        <ItemsList data={data} />
-      )}
-    </>
+    <div>
+      {isLoading ? <CircularProgress color="success" /> : <ItemsList />}
+    </div>
   );
 };
 

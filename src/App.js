@@ -17,29 +17,38 @@ import ItemDetail from "./pages/ItemDetail/ItemDetail";
 import Cart from "./pages/Cart/Cart";
 import OrderForm from "./pages/OrderForm/OrderForm";
 
+// TanStack
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
 function App() {
+  const client = new QueryClient();
   return (
-    <Router>
-      <CartProvider>
-        <div className="App">
-          <NavBar />
+    <div className="App">
+      <Router>
+        <CartProvider>
+          <QueryClientProvider client={client}>
+            <NavBar />
 
-          <Routes>
-            <Route path="/" element={<Home />} />
+            <Routes>
+              <Route path="/" element={<Home />} />
 
-            <Route path="/category/:categoryId" element={<ItemsCateogries />} />
+              <Route
+                path="/category/:categoryId"
+                element={<ItemsCateogries />}
+              />
 
-            <Route path="/item/:id" element={<ItemDetail />} />
+              <Route path="/item/:id" element={<ItemDetail />} />
 
-            <Route path="*" />
+              <Route path="*" />
 
-            <Route path="/cart" element={<Cart />} />
+              <Route path="/cart" element={<Cart />} />
 
-            <Route path="/order" element={<OrderForm />} />
-          </Routes>
-        </div>
-      </CartProvider>
-    </Router>
+              <Route path="/order" element={<OrderForm />} />
+            </Routes>
+          </QueryClientProvider>
+        </CartProvider>
+      </Router>
+    </div>
   );
 }
 

@@ -7,16 +7,23 @@ import Items from "../Items/Items";
 // Material Ui
 import Grid from "@mui/material/Unstable_Grid2";
 
+// Data
+import useGetProducts from "../GetFireBaseData/GetFireBaseData";
+
 /* Imports */
 
-export const ItemsList = ({ data }) => {
+const ItemsList = () => {
+  const { data: productsData } = useGetProducts();
+
   return (
-    <div>
+    <article>
       <Grid container spacing={5} sx={{ marginTop: 5 }}>
-        {data.map((item) => (
-          <Items key={item.id} product={item} />
+        {productsData?.map((i) => (
+          <Items key={i.id} product={i} />
         ))}
       </Grid>
-    </div>
+    </article>
   );
 };
+
+export default ItemsList;
