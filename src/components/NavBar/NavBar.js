@@ -1,9 +1,12 @@
 // React
 import * as React from "react";
+import { useContext } from "react";
 
 // Context
 import { CartContext } from "../../contexts/CartContext";
-import { useContext } from "react";
+
+// Components
+import CategorySelector from "./CategorySelector/CategorySelector";
 
 // Router Dom
 import { Link } from "react-router-dom";
@@ -20,9 +23,6 @@ import {
   Avatar,
   Tooltip,
   MenuItem,
-  FormControl,
-  Select,
-  InputLabel,
 } from "@mui/material";
 
 /* Imports */
@@ -70,27 +70,7 @@ function NavBar() {
               <IconButton>{GetItemsCount()}</IconButton>
             </MenuItem>
 
-            <FormControl sx={{ width: "10rem" }}>
-              <InputLabel>Category</InputLabel>
-
-              <Select label="Category">
-                <Link to={"/category/men's clothing"}>
-                  <MenuItem>Men's Clothing</MenuItem>
-                </Link>
-
-                <Link to={"/category/women's clothing"}>
-                  <MenuItem>Women's Clothing</MenuItem>
-                </Link>
-
-                <Link to={"/category/jewelery"}>
-                  <MenuItem>Jewelery</MenuItem>
-                </Link>
-
-                <Link to={"/category/electronics"}>
-                  <MenuItem>Electronics</MenuItem>
-                </Link>
-              </Select>
-            </FormControl>
+            <CategorySelector />
 
             <Box sx={{ flexGrow: 1 }}>
               <Tooltip title="Open settings">
