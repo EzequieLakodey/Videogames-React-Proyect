@@ -1,8 +1,5 @@
-// React
-import React from "react";
-
 // Components
-import ItemsListContainer from "../../components/ItemsListContainer/ItemsListContainer";
+import ItemsListContainer from '../../components/ItemsListContainer/ItemsListContainer'
 
 /* Imports */
 
@@ -11,7 +8,7 @@ const ItemsCateogries = () => {
     <main>
       <ItemsListContainer></ItemsListContainer>
     </main>
-  );
-};
+  )
+}
 
-export default ItemsCateogries;
+export default ItemsCateogries

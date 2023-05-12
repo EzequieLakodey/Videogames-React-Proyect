@@ -1,62 +1,62 @@
 // React
-import React, { createContext, useState } from "react";
+import { createContext, useState } from 'react'
 
 // Router Dom
-import { useNavigate } from "react-router";
+import { useNavigate } from 'react-router'
 
 // Material Ui
-import Badge from "@mui/material/Badge";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import Badge from '@mui/material/Badge'
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
 
 /* Imports */
 
-export const CartContext = createContext();
+export const CartContext = createContext()
 
 export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
-  const Redirect = useNavigate();
+  const [cart, setCart] = useState([])
+  const Redirect = useNavigate()
 
   const AddItemsToCart = (data, count) => {
-    const existingItem = cart.find((item) => item.id === data.id);
+    const existingItem = cart.find(item => item.id === data.id)
 
     if (existingItem) {
       setCart(
-        cart.map((item) => {
+        cart.map(item => {
           if (item.id === data.id) {
-            return { ...item, count: item.count + count };
+            return { ...item, count: item.count + count }
           } else {
-            return item;
+            return item
           }
         })
-      );
+      )
     } else {
-      setCart([...cart, { ...data, count }]);
+      setCart([...cart, { ...data, count }])
     }
-    localStorage.setItem("cart", cart);
-  };
+  }
+  localStorage.setItem('cart', JSON.stringify(cart))
 
-  const removeItems = (data) => {
-    const refreshCart = cart.filter((i) => i.id !== data.id);
-    setCart(refreshCart);
-    localStorage.removeItem("cart", cart);
-  };
+  const removeItems = data => {
+    const refreshCart = cart.filter(i => i.id !== data.id)
+    setCart(refreshCart)
+    localStorage.removeItem('cart', cart)
+  }
 
   const emptyCart = () => {
-    setCart([]);
-    Redirect("/");
-  };
+    setCart([])
+    Redirect('/')
+  }
 
   function GetItemsCount() {
-    let total = 0;
-    cart.forEach((item) => {
-      total += item.count;
-    });
+    let total = 0
+    cart.forEach(item => {
+      total += item.count
+    })
 
     return (
-      <Badge badgeContent={total} color="info">
-        <ShoppingCartIcon fontSize="large" onClick={() => Redirect("/cart")} />
+      <Badge badgeContent={total} color='info'>
+        <ShoppingCartIcon fontSize='large' onClick={() => Redirect('/cart')} />
       </Badge>
-    );
+    )
   }
 
   return (
@@ -71,5 +71,5 @@ export const CartProvider = ({ children }) => {
       }}>
       {children}
     </CartContext.Provider>
-  );
-};
+  )
+}

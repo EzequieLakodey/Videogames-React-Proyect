@@ -1,69 +1,57 @@
 // React
-import { useState, React } from "react";
+import { useState } from 'react'
 
 // Material Ui
-import {
-  IconButton,
-  TextField,
-  Button,
-  CardActions,
-  Container,
-} from "@mui/material";
+import { IconButton, TextField, Button, CardActions, Container } from '@mui/material'
 
 // Mui Icons
-import AddIcon from "@mui/icons-material/Add";
-import RemoveIcon from "@mui/icons-material/Remove";
+import AddIcon from '@mui/icons-material/Add'
+import RemoveIcon from '@mui/icons-material/Remove'
 
 /* Imports */
 
 const ItemsCounter = ({ initial, OnAdd }) => {
-  const [count, setCount] = useState(initial);
+  const [count, setCount] = useState(initial)
 
   const remove = () => {
     if (count > 1) {
-      setCount(count - 1);
+      setCount(count - 1)
     }
-  };
+  }
 
   const add = () => {
     if (count >= 1) {
-      setCount(count + 1);
+      setCount(count + 1)
     }
-  };
+  }
 
   return (
     <section>
       <div>
         <IconButton onClick={remove}>
-          <RemoveIcon fontSize="large" />
+          <RemoveIcon fontSize='large' />
         </IconButton>
 
-        <TextField
-          id="filled-basic"
-          label="Quantity"
-          variant="filled"
-          value={count}
-          sx={{ width: 0.1 }}
-        />
+        <TextField id='filled-basic' label='Quantity' variant='filled' value={count} sx={{ width: 0.1 }} />
 
         <IconButton onClick={add}>
-          <AddIcon fontSize="large" />
+          <AddIcon fontSize='large' />
         </IconButton>
 
         <Container
           sx={{
-            display: "flex",
-            justifyContent: "center",
+            display: 'flex',
+            justifyContent: 'center'
           }}>
           <CardActions>
-            <Button variant="contained" onClick={() => OnAdd(count)}>
+            <Button variant='contained' onClick={() => OnAdd(count)}>
               Add to cart
             </Button>
           </CardActions>
         </Container>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default ItemsCounter;
+export default ItemsCounter

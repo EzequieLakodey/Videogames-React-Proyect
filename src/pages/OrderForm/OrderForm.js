@@ -1,8 +1,5 @@
-// React
-import React from "react";
-
 // Components
-import OrderCreator from "../../components/OrderCreator/OrderCreator";
+import OrderCreator from '../../components/OrderCreator/OrderCreator'
 
 /* Imports */
 
@@ -11,7 +8,7 @@ const OrderForm = () => {
     <div>
       <OrderCreator></OrderCreator>
     </div>
-  );
-};
+  )
+}
 
-export default OrderForm;
+export default OrderForm

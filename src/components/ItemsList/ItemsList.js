@@ -1,29 +1,26 @@
-// React
-import React from "react";
-
 // Components
-import Items from "../Items/Items";
+import Items from '../Items/Items'
 
 // Material Ui
-import Grid from "@mui/material/Unstable_Grid2";
+import Grid from '@mui/material/Unstable_Grid2'
 
-// Data
-import useGetProducts from "../GetFireBaseData/GetFireBaseData";
+// Data Hook
+import useGetProducts from '../../utils/Hooks/GetFireBaseData'
 
 /* Imports */
 
 const ItemsList = () => {
-  const { data: productsData } = useGetProducts();
+  const { data: productsData } = useGetProducts()
 
   return (
     <article>
       <Grid container spacing={5} sx={{ marginTop: 5 }}>
-        {productsData?.map((i) => (
+        {productsData?.map(i => (
           <Items key={i.id} product={i} />
         ))}
       </Grid>
     </article>
-  );
-};
+  )
+}
 
-export default ItemsList;
+export default ItemsList

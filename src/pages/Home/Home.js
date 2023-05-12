@@ -1,8 +1,5 @@
-// React
-import React from "react";
-
 // Components
-import ItemsListContainer from "../../components/ItemsListContainer/ItemsListContainer";
+import ItemsListContainer from '../../components/ItemsListContainer/ItemsListContainer'
 
 /* Imports */
 
@@ -11,6 +8,6 @@ const Home = () => {
     <main>
       <ItemsListContainer />
     </main>
-  );
-};
-export default Home;
+  )
+}
+export default Home

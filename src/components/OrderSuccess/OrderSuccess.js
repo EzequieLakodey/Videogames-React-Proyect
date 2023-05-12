@@ -1,8 +1,5 @@
-// React
-import React from "react";
-
 // Material Ui
-import { Alert, Stack } from "@mui/material";
+import { Alert, Stack } from '@mui/material'
 
 /* Imports */
 
@@ -13,7 +10,7 @@ const OrderSuccess = ({ orderID }) => {
         <Alert>Thanks for your purchase! Order ID: {orderID}</Alert>
       </Stack>
     </>
-  );
-};
+  )
+}
 
-export default OrderSuccess;
+export default OrderSuccess
