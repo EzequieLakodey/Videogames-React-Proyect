@@ -5,7 +5,7 @@ import ItemsList from '../ItemsList/ItemsList'
 import CircularProgress from '@mui/material/CircularProgress'
 
 // Data
-import useGetProducts from '../../utils/Hooks/GetFireBaseData'
+import useGetProducts from '../../utils/Hooks/GetProductsCategories'
 
 /* Imports */
 

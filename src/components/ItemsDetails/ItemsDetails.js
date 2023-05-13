@@ -12,15 +12,21 @@ import { useNavigate } from 'react-router'
 import { Card, CardContent, CardMedia, Typography, Container } from '@mui/material'
 import Grid from '@mui/material/Unstable_Grid2'
 
+// Data Hook
+import useGetProductDetails from '../../utils/Hooks/GetProductsDetails'
+
 /* Imports */
 
-const ItemsDetails = ({ data }) => {
+const ItemsDetails = () => {
   const { AddItemsToCart } = useContext(CartContext)
-  const { title, description, price, category, image } = data
+
+  const { data: productsData } = useGetProductDetails()
+
   const Redirect = useNavigate()
 
   const OnAdd = count => {
-    AddItemsToCart(data, count)
+    AddItemsToCart(productsData, count)
+
     Redirect('/')
   }
 
@@ -30,28 +36,33 @@ const ItemsDetails = ({ data }) => {
         <CardContent>
           <Container>
             <Typography gutterBottom variant='overline' component='h6' fontSize={'100%'}>
-              {title}
+              {productsData?.title}
             </Typography>
 
             <Typography gutterBottom variant='overline' component='h5' fontSize={'100%'}>
-              {category}
+              {productsData?.category}
             </Typography>
           </Container>
         </CardContent>
-        <Container sx={{ width: 0.25 }}>
-          <CardMedia component='img' image={image} alt={'image' + data.title + data.id} />
+
+        <Container sx={{ width: '35rem' }}>
+          <CardMedia
+            component='img'
+            image={productsData?.image}
+            alt={'image' + productsData?.title + productsData?.id}
+          />
         </Container>
 
         <CardContent>
           <Container>
             <Typography gutterBottom variant='h6' component='div'>
-              {price} $
+              {productsData?.price} $
             </Typography>
           </Container>
 
           <Container>
             <Typography variant='body' color='text.secondary'>
-              {description}
+              {productsData?.description}
             </Typography>
           </Container>
         </CardContent>
@@ -61,4 +72,5 @@ const ItemsDetails = ({ data }) => {
     </Grid>
   )
 }
+
 export default ItemsDetails

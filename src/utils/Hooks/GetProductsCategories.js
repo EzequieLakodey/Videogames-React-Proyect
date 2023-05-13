@@ -13,13 +13,19 @@ import { useParams } from 'react-router-dom'
 const useGetProducts = () => {
   const { categoryId } = useParams()
 
+  const productsData = []
+
   const fetchData = async () => {
-    const productsCollection = !categoryId ? collection(db, 'Fake Store Api ') : query(collection(db, 'Fake Store Api '), where('category', '==', categoryId))
+    const productsCollection = !categoryId
+      ? collection(db, 'Fake Store Api ')
+      : query(collection(db, 'Fake Store Api '), where('category', '==', categoryId))
+
     const querySnapshot = await getDocs(productsCollection)
-    const productsData = []
+
     querySnapshot.forEach(doc => {
       productsData.push({ ...doc.data(), id: doc.id })
     })
+
     return productsData
   }
 

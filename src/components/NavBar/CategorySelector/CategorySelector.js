@@ -8,7 +8,7 @@ import { Link, useParams } from 'react-router-dom'
 import { MenuItem, FormControl, Select, InputLabel } from '@mui/material'
 
 // Data Hook
-import useGetProducts from '../../../utils/Hooks/GetFireBaseData'
+import useGetProducts from '../../../utils/Hooks/GetProductsCategories'
 
 const CategorySelector = () => {
   const { data: productsData } = useGetProducts()

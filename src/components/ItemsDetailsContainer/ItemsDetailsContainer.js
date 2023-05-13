@@ -1,43 +1,28 @@
-// React
-import { useEffect, useState } from 'react'
-
 // Components
 import ItemsDetails from '../ItemsDetails/ItemsDetails'
-
-// FireStore
-import { getDoc, doc } from 'firebase/firestore'
-import { db } from '../../utils/firebase/FireBaseConfig'
 
 // Material Ui
 import CircularProgress from '@mui/material/CircularProgress'
 
-// React Router Dom
-import { useParams } from 'react-router'
-
 // Data Hook
-import useGetProducts from '../../utils/Hooks/GetFireBaseData'
+import useGetProductDetails from '../../utils/Hooks/GetProductsCategories'
 
 /* Imports */
 
 export const ItemsDetailsContainer = () => {
-  const { data: productsData, isLoading } = useGetProducts()
-  console.log(productsData)
+  const { isLoading } = useGetProductDetails()
 
-  const [loading, setLoading] = useState(true)
-  const [data, setData] = useState([])
-  const { id } = useParams()
+  // const [data, setData] = useState([])
 
-  useEffect(() => {
-    const docReference = doc(db, 'Fake Store Api ', id)
-    getDoc(docReference)
-      .then(result => {
-        setData({ ...result.data(), id: result.id })
-      })
+  // useEffect(() => {
+  //   const docReference = doc(db, 'Fake Store Api ', id)
 
-      .finally(() => setLoading(false))
-  }, [id])
+  //   getDoc(docReference).then(result => {
+  //     setData({ ...result.data(), id: result.id })
+  //   })
+  // }, [id])
 
-  return <div>{loading ? <CircularProgress color='success' /> : <ItemsDetails data={data} />}</div>
+  return <div>{isLoading ? <CircularProgress color='success' /> : <ItemsDetails />}</div>
 }
 
 export default ItemsDetailsContainer
