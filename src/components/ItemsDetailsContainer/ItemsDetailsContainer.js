@@ -14,9 +14,15 @@ import CircularProgress from '@mui/material/CircularProgress'
 // React Router Dom
 import { useParams } from 'react-router'
 
+// Data Hook
+import useGetProducts from '../../utils/Hooks/GetFireBaseData'
+
 /* Imports */
 
 export const ItemsDetailsContainer = () => {
+  const { data: productsData, isLoading } = useGetProducts()
+  console.log(productsData)
+
   const [loading, setLoading] = useState(true)
   const [data, setData] = useState([])
   const { id } = useParams()

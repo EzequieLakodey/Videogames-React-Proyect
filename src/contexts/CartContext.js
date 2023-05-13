@@ -1,5 +1,5 @@
 // React
-import { createContext, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 
 // Router Dom
 import { useNavigate } from 'react-router'
@@ -20,8 +20,8 @@ export const CartProvider = ({ children }) => {
     const existingItem = cart.find(item => item.id === data.id)
 
     if (existingItem) {
-      setCart(
-        cart.map(item => {
+      setCart(prevCart =>
+        prevCart.map(item => {
           if (item.id === data.id) {
             return { ...item, count: item.count + count }
           } else {
@@ -30,21 +30,31 @@ export const CartProvider = ({ children }) => {
         })
       )
     } else {
-      setCart([...cart, { ...data, count }])
+      setCart(prevCart => [...prevCart, { ...data, count }])
     }
   }
-  localStorage.setItem('cart', JSON.stringify(cart))
 
   const removeItems = data => {
     const refreshCart = cart.filter(i => i.id !== data.id)
     setCart(refreshCart)
-    localStorage.removeItem('cart', cart)
+    localStorage.removeItem('cart')
   }
 
   const emptyCart = () => {
     setCart([])
     Redirect('/')
   }
+
+  useEffect(() => {
+    const getStoredCart = localStorage.getItem('cart')
+    if (getStoredCart) {
+      setCart(JSON.parse(getStoredCart))
+    }
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart))
+  }, [cart])
 
   function GetItemsCount() {
     let total = 0
