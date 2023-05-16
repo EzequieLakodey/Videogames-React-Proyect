@@ -1,0 +1,25 @@
+.cart-container {
+  margin-top: 5rem;
+  .cart-cards {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    .cart-img {
+      max-width: 100px;
+    }
+    .cart-typography-container {
+      line-height: 2rem;
+      font-size: 1rem;
+    }
+  }
+  .cart-btns-container {
+    margin-top: 2em;
+    .cart-proceed-btn {
+      margin-right: 1em;
+    }
+    .empty-cart-btn {
+      margin-left: 1em;
+    }
+  }
+}

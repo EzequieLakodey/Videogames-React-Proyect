@@ -39,7 +39,7 @@ const CategorySelector = () => {
         <Select label='Category' value={selectedCategory} onChange={refreshCategoryId}>
           <MenuItem
             value={'All'}
-            key={''}
+            key={`menu-item-all`}
             sx={{
               display: 'flex',
               flex: '1',
@@ -63,10 +63,10 @@ const CategorySelector = () => {
             </Link>
           </MenuItem>
 
-          {categories?.map(category => (
+          {categories?.map((category, index) => (
             <MenuItem
               value={category}
-              key={category}
+              key={`menu-item-${index}`}
               sx={{
                 display: 'flex',
                 flex: '1',

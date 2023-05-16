@@ -15,8 +15,8 @@ const ItemsList = () => {
   return (
     <article>
       <Grid container spacing={5} sx={{ marginTop: 5 }}>
-        {productsData?.map(i => (
-          <Items key={i.id} product={i} />
+        {productsData?.map((i, index) => (
+          <Items key={`item-${i.id}-${index}`} product={i} />
         ))}
       </Grid>
     </article>

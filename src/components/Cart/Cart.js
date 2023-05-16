@@ -5,7 +5,15 @@ import { useContext } from 'react'
 import { useNavigate } from 'react-router'
 
 // Material ui
-import { Card, CardContent, CardMedia, Typography, CardActionArea, Container, Button } from '@mui/material'
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  CardActionArea,
+  Container,
+  Button,
+} from '@mui/material'
 import Grid from '@mui/material/Unstable_Grid2'
 import RemoveIcon from '@mui/icons-material/Remove'
 
@@ -19,21 +27,16 @@ const Cart = () => {
   const Redirect = useNavigate()
 
   return (
-    <article sx={{ marginTop: '5em' }}>
+    <article className='cart-container'>
       <Grid mt={'5rem'} maxWidth={1}>
-        {cart.map(i => (
-          <Container key={i.id}>
+        {cart.map((i, index) => (
+          <Container key={`container-${i.id}-${index}`}>
             <Card>
               <CardActionArea>
-                <CardContent
-                  sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'flex-start',
-                    flexDirection: 'row'
-                  }}>
-                  <CardMedia component='img' image={i.image} alt={i.title} sx={{ maxWidth: '100px' }} />
-                  <Container sx={{ lineHeight: '2rem' }}>
+                <CardContent className='cart-cards'>
+                  <CardMedia component='img' image={i.image} alt={i.title} className='cart-img' />
+
+                  <Container className='cart-typography-container'>
                     <Typography variant='inherit' component='p'>
                       {i.title}
                     </Typography>
@@ -59,9 +62,9 @@ const Cart = () => {
           </Container>
         ))}
 
-        <Container sx={{ marginTop: '2em' }}>
+        <Container className='cart-btns-container'>
           <Button
-            sx={{ mr: '1em' }}
+            className='cart-proceed-btn'
             variant='outlined'
             onClick={() => {
               Redirect('/order')
@@ -69,7 +72,7 @@ const Cart = () => {
             Proceed
           </Button>
 
-          <Button sx={{ ml: '1em' }} variant='outlined' onClick={emptyCart}>
+          <Button variant='outlined' onClick={emptyCart}>
             Empty Cart
           </Button>
         </Container>

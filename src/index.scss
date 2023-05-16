@@ -6,4 +6,19 @@
 @use './scss/base/base';
 @use './scss/base/resets';
 
-// Components
+/******* Components *******/
+
+// NavBar
+@use './components//NavBar/NavBar';
+
+// Items
+@use './components/Items/Items';
+
+// ItemsDetails
+@use './components/ItemsDetails/ItemsDetails';
+
+// Cart
+@use './components/Cart/Cart';
+
+// ItemsCounter
+@use './components/ItemsCounter/ItemsCounter';

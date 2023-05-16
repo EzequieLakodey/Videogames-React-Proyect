@@ -32,7 +32,7 @@ const ItemsDetails = () => {
 
   return (
     <Grid sx={{ display: 'flex', justifyContent: 'center' }}>
-      <Card sx={{ maxWidth: 1, marginTop: 5 }}>
+      <Card className='card-details'>
         <CardContent>
           <Container>
             <Typography gutterBottom variant='overline' component='h6' fontSize={'100%'}>
@@ -45,7 +45,7 @@ const ItemsDetails = () => {
           </Container>
         </CardContent>
 
-        <Container sx={{ width: '35rem' }}>
+        <Container className='card-detail-img'>
           <CardMedia
             component='img'
             image={productsData?.image}

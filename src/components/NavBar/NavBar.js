@@ -12,7 +12,18 @@ import CategorySelector from './CategorySelector/CategorySelector'
 import { Link } from 'react-router-dom'
 
 // Material Ui
-import { AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, Tooltip, MenuItem } from '@mui/material'
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  IconButton,
+  Typography,
+  Menu,
+  Container,
+  Avatar,
+  Tooltip,
+  MenuItem,
+} from '@mui/material'
 
 /* Imports */
 
@@ -34,78 +45,86 @@ function NavBar() {
   return (
     <header>
       <AppBar position='relative' color='inherit'>
-        <Container maxWidth='xl'>
-          <Toolbar disableGutters>
+        <Toolbar className='navbar-toolbar' disableGutters>
+          <Container className='navbar-container' maxWidth='1'>
             <Link to={'/'}>
-              <Typography
-                variant='h1'
-                element='h1'
-                sx={{
-                  fontSize: '2rem',
-                  mr: 2,
-                  display: {
-                    xs: 'none',
-                    md: 'flex',
-                  },
-                  fontFamily: 'monospace',
-                  fontWeight: 300,
-                  letterSpacing: '1',
-                  color: 'black',
-                  textDecoration: 'none',
-                  listStyle: 'none',
-                }}>
+              <Typography className='nav-title' variant='h1' element='h1'>
                 BoombleGoom
               </Typography>
             </Link>
 
-            <MenuItem>
-              <IconButton>{GetItemsCount()}</IconButton>
-            </MenuItem>
-
-            <CategorySelector />
-
             <Box
               sx={{
-                flexGrow: 1,
+                display: 'flex',
+                justifyContent: 'center',
+                alignContent: 'center',
+                flex: '1',
+                marginTop: 0.5,
               }}>
-              <Tooltip title='Open settings'>
-                <IconButton
-                  onClick={handleOpenUserMenu}
-                  sx={{
-                    p: 1,
-                  }}>
-                  <Avatar alt='User profile image' />
-                </IconButton>
-              </Tooltip>
-
-              <Menu
-                sx={{
-                  mt: '50px',
-                }}
-                id='menu-appbar'
-                anchorEl={anchorElUser}
-                anchorOrigin={{
-                  vertical: 'top',
-
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-
-                  horizontal: 'right',
-                }}
-                open={Boolean(anchorElUser)}
-                onClose={handleCloseUserMenu}>
-                {settings.map(setting => (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign='center'>{setting}</Typography>
-                  </MenuItem>
-                ))}
-              </Menu>
+              <CategorySelector />
             </Box>
-          </Toolbar>
-        </Container>
+
+            <Box sx={{ display: 'flex' }}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  alignContent: 'flex-end',
+                  flex: '1',
+                }}>
+                <MenuItem>
+                  <Tooltip title='View cart'>
+                    <IconButton>{GetItemsCount()}</IconButton>
+                  </Tooltip>
+                </MenuItem>
+              </Box>
+
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  alignContent: 'flex-end',
+                  flex: '1',
+                  mr: '3rem',
+                }}>
+                <Tooltip title='Open settings'>
+                  <IconButton className='settings-btn' onClick={handleOpenUserMenu}>
+                    <Avatar alt='User profile image' />
+                  </IconButton>
+                </Tooltip>
+              </Box>
+
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  alignContent: 'flex-end',
+                  flex: '1',
+                }}>
+                <Menu
+                  id='menu-appbar'
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  keepMounted
+                  transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}>
+                  {settings.map(setting => (
+                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                      <Typography textAlign='center'>{setting}</Typography>
+                    </MenuItem>
+                  ))}
+                </Menu>
+              </Box>
+            </Box>
+          </Container>
+        </Toolbar>
       </AppBar>
     </header>
   )

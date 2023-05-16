@@ -32,17 +32,19 @@ const ItemsCounter = ({ initial, OnAdd }) => {
           <RemoveIcon fontSize='large' />
         </IconButton>
 
-        <TextField id='filled-basic' label='Quantity' variant='filled' value={count} sx={{ width: 0.1 }} />
+        <TextField
+          id='filled-basic'
+          label='Quantity'
+          variant='filled'
+          value={count}
+          className='quantity-textfield'
+        />
 
         <IconButton onClick={add}>
           <AddIcon fontSize='large' />
         </IconButton>
 
-        <Container
-          sx={{
-            display: 'flex',
-            justifyContent: 'center'
-          }}>
+        <Container className='quantity-selector-container'>
           <CardActions>
             <Button variant='contained' onClick={() => OnAdd(count)}>
               Add to cart

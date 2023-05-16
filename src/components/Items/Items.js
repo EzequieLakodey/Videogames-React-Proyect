@@ -14,29 +14,14 @@ const Item = ({ product }) => {
 
   return (
     <Grid xs={12} sm={6} xl={4}>
-      <CardActionArea sx={{ width: '1', height: '50rem' }}>
-        <Card
-          onClick={() => Redirect(`/item/${id}`)}
-          sx={{
-            maxWidth: '1',
-            height: '1',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between',
-            alignContent: 'center'
-          }}>
+      <CardActionArea className='card-btn-item'>
+        <Card onClick={() => Redirect(`/item/${id}`)} className='card-item'>
           <CardContent>
             <Typography component='h5'>{title}</Typography>
           </CardContent>
 
-          <CardContent
-            sx={{
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignContent: 'center'
-            }}>
-            <CardMedia component='img' image={image} alt={'image' + title + id} sx={{ width: '20rem' }} />
+          <CardContent className='card-img-container'>
+            <CardMedia component='img' image={image} alt={title} className='card-img' />
           </CardContent>
 
           <CardContent>
