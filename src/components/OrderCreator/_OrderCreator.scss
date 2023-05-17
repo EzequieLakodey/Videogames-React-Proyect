@@ -1,0 +1,17 @@
+section {
+  .form-title-container {
+    margin-top: 2rem;
+  }
+  form {
+    .form-inputs-container {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-items: center;
+      .form-inputs {
+        margin-top: 1rem;
+        width: 10rem;
+      }
+    }
+  }
+}
