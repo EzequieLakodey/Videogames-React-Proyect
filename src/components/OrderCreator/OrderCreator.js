@@ -8,7 +8,7 @@ import { CartContext } from '../../contexts/CartContext'
 import OrderSuccess from '../OrderSuccess/OrderSuccess'
 
 // Material ui
-import { Typography, Container, Box, Button, TextField, Alert, Stack } from '@mui/material'
+import { Typography, Container, Box, Button, TextField } from '@mui/material'
 
 // Firebase
 import { collection, addDoc } from 'firebase/firestore'
@@ -22,39 +22,43 @@ import * as yup from 'yup'
 
 /* Imports */
 
+const validationMessages = (fieldName, min, max) => {
+  return {
+    required: `${fieldName} is required`,
+    min: `${fieldName} must be at least ${min} characters`,
+    max: `${fieldName} must be at most 4{max} characters`,
+    email: `${fieldName} is not valid`,
+  }
+}
+
 const yupSchema = yup.object().shape({
   name: yup
     .string()
-    .min(4, 'Name must be at least 4 characters')
-    .max(20, 'Name must be at most 20 characters')
-    .required('Name is required'),
+    .min(4, validationMessages('Name', 4, 20).min)
+    .max(20, validationMessages('Name', 4, 20).max)
+    .required(validationMessages('Name', 4, 20).required),
   lastName: yup
     .string()
-    .min(4, 'Last name must be at least 4 characters')
-    .max(20, 'Last name must be at most 20 characters')
-    .required('Last name is required'),
+    .min(4, validationMessages('Last name', 4, 20).min)
+    .max(20, validationMessages('Last name', 4, 20).max)
+    .required(validationMessages('Last name', 4, 20).required),
   city: yup
     .string()
-    .min(4, 'City must be at least 4 characters')
-    .max(20, 'City must be at most 20 characters')
-    .required('City is required'),
+    .min(4, validationMessages('City', 4, 20).min)
+    .max(20, validationMessages('City', 4, 20).max)
+    .required(validationMessages('City', 4, 20).required),
   postalCode: yup
     .string()
-    .min(4, 'Postal code must be at least 4 characters')
-    .max(20, 'Postal code must be at most 20 characters')
-    .required('Postal code is required'),
-  email: yup.string().email('Email is not valid').required('Email is required'),
+    .min(4, validationMessages('Postal Code', 4, 20).min)
+    .max(20, validationMessages('Postal Code', 4, 20).max)
+    .required(validationMessages('Postal Code', 4, 20).required),
+  email: yup
+    .string()
+    .email(validationMessages('Email', null, null).email)
+    .required(validationMessages('Email', null, null).required),
 })
 
-const initialState = {
-  name: '',
-  lastName: '',
-  city: '',
-  postalCode: '',
-  email: '',
-}
-
-const renderFormFields = (fields, values, handleChange, errors, index, fieldName) => {
+const renderFormFields = (fields, values, handleChange, errors) => {
   return fields.map(({ name, label }) => {
     return (
       <div key={name}>
@@ -66,18 +70,11 @@ const renderFormFields = (fields, values, handleChange, errors, index, fieldName
                 label={label}
                 variant='standard'
                 {...field}
-                onChange={handleChange}
-                error={meta.touched && meta.error}
+                onChange={field.onChange}
+                error={!!(meta.touched && meta.error)}
                 helperText={meta.touched && meta.error}
               />
               {!!(meta.touched && meta.error)}
-              <Container key={index} sx={{ width: '25em', mt: '1em' }}>
-                <Stack>
-                  <Alert variant='outlined' severity='error'>
-                    {errors[name]?.message}
-                  </Alert>
-                </Stack>
-              </Container>
             </div>
           )}
         </Field>
@@ -86,17 +83,24 @@ const renderFormFields = (fields, values, handleChange, errors, index, fieldName
   })
 }
 
+const initialState = {
+  name: '',
+  lastName: '',
+  city: '',
+  postalCode: '',
+  email: '',
+}
+const formFields = [
+  { name: 'name', label: 'Name' },
+  { name: 'lastName', label: 'Last Name' },
+  { name: 'email', label: 'E-mail' },
+  { name: 'postalCode', label: 'Postal Code' },
+  { name: 'city', label: 'City' },
+]
+
 const Order = () => {
   const { setCart } = useContext(CartContext)
   const [orderID, setOrderID] = useState('')
-
-  const formFields = [
-    { name: 'name', label: 'Name' },
-    { name: 'lastName', label: 'Last Name' },
-    { name: 'email', label: 'E-mail' },
-    { name: 'postalCode', label: 'Postal Code' },
-    { name: 'city', label: 'City' },
-  ]
 
   const handleSubmit = async (values, { resetForm }) => {
     const docRef = await addDoc(collection(db, 'Orders'), values)
@@ -114,7 +118,6 @@ const Order = () => {
               Order Form
             </Typography>
           </Container>
-
           <form onSubmit={handleSubmit}>
             <Box className='form-inputs-container'>
               {renderFormFields(formFields, values, handleChange, errors)}
@@ -131,13 +134,9 @@ const Order = () => {
           </form>
 
           {orderID.length ? (
-            <Container
-              sx={{
-                width: '25rem',
-                marginTop: '2em',
-              }}>
+            <Box className='order-id-alert'>
               <OrderSuccess orderID={orderID} />
-            </Container>
+            </Box>
           ) : null}
         </section>
       )}
