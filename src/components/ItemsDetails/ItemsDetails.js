@@ -13,7 +13,7 @@ import { Card, CardContent, CardMedia, Typography, Container } from '@mui/materi
 import Grid from '@mui/material/Unstable_Grid2'
 
 // Data Hook
-import useGetProductDetails from '../../utils/Hooks/GetProductsDetails'
+import useGetProductDetails from '../../utils/hooks/GetProductsDetails'
 
 /* Imports */
 

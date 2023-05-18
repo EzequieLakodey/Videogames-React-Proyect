@@ -7,6 +7,7 @@ import { CartContext } from '../../contexts/CartContext'
 
 // Components
 import CategorySelector from './CategorySelector/CategorySelector'
+import DashBoard from './DashBoard/DashBoard'
 
 // Router Dom
 import { Link } from 'react-router-dom'
@@ -18,28 +19,14 @@ import {
   Toolbar,
   IconButton,
   Typography,
-  Menu,
   Container,
-  Avatar,
   Tooltip,
   MenuItem,
 } from '@mui/material'
 
 /* Imports */
 
-const settings = ['Profile', 'Account', 'Help', 'Settings']
-
 function NavBar() {
-  const [anchorElUser, setAnchorElUser] = React.useState(null)
-
-  const handleOpenUserMenu = event => {
-    setAnchorElUser(event.currentTarget)
-  }
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null)
-  }
-
   const { GetItemsCount } = useContext(CartContext)
 
   return (
@@ -80,48 +67,7 @@ function NavBar() {
                 </MenuItem>
               </Box>
 
-              <Box
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  justifyContent: 'center',
-                  alignContent: 'flex-end',
-                  flex: '1',
-                  mr: '3rem',
-                }}>
-                <Tooltip title='Open settings'>
-                  <IconButton className='settings-btn' onClick={handleOpenUserMenu}>
-                    <Avatar alt='User profile image' />
-                  </IconButton>
-                </Tooltip>
-              </Box>
-
-              <Box
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  justifyContent: 'center',
-                  alignContent: 'flex-end',
-                  flex: '1',
-                }}>
-                <Menu
-                  id='menu-appbar'
-                  anchorEl={anchorElUser}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  keepMounted
-                  transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-                  open={Boolean(anchorElUser)}
-                  onClose={handleCloseUserMenu}>
-                  {settings.map(setting => (
-                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                      <Typography textAlign='center'>{setting}</Typography>
-                    </MenuItem>
-                  ))}
-                </Menu>
-              </Box>
+              <DashBoard />
             </Box>
           </Container>
         </Toolbar>

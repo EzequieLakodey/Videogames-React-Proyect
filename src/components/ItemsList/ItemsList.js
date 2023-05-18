@@ -5,7 +5,7 @@ import Items from '../Items/Items'
 import Grid from '@mui/material/Unstable_Grid2'
 
 // Data Hook
-import useGetProducts from '../../utils/Hooks/GetProductsCategories'
+import useGetProducts from '../../utils/hooks/GetProductsCategories'
 
 /* Imports */
 

@@ -25,6 +25,7 @@ import { CartContext } from '../../contexts/CartContext'
 const Cart = () => {
   const { cart, removeItems, emptyCart } = useContext(CartContext)
   const Redirect = useNavigate()
+  const hasItems = cart.length > 0
 
   return (
     <article className='cart-container'>
@@ -63,18 +64,22 @@ const Cart = () => {
         ))}
 
         <Container className='cart-btns-container'>
-          <Button
-            className='cart-proceed-btn'
-            variant='outlined'
-            onClick={() => {
-              Redirect('/order')
-            }}>
-            Proceed
-          </Button>
+          {hasItems && (
+            <Button
+              className='cart-proceed-btn'
+              variant='outlined'
+              onClick={() => {
+                Redirect('/order')
+              }}>
+              Proceed
+            </Button>
+          )}
 
-          <Button variant='outlined' onClick={emptyCart}>
-            Empty Cart
-          </Button>
+          {hasItems && (
+            <Button variant='outlined' onClick={emptyCart}>
+              Empty Cart
+            </Button>
+          )}
         </Container>
       </Grid>
     </article>
