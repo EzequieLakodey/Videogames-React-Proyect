@@ -4,9 +4,12 @@ import React, { useState } from 'react'
 // Material Ui
 import { Box, IconButton, Typography, Menu, Avatar, Tooltip, MenuItem } from '@mui/material'
 
+// React Router Dom
+import { Link } from 'react-router-dom'
+
 /* Imports */
 
-const settings = ['Profile', 'Account', 'Help', 'Settings']
+const settings = ['Sign in', 'Account', 'Help', 'Settings']
 
 const DashBoard = () => {
   const [anchorElUser, setAnchorElUser] = useState(null)
@@ -21,15 +24,7 @@ const DashBoard = () => {
 
   return (
     <div>
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'center',
-          alignContent: 'flex-end',
-          flex: '1',
-          mr: '3rem',
-        }}>
+      <Box>
         <Tooltip title='Open settings'>
           <IconButton className='settings-btn' onClick={handleOpenUserMenu}>
             <Avatar alt='User profile image' />
@@ -37,14 +32,7 @@ const DashBoard = () => {
         </Tooltip>
       </Box>
 
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'center',
-          alignContent: 'flex-end',
-          flex: '1',
-        }}>
+      <Box>
         <Menu
           id='menu-appbar'
           anchorEl={anchorElUser}
@@ -56,9 +44,13 @@ const DashBoard = () => {
           transformOrigin={{ vertical: 'top', horizontal: 'right' }}
           open={Boolean(anchorElUser)}
           onClose={handleCloseUserMenu}>
-          {settings.map(setting => (
-            <MenuItem key={setting} onClick={handleCloseUserMenu}>
-              <Typography textAlign='center'>{setting}</Typography>
+          {settings.map((setting, index) => (
+            <MenuItem key={index} onClick={handleCloseUserMenu}>
+              {index === 0 ? (
+                <Link to='/register'>Sign in</Link>
+              ) : (
+                <Typography textAlign='center'>{setting}</Typography>
+              )}
             </MenuItem>
           ))}
         </Menu>

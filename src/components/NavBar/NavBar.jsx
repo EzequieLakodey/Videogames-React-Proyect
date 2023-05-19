@@ -6,8 +6,8 @@ import { useContext } from 'react'
 import { CartContext } from '../../contexts/CartContext'
 
 // Components
-import CategorySelector from './CategorySelector/CategorySelector'
-import DashBoard from './DashBoard/DashBoard'
+import CategorySelector from '../CategorySelector/CategorySelector'
+import DashBoard from '../DashBoard/DashBoard'
 
 // Router Dom
 import { Link } from 'react-router-dom'
