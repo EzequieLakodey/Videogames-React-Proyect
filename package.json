@@ -6,12 +6,15 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "vite"
   },
   "devDependencies": {
+    "dotenv": "^16.0.3",
     "vite": "^4.3.2"
   },
   "dependencies": {
+    "@auth0/auth0-react": "^2.1.0",
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.11.16",
@@ -25,5 +28,9 @@
     "react-router-dom": "^6.11.2",
     "sass": "^1.62.1",
     "yup": "^1.1.1"
-  }
+  },
+  "description": "<h1 align=\"center\">Hi 👋, I'm Ezequiel</h1> <h3 align=\"center\">A proactive web developer from Argentina</h3>",
+  "main": "vite.config.js",
+  "author": "",
+  "license": "ISC"
 }

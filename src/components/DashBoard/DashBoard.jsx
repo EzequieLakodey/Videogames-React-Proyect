@@ -7,14 +7,19 @@ import { Box, IconButton, Typography, Menu, Avatar, Tooltip, MenuItem } from '@m
 // React Router Dom
 import { Link } from 'react-router-dom'
 
+// Auth0
+import { useAuth0 } from '@auth0/auth0-react'
+
 /* Imports */
 
 const settings = ['Sign in', 'Account', 'Help', 'Settings']
 
 const DashBoard = () => {
+  const { loginWithRedirect } = useAuth0()
+
   const [anchorElUser, setAnchorElUser] = useState(null)
 
-  const handleOpenUserMenu = event => {
+  const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget)
   }
 
@@ -23,7 +28,7 @@ const DashBoard = () => {
   }
 
   return (
-    <div>
+    <div className='dashboard-container'>
       <Box>
         <Tooltip title='Open settings'>
           <IconButton className='settings-btn' onClick={handleOpenUserMenu}>
@@ -47,7 +52,7 @@ const DashBoard = () => {
           {settings.map((setting, index) => (
             <MenuItem key={index} onClick={handleCloseUserMenu}>
               {index === 0 ? (
-                <Link to='/register'>Sign in</Link>
+                <Link onClick={() => loginWithRedirect()}>Sign in</Link>
               ) : (
                 <Typography textAlign='center'>{setting}</Typography>
               )}

@@ -26,7 +26,7 @@ const validationMessages = (fieldName, min, max) => {
   return {
     required: `${fieldName} is required`,
     min: `${fieldName} must be at least ${min} characters`,
-    max: `${fieldName} must be at most 4{max} characters`,
+    max: `${fieldName} must be at most ${max} characters`,
     email: `${fieldName} is not valid`,
   }
 }
@@ -68,7 +68,7 @@ const yupSchema = yup.object().shape({
   confirmPassword: yup
     .string()
     .oneOf([yup.ref('password'), null], 'Passwords must match')
-    .required('Confirm password ir required'),
+    .required('Confirm password is required'),
 })
 
 const renderFormFields = (fields, values, handleChange, errors) => {
@@ -81,7 +81,7 @@ const renderFormFields = (fields, values, handleChange, errors) => {
               <TextField
                 className='form-inputs'
                 label={label}
-                variant='standard'
+                type={name === 'password' || name === 'confirmPassword' ? 'password' : 'text'}
                 {...field}
                 onChange={field.onChange}
                 error={!!(meta.touched && meta.error)}
