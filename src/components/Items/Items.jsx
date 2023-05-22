@@ -1,8 +1,15 @@
+/* eslint-disable react/prop-types */
 // Router Dom
 import { useNavigate } from 'react-router'
 
 // Material Ui
-import { Card, CardContent, CardMedia, Typography, CardActionArea } from '@mui/material'
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  CardActionArea,
+} from '@mui/material'
 import Grid from '@mui/material/Unstable_Grid2'
 
 /* Imports */
@@ -21,12 +28,17 @@ const Item = ({ product }) => {
           </CardContent>
 
           <CardContent className='card-img-container'>
-            <CardMedia component='img' image={image} alt={title} className='card-img' />
+            <CardMedia
+              component='img'
+              image={image}
+              alt={title}
+              className='card-img'
+            />
           </CardContent>
 
           <CardContent>
             <Typography component='h6' fontSize={'2em'}>
-              {price + ' $'}
+              {Math.ceil(price) + ' $'}
             </Typography>
           </CardContent>
         </Card>

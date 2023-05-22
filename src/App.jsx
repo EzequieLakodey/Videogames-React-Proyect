@@ -16,8 +16,7 @@ import ItemsCateogries from './pages/Categories/ItemsCateogries'
 import ItemDetail from './pages/ItemDetail/ItemDetail'
 import Cart from './pages/Cart/Cart'
 import OrderForm from './pages/OrderForm/OrderForm'
-import Register from './pages/Register/Register'
-import LoginPage from './pages/User/Login'
+import UserData from './pages/User/UserData'
 
 // TanStack
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
@@ -34,7 +33,10 @@ function App() {
             <Routes>
               <Route path='/' element={<Home />} />
 
-              <Route path='/category/:categoryId' element={<ItemsCateogries />} />
+              <Route
+                path='/category/:categoryId'
+                element={<ItemsCateogries />}
+              />
 
               <Route path='/item/:id' element={<ItemDetail />} />
 
@@ -44,9 +46,7 @@ function App() {
 
               <Route path='/order' element={<OrderForm />} />
 
-              <Route path='login' element={<LoginPage />} />
-
-              <Route path='register' element={<Register />}></Route>
+              <Route path='/user' element={<UserData />}></Route>
             </Routes>
           </QueryClientProvider>
         </CartProvider>

@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 // React
 import { useContext } from 'react'
 
@@ -35,7 +36,12 @@ const Cart = () => {
             <Card>
               <CardActionArea>
                 <CardContent className='cart-cards'>
-                  <CardMedia component='img' image={i.image} alt={i.title} className='cart-img' />
+                  <CardMedia
+                    component='img'
+                    image={i.image}
+                    alt={i.title}
+                    className='cart-img'
+                  />
 
                   <Container className='cart-typography-container'>
                     <Typography variant='inherit' component='p'>
@@ -43,11 +49,11 @@ const Cart = () => {
                     </Typography>
 
                     <Typography variant='inherit' component='p'>
-                      Qty {i.count} ({i.price}$)
+                      Qty {i.count} ({Math.ceil(i.price)}$)
                     </Typography>
 
                     <Typography variant='inherit' component='p'>
-                      Total {i.price * i.count + ' $'}
+                      Total {Math.ceil(i.price) * i.count + ' $'}
                     </Typography>
                   </Container>
 

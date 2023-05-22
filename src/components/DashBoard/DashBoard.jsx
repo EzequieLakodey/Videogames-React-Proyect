@@ -1,8 +1,15 @@
 // React
-import React, { useState } from 'react'
-
+import { useState } from 'react'
 // Material Ui
-import { Box, IconButton, Typography, Menu, Avatar, Tooltip, MenuItem } from '@mui/material'
+import {
+  Box,
+  IconButton,
+  Typography,
+  Menu,
+  Avatar,
+  Tooltip,
+  MenuItem,
+} from '@mui/material'
 
 // React Router Dom
 import { Link } from 'react-router-dom'
@@ -15,14 +22,11 @@ import { useAuth0 } from '@auth0/auth0-react'
 const settings = ['Sign in', 'Account', 'Help', 'Settings']
 
 const DashBoard = () => {
-  const { loginWithRedirect } = useAuth0()
-
+  const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0()
   const [anchorElUser, setAnchorElUser] = useState(null)
-
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget)
   }
-
   const handleCloseUserMenu = () => {
     setAnchorElUser(null)
   }
@@ -32,11 +36,10 @@ const DashBoard = () => {
       <Box>
         <Tooltip title='Open settings'>
           <IconButton className='settings-btn' onClick={handleOpenUserMenu}>
-            <Avatar alt='User profile image' />
+            <Avatar src={user?.picture} alt='User profile image' />
           </IconButton>
         </Tooltip>
       </Box>
-
       <Box>
         <Menu
           id='menu-appbar'
@@ -52,7 +55,13 @@ const DashBoard = () => {
           {settings.map((setting, index) => (
             <MenuItem key={index} onClick={handleCloseUserMenu}>
               {index === 0 ? (
-                <Link onClick={() => loginWithRedirect()}>Sign in</Link>
+                isAuthenticated ? (
+                  <Link onClick={() => logout()}>Log out</Link>
+                ) : (
+                  <Link onClick={() => loginWithRedirect()}>Sign in</Link>
+                )
+              ) : index === 1 && isAuthenticated ? (
+                <Link to={'/user'}>Account</Link>
               ) : (
                 <Typography textAlign='center'>{setting}</Typography>
               )}

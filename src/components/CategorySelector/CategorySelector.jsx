@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 // React
 import { useEffect, useState } from 'react'
 
@@ -32,24 +33,24 @@ const CategorySelector = () => {
     <div>
       <FormControl
         sx={{
-          width: '11rem',
+          width: '11rem'
         }}>
         <InputLabel>Category</InputLabel>
 
         <Select label='Category' value={selectedCategory} onChange={refreshCategoryId}>
           <MenuItem
             value={'All'}
-            key={`menu-item-all`}
+            key={'menu-item-all'}
             sx={{
               display: 'flex',
               flex: '1',
               justifyContent: 'space-around',
               margin: 0,
               padding: 0,
-              height: '2.5rem',
+              height: '2.5rem'
             }}>
             <Link
-              to={`/`}
+              to={'/'}
               style={{
                 display: 'flex',
                 flex: '1',
@@ -57,7 +58,7 @@ const CategorySelector = () => {
                 justifyContent: 'space-around',
                 textAlign: 'center',
                 margin: 0,
-                padding: 0,
+                padding: 0
               }}>
               All
             </Link>
@@ -73,7 +74,7 @@ const CategorySelector = () => {
                 justifyContent: 'space-around',
                 margin: 0,
                 padding: 0,
-                height: '2.5rem',
+                height: '2.5rem'
               }}>
               <Link
                 to={`/category/${category}`}
@@ -84,7 +85,7 @@ const CategorySelector = () => {
                   justifyContent: 'space-around',
                   textAlign: 'center',
                   margin: 0,
-                  padding: 0,
+                  padding: 0
                 }}>
                 {category.charAt(0).toUpperCase() + category.slice(1)}
               </Link>
