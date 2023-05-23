@@ -110,7 +110,10 @@ const Order = () => {
   }
 
   return (
-    <Formik initialValues={initialState} onSubmit={handleSubmit} validationSchema={yupSchema}>
+    <Formik
+      initialValues={initialState}
+      onSubmit={handleSubmit}
+      validationSchema={yupSchema}>
       {({ values, errors, handleChange, handleSubmit, isValid, dirty }) => (
         <section>
           <Container className='form-title-container'>

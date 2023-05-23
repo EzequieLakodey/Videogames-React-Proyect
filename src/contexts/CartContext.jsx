@@ -14,14 +14,28 @@ export const CartContext = createContext()
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([])
-  const Redirect = useNavigate()
+  const navigateToPage = useNavigate()
+  const CartItemCount = () => {
+    let total = 0
+    cart.forEach((item) => {
+      total += item.count
+    })
 
+    return (
+      <Badge badgeContent={total} color='info'>
+        <ShoppingCartIcon
+          fontSize='large'
+          onClick={() => navigateToPage('/cart')}
+        />
+      </Badge>
+    )
+  }
   const AddItemsToCart = (data, count) => {
-    const existingItem = cart.find(item => item.id === data.id)
+    const existingItem = cart.find((item) => item.id === data.id)
 
     if (existingItem) {
-      setCart(prevCart =>
-        prevCart.map(item => {
+      setCart((prevCart) =>
+        prevCart.map((item) => {
           if (item.id === data.id) {
             return { ...item, count: item.count + count }
           } else {
@@ -30,19 +44,19 @@ export const CartProvider = ({ children }) => {
         })
       )
     } else {
-      setCart(prevCart => [...prevCart, { ...data, count }])
+      setCart((prevCart) => [...prevCart, { ...data, count }])
     }
   }
 
-  const removeItems = data => {
-    const refreshCart = cart.filter(i => i.id !== data.id)
+  const removeItemFromCart = (data) => {
+    const refreshCart = cart.filter((i) => i.id !== data.id)
     setCart(refreshCart)
     localStorage.removeItem('cart')
   }
 
-  const emptyCart = () => {
+  const clearCart = () => {
     setCart([])
-    Redirect('/')
+    navigateToPage('/')
   }
 
   useEffect(() => {
@@ -56,28 +70,15 @@ export const CartProvider = ({ children }) => {
     localStorage.setItem('cart', JSON.stringify(cart))
   }, [cart])
 
-  function GetItemsCount() {
-    let total = 0
-    cart.forEach(item => {
-      total += item.count
-    })
-
-    return (
-      <Badge badgeContent={total} color='info'>
-        <ShoppingCartIcon fontSize='large' onClick={() => Redirect('/cart')} />
-      </Badge>
-    )
-  }
-
   return (
     <CartContext.Provider
       value={{
         cart,
         setCart,
         AddItemsToCart,
-        GetItemsCount,
-        removeItems,
-        emptyCart,
+        CartItemCount,
+        removeItemFromCart,
+        clearCart,
       }}>
       {children}
     </CartContext.Provider>

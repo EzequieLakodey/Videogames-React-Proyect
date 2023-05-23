@@ -24,49 +24,47 @@ import { CartContext } from '../../contexts/CartContext'
 /* Imports */
 
 const Cart = () => {
-  const { cart, removeItems, emptyCart } = useContext(CartContext)
-  const Redirect = useNavigate()
+  const { cart, removeItemFromCart, emptyCart } = useContext(CartContext)
+  const navigateToPage = useNavigate()
   const hasItems = cart.length > 0
 
   return (
     <article className='cart-container'>
       <Grid mt={'5rem'} maxWidth={1}>
         {cart.map((i, index) => (
-          <Container key={`container-${i.id}-${index}`}>
-            <Card>
-              <CardActionArea>
-                <CardContent className='cart-cards'>
-                  <CardMedia
-                    component='img'
-                    image={i.image}
-                    alt={i.title}
-                    className='cart-img'
-                  />
+          <Card>
+            <CardActionArea>
+              <CardContent className='cart-cards'>
+                <CardMedia
+                  component='img'
+                  image={i.image}
+                  alt={i.title}
+                  className='cart-img'
+                />
 
-                  <Container className='cart-typography-container'>
-                    <Typography variant='inherit' component='p'>
-                      {i.title}
-                    </Typography>
+                <Container className='cart-typography-container'>
+                  <Typography variant='inherit' component='p'>
+                    {i.title}
+                  </Typography>
 
-                    <Typography variant='inherit' component='p'>
-                      Qty {i.count} ({Math.ceil(i.price)}$)
-                    </Typography>
+                  <Typography variant='inherit' component='p'>
+                    Qty {i.count} ({Math.ceil(i.price)}$)
+                  </Typography>
 
-                    <Typography variant='inherit' component='p'>
-                      Total {Math.ceil(i.price) * i.count + ' $'}
-                    </Typography>
-                  </Container>
+                  <Typography variant='inherit' component='p'>
+                    Total {Math.ceil(i.price) * i.count + ' $'}
+                  </Typography>
+                </Container>
 
-                  <RemoveIcon
-                    fontSize='large'
-                    onClick={() => {
-                      removeItems(i)
-                    }}
-                  />
-                </CardContent>
-              </CardActionArea>
-            </Card>
-          </Container>
+                <RemoveIcon
+                  fontSize='large'
+                  onClick={() => {
+                    removeItemFromCart(i)
+                  }}
+                />
+              </CardContent>
+            </CardActionArea>
+          </Card>
         ))}
 
         <Container className='cart-btns-container'>
@@ -75,15 +73,18 @@ const Cart = () => {
               className='cart-proceed-btn'
               variant='outlined'
               onClick={() => {
-                Redirect('/order')
+                navigateToPage('/order')
               }}>
               Proceed
             </Button>
           )}
 
           {hasItems && (
-            <Button variant='outlined' onClick={emptyCart}>
-              Empty Cart
+            <Button
+              variant='outlined'
+              onClick={emptyCart}
+              className='cart-clear-btn'>
+              Clear cart
             </Button>
           )}
         </Container>

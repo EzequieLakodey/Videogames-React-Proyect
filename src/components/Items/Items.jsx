@@ -15,14 +15,16 @@ import Grid from '@mui/material/Unstable_Grid2'
 /* Imports */
 
 const Item = ({ product }) => {
-  const Redirect = useNavigate()
+  const navigateToPage = useNavigate()
 
   const { id, title, price, image } = product
 
   return (
     <Grid xs={12} sm={6} xl={4}>
       <CardActionArea className='card-btn-item'>
-        <Card onClick={() => Redirect(`/item/${id}`)} className='card-item'>
+        <Card
+          onClick={() => navigateToPage(`/item/${id}`)}
+          className='card-item'>
           <CardContent>
             <Typography component='h5'>{title}</Typography>
           </CardContent>

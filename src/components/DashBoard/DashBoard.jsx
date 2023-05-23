@@ -12,7 +12,7 @@ import {
 } from '@mui/material'
 
 // React Router Dom
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 // Auth0
 import { useAuth0 } from '@auth0/auth0-react'
@@ -56,12 +56,12 @@ const DashBoard = () => {
             <MenuItem key={index} onClick={handleCloseUserMenu}>
               {index === 0 ? (
                 isAuthenticated ? (
-                  <Link onClick={() => logout()}>Log out</Link>
+                  <NavLink onClick={() => logout()}>Log out</NavLink>
                 ) : (
-                  <Link onClick={() => loginWithRedirect()}>Sign in</Link>
+                  <NavLink onClick={() => loginWithRedirect()}>Sign in</NavLink>
                 )
               ) : index === 1 && isAuthenticated ? (
-                <Link to={'/user'}>Account</Link>
+                <NavLink to={'/user'}>Account</NavLink>
               ) : (
                 <Typography textAlign='center'>{setting}</Typography>
               )}

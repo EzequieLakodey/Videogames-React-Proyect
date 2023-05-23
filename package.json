@@ -10,6 +10,8 @@
     "start": "vite"
   },
   "devDependencies": {
+    "eslint": "^8.41.0",
+    "eslint-plugin-react": "^7.32.2",
     "vite": "^4.3.2"
   },
   "dependencies": {
@@ -21,6 +23,7 @@
     "@tanstack/react-query": "^4.29.7",
     "@vitejs/plugin-react": "4.0.0",
     "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "firebase": "^9.22.0",
     "formik": "^2.2.9",
     "react": "18.2.0",

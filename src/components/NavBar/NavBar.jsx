@@ -10,7 +10,7 @@ import CategorySelector from '../CategorySelector/CategorySelector'
 import DashBoard from '../DashBoard/DashBoard'
 
 // Router Dom
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 // Material Ui
 import {
@@ -27,18 +27,18 @@ import {
 /* Imports */
 
 function NavBar() {
-  const { GetItemsCount } = useContext(CartContext)
+  const { CartItemCount } = useContext(CartContext)
 
   return (
     <header>
       <AppBar position='relative' color='inherit'>
         <Toolbar className='navbar-toolbar' disableGutters>
           <Container className='navbar-container' maxWidth='1'>
-            <Link to={'/'}>
+            <NavLink to={'/'}>
               <Typography className='nav-title' variant='h1' element='h1'>
                 BoombleGoom
               </Typography>
-            </Link>
+            </NavLink>
 
             <Box
               sx={{
@@ -62,7 +62,7 @@ function NavBar() {
                 }}>
                 <MenuItem>
                   <Tooltip title='View cart'>
-                    <IconButton>{GetItemsCount()}</IconButton>
+                    <IconButton>{CartItemCount()}</IconButton>
                   </Tooltip>
                 </MenuItem>
               </Box>

@@ -9,7 +9,13 @@ import ItemsCounter from '../ItemsCounter/ItemsCounter'
 import { useNavigate } from 'react-router'
 
 // Material Ui
-import { Card, CardContent, CardMedia, Typography, Container } from '@mui/material'
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  Container,
+} from '@mui/material'
 import Grid from '@mui/material/Unstable_Grid2'
 
 // Data Hook
@@ -22,12 +28,12 @@ const ItemsDetails = () => {
 
   const { data: productsData } = useGetProductDetails()
 
-  const Redirect = useNavigate()
+  const navigateToPage = useNavigate()
 
-  const OnAdd = count => {
+  const OnAdd = (count) => {
     AddItemsToCart(productsData, count)
 
-    Redirect('/')
+    navigateToPage('/')
   }
 
   return (
@@ -35,11 +41,19 @@ const ItemsDetails = () => {
       <Card className='card-details'>
         <CardContent>
           <Container>
-            <Typography gutterBottom variant='overline' component='h6' fontSize={'100%'}>
+            <Typography
+              gutterBottom
+              variant='overline'
+              component='h6'
+              fontSize={'100%'}>
               {productsData?.title}
             </Typography>
 
-            <Typography gutterBottom variant='overline' component='h5' fontSize={'100%'}>
+            <Typography
+              gutterBottom
+              variant='overline'
+              component='h5'
+              fontSize={'100%'}>
               {productsData?.category}
             </Typography>
           </Container>

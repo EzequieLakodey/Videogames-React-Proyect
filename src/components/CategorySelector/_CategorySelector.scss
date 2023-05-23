@@ -1,0 +1,16 @@
+.category-selector-container {
+  width: 12rem;
+}
+.categories-options-container {
+  display: flex;
+  flex: 1;
+  justify-content: space-around;
+  height: 3rem;
+}
+.categories-menu-links {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex: 1;
+  font-size: 1rem;
+}

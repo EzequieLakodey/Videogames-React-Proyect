@@ -14,13 +14,13 @@ import Cart from '../../components/Cart/Cart'
 
 function CartPage() {
   const { cart } = useContext(CartContext)
-  const Redirect = useNavigate()
+  const navigateToPage = useNavigate()
 
   useEffect(() => {
     if (cart.length === 0) {
-      Redirect('/')
+      navigateToPage('/')
     }
-  }, [cart, Redirect])
+  }, [cart, navigateToPage])
 
   if (cart === 0) {
     return null

@@ -81,7 +81,11 @@ const renderFormFields = (fields, values, handleChange, errors) => {
               <TextField
                 className='form-inputs'
                 label={label}
-                type={name === 'password' || name === 'confirmPassword' ? 'password' : 'text'}
+                type={
+                  name === 'password' || name === 'confirmPassword'
+                    ? 'password'
+                    : 'text'
+                }
                 {...field}
                 onChange={field.onChange}
                 error={!!(meta.touched && meta.error)}
@@ -123,7 +127,10 @@ const RegisterForm = () => {
   }
 
   return (
-    <Formik initialValues={initialState} onSubmit={handleSubmit} validationSchema={yupSchema}>
+    <Formik
+      initialValues={initialState}
+      onSubmit={handleSubmit}
+      validationSchema={yupSchema}>
       {({ values, errors, handleChange, handleSubmit, isValid, dirty }) => (
         <section>
           <Container>
