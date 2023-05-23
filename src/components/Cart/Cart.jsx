@@ -14,6 +14,8 @@ import {
   CardActionArea,
   Container,
   Button,
+  IconButton,
+  Box,
 } from '@mui/material'
 import Grid from '@mui/material/Unstable_Grid2'
 import RemoveIcon from '@mui/icons-material/Remove'
@@ -29,12 +31,12 @@ const Cart = () => {
   const hasItems = cart.length > 0
 
   return (
-    <article className='cart-container'>
-      <Grid mt={'5rem'} maxWidth={1}>
-        {cart.map((i, index) => (
-          <Card>
-            <CardActionArea>
-              <CardContent className='cart-cards'>
+    <article>
+      <Grid mt={'5rem'} maxWidth={'xl'}>
+        <Box maxWidth={1} className='card-box-container'>
+          {cart.map((i, index) => (
+            <Card className='card-container' key={index}>
+              <CardContent className='cart-cards-content'>
                 <CardMedia
                   component='img'
                   image={i.image}
@@ -56,38 +58,38 @@ const Cart = () => {
                   </Typography>
                 </Container>
 
-                <RemoveIcon
-                  fontSize='large'
+                <IconButton
                   onClick={() => {
                     removeItemFromCart(i)
-                  }}
-                />
+                  }}>
+                  <RemoveIcon fontSize='large' />
+                </IconButton>
               </CardContent>
-            </CardActionArea>
-          </Card>
-        ))}
+            </Card>
+          ))}
 
-        <Container className='cart-btns-container'>
-          {hasItems && (
-            <Button
-              className='cart-proceed-btn'
-              variant='outlined'
-              onClick={() => {
-                navigateToPage('/order')
-              }}>
-              Proceed
-            </Button>
-          )}
+          <Container className='cart-btns-container'>
+            {hasItems && (
+              <Button
+                className='cart-proceed-btn'
+                variant='outlined'
+                onClick={() => {
+                  navigateToPage('/order')
+                }}>
+                Proceed
+              </Button>
+            )}
 
-          {hasItems && (
-            <Button
-              variant='outlined'
-              onClick={emptyCart}
-              className='cart-clear-btn'>
-              Clear cart
-            </Button>
-          )}
-        </Container>
+            {hasItems && (
+              <Button
+                variant='outlined'
+                onClick={emptyCart}
+                className='cart-clear-btn'>
+                Clear cart
+              </Button>
+            )}
+          </Container>
+        </Box>
       </Grid>
     </article>
   )
