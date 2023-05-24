@@ -24,6 +24,10 @@ const DashBoard = () => {
     ? ['Log out', 'Account', 'Settings', 'Help']
     : ['Sign in', 'Markers', 'History', 'Settings', 'Help']
 
+  const settingsFunctions = isAuthenticated
+    ? [logout, null, null, null]
+    : [loginWithRedirect, null, null, null]
+
   return (
     <div className='dashboard-container'>
       <Box>
@@ -47,15 +51,11 @@ const DashBoard = () => {
           onClose={handleCloseUserMenu}>
           {settings.map((setting, index) => (
             <MenuItem key={index} onClick={handleCloseUserMenu}>
-              {index === 0 ? (
-                isAuthenticated ? (
-                  <NavLink onClick={() => logout()}>Log out</NavLink>
-                ) : (
-                  <NavLink onClick={() => loginWithRedirect()}>Sign in</NavLink>
-                )
-              ) : index === 1 && isAuthenticated ? (
-                <NavLink to={'/user'}>Account</NavLink>
-              ) : null}
+              {settingsFunctions[index] ? (
+                <NavLink onClick={settingsFunctions[index]}>{setting}</NavLink>
+              ) : (
+                <NavLink> {setting} </NavLink>
+              )}
             </MenuItem>
           ))}
         </Menu>
