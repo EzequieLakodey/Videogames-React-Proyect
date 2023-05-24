@@ -7,19 +7,22 @@ article {
   .card-box-container {
     flex-direction: column;
     display: flex;
-    justify-content: center;
-    align-self: center;
-    align-items: center;
+    justify-content: space-around;
+    align-content: center;
 
     .card-container {
+      width: auto;
+      max-height: 20rem;
+      margin-top: 1rem;
+
       .cart-cards-content {
         display: flex;
         align-items: center;
         justify-content: space-around;
-        flex-direction: row;
 
-        .cart-img {
+        .cart-img-container {
           max-width: 10rem;
+          aspect-ratio: 16/9;
         }
 
         .cart-typography-container {
@@ -31,7 +34,7 @@ article {
   }
 
   .cart-btns-container {
-    margin-top: 2em;
+    margin-top: 1rem;
 
     .cart-proceed-btn {
       margin-right: 1rem;

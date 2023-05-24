@@ -11,7 +11,6 @@ import {
   CardContent,
   CardMedia,
   Typography,
-  CardActionArea,
   Container,
   Button,
   IconButton,
@@ -32,17 +31,14 @@ const Cart = () => {
 
   return (
     <article>
-      <Grid mt={'5rem'} maxWidth={'xl'}>
+      <Grid mt={'1rem'} maxWidth={'xl'}>
         <Box maxWidth={1} className='card-box-container'>
           {cart.map((i, index) => (
             <Card className='card-container' key={index}>
               <CardContent className='cart-cards-content'>
-                <CardMedia
-                  component='img'
-                  image={i.image}
-                  alt={i.title}
-                  className='cart-img'
-                />
+                <Container className='cart-img-container'>
+                  <CardMedia component='img' image={i.image} alt={i.title} />
+                </Container>
 
                 <Container className='cart-typography-container'>
                   <Typography variant='inherit' component='p'>

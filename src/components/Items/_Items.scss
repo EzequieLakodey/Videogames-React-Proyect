@@ -1,6 +1,7 @@
 .card-btn-item {
   width: 1;
   height: 50rem;
+
   .card-item {
     width: 1;
     height: 100%;
@@ -8,12 +9,13 @@
     flex-direction: column;
     justify-content: space-between;
     align-content: center;
-    .card-img-container {
+
+    .item-img-card-content {
       display: flex;
-      flex-direction: row;
       justify-content: center;
-      align-content: center;
-      .card-img {
+      align-content: flex-end;
+
+      img {
         width: 20rem;
       }
     }

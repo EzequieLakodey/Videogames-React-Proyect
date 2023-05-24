@@ -16,7 +16,6 @@ import Grid from '@mui/material/Unstable_Grid2'
 
 const Item = ({ product }) => {
   const navigateToPage = useNavigate()
-
   const { id, title, price, image } = product
 
   return (
@@ -27,21 +26,14 @@ const Item = ({ product }) => {
           className='card-item'>
           <CardContent>
             <Typography component='h5'>{title}</Typography>
-          </CardContent>
 
-          <CardContent className='card-img-container'>
-            <CardMedia
-              component='img'
-              image={image}
-              alt={title}
-              className='card-img'
-            />
-          </CardContent>
-
-          <CardContent>
             <Typography component='h6' fontSize={'2em'}>
               {Math.ceil(price) + ' $'}
             </Typography>
+          </CardContent>
+
+          <CardContent className='item-img-card-content'>
+            <CardMedia component='img' image={image} alt={title} />
           </CardContent>
         </Card>
       </CardActionArea>

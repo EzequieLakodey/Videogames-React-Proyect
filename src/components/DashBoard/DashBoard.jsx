@@ -1,15 +1,7 @@
 // React
 import { useState } from 'react'
 // Material Ui
-import {
-  Box,
-  IconButton,
-  Typography,
-  Menu,
-  Avatar,
-  Tooltip,
-  MenuItem,
-} from '@mui/material'
+import { Box, IconButton, Menu, Avatar, Tooltip, MenuItem } from '@mui/material'
 
 // React Router Dom
 import { NavLink } from 'react-router-dom'
@@ -18,8 +10,6 @@ import { NavLink } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
 
 /* Imports */
-
-const settings = ['Sign in', 'Account', 'Help', 'Settings']
 
 const DashBoard = () => {
   const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0()
@@ -30,6 +20,9 @@ const DashBoard = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null)
   }
+  const settings = isAuthenticated
+    ? ['Log out', 'Account', 'Settings', 'Help']
+    : ['Sign in', 'Markers', 'History', 'Settings', 'Help']
 
   return (
     <div className='dashboard-container'>
@@ -40,7 +33,7 @@ const DashBoard = () => {
           </IconButton>
         </Tooltip>
       </Box>
-      <Box>
+      <Box className='user-settings-container'>
         <Menu
           id='menu-appbar'
           anchorEl={anchorElUser}
@@ -62,9 +55,7 @@ const DashBoard = () => {
                 )
               ) : index === 1 && isAuthenticated ? (
                 <NavLink to={'/user'}>Account</NavLink>
-              ) : (
-                <Typography textAlign='center'>{setting}</Typography>
-              )}
+              ) : null}
             </MenuItem>
           ))}
         </Menu>

@@ -1,7 +1,8 @@
 .card-details {
   width: 1;
-  margin-top: 5rem;
+  margin-top: 1rem;
   .card-detail-img {
-    width: 30rem;
+    max-width: 15rem;
+    aspect-ratio: 16/9;
   }
 }
