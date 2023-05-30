@@ -1,6 +1,6 @@
 .card-btn-item {
   width: 1;
-  height: 50rem;
+  height: 30rem;
 
   .card-item {
     width: 1;
@@ -10,13 +10,24 @@
     justify-content: space-between;
     align-content: center;
 
-    .item-img-card-content {
+    .items-img-container {
       display: flex;
       justify-content: center;
-      align-content: flex-end;
+      align-items: center;
 
-      img {
-        width: 20rem;
+      .item-img-card-content {
+        margin-top: 1rem;
+        width: 15rem;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        > img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
       }
     }
   }

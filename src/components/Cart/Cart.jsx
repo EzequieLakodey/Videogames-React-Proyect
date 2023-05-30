@@ -25,7 +25,7 @@ import { CartContext } from '../../contexts/CartContext'
 /* Imports */
 
 const Cart = () => {
-  const { cart, removeItemFromCart, emptyCart } = useContext(CartContext)
+  const { cart, removeItemFromCart, clearCart } = useContext(CartContext)
   const navigateToPage = useNavigate()
   const hasItems = cart.length > 0
 
@@ -79,7 +79,7 @@ const Cart = () => {
             {hasItems && (
               <Button
                 variant='outlined'
-                onClick={emptyCart}
+                onClick={clearCart}
                 className='cart-clear-btn'>
                 Clear cart
               </Button>
