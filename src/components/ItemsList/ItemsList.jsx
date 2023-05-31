@@ -14,7 +14,7 @@ const ItemsList = () => {
 
   return (
     <article>
-      <Grid container spacing={5} sx={{ marginTop: 5 }}>
+      <Grid container spacing={2} sx={{ mt: 2, mb: 2 }} maxWidth={'xl'}>
         {productsData?.map((i, index) => (
           <Items key={`item-${i.id}-${index}`} product={i} />
         ))}

@@ -45,7 +45,6 @@ const Item = ({ product }) => {
                 component='img'
                 image={image}
                 alt={title}
-                objectFit='contain'
               />
             </CardContent>
           </Container>

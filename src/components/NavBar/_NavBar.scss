@@ -1,9 +1,11 @@
 header {
   padding: 0;
   margin: 0;
+
   .navbar-toolbar {
     padding: 0;
     margin: 0;
+
     .navbar-container {
       display: flex;
       justify-content: space-around;
@@ -12,15 +14,16 @@ header {
       margin-top: 0;
       padding: 0;
       flex-direction: row;
+
       .nav-title {
         font-size: 2rem;
-        display: flex;
         font-family: monospace;
         font-weight: bold;
         letter-spacing: normal;
-        color: black;
+        color: rgb(255, 0, 0);
         text-align: center;
       }
+
       .settings-btn {
         padding: 0;
         margin: 0;
@@ -29,6 +32,8 @@ header {
   }
 }
 
-#menu-appbar {
-  margin-top: 3rem;
+.home-link-container {
+  margin: 0 0 0 2rem;
+  display: flex;
+  align-items: center;
 }

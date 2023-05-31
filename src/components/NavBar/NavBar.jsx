@@ -34,8 +34,8 @@ function NavBar() {
       <AppBar position='relative' color='inherit'>
         <Toolbar className='navbar-toolbar' disableGutters>
           <Container className='navbar-container' maxWidth='1'>
-            <NavLink to={'/'}>
-              <Typography className='nav-title' variant='h1' element='h1'>
+            <NavLink to={'/'} className={'home-link-container'}>
+              <Typography element='h1' className='nav-title'>
                 BoombleGoom
               </Typography>
             </NavLink>

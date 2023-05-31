@@ -20,13 +20,37 @@ const DashBoard = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null)
   }
-  const settings = isAuthenticated
-    ? ['Log out', 'Account', 'Settings', 'Help']
-    : ['Sign in', 'Markers', 'History', 'Settings', 'Help']
 
-  const settingsFunctions = isAuthenticated
-    ? [logout, null, null, null]
-    : [loginWithRedirect, null, null, null]
+  const settings = isAuthenticated
+    ? [
+        {
+          label: 'Log out',
+          path: null,
+        },
+        {
+          label: 'Account',
+          path: `${user?.nickname}/account`,
+        },
+        { label: 'Markers', path: `${user?.nickname}/markers` },
+        { label: 'History', path: `${user?.nickname}/history` },
+        { label: 'Settings', path: `${user?.nickname}/settings` },
+        { label: 'Help', path: `${user?.nickname}/help` },
+      ]
+    : [
+        { label: 'Sign in', path: `${user?.nickname}/login` },
+        { label: 'Settings', path: `${user?.nickname}/settings` },
+        { label: 'Help', path: `${user?.nickname}/help` },
+      ]
+
+  const handleMenuItemClick = (index) => {
+    if (isAuthenticated && settings[index].label === 'Log out') {
+      logout()
+    } else if (!isAuthenticated && settings[index].label === 'Sign in') {
+      loginWithRedirect()
+    } else {
+      handleCloseUserMenu()
+    }
+  }
 
   return (
     <div className='dashboard-container'>
@@ -49,13 +73,13 @@ const DashBoard = () => {
           transformOrigin={{ vertical: 'top', horizontal: 'right' }}
           open={Boolean(anchorElUser)}
           onClose={handleCloseUserMenu}>
-          {settings.map((setting, index) => (
-            <MenuItem key={index} onClick={handleCloseUserMenu}>
-              {settingsFunctions[index] ? (
-                <NavLink onClick={settingsFunctions[index]}>{setting}</NavLink>
-              ) : (
-                <NavLink> {setting} </NavLink>
-              )}
+          {settings.map((link, index) => (
+            <MenuItem
+              key={index}
+              onClick={() => handleMenuItemClick(index)}
+              component={NavLink}
+              to={link.path}>
+              {link.label}
             </MenuItem>
           ))}
         </Menu>
