@@ -22,9 +22,13 @@ import RemoveIcon from '@mui/icons-material/Remove'
 // Context
 import { CartContext } from '../../contexts/CartContext'
 
+// Hooks
+import useResizeImage from '../../utils/hooks/useResizeImage'
+
 /* Imports */
 
 const Cart = () => {
+  const { width, height } = useResizeImage(5 * 16, 5 * 16)
   const { cart, removeItemFromCart, clearCart } = useContext(CartContext)
   const navigateToPage = useNavigate()
   const hasItems = cart.length > 0
@@ -36,30 +40,41 @@ const Cart = () => {
           {cart.map((i, index) => (
             <Card className='card-container' key={index}>
               <CardContent className='cart-cards-content'>
-                <Container className='cart-img-container'>
-                  <CardMedia component='img' image={i.image} alt={i.title} />
-                </Container>
+                <Grid container spacing={2} alignItems='center'>
+                  <Grid item xs={4}>
+                    <CardMedia
+                      style={{ width: width, height: height }}
+                      component='img'
+                      image={i.image}
+                      alt={i.title}
+                    />
+                  </Grid>
 
-                <Container className='cart-typography-container'>
-                  <Typography variant='inherit' component='p'>
-                    {i.title}
-                  </Typography>
+                  <Grid item xs={5}>
+                    <Container className='cart-typography-container'>
+                      <Typography variant='inherit' component='p'>
+                        {i.title}
+                      </Typography>
 
-                  <Typography variant='inherit' component='p'>
-                    Qty {i.count} ({Math.ceil(i.price)}$)
-                  </Typography>
+                      <Typography variant='inherit' component='p'>
+                        Qty {i.count} ({Math.ceil(i.price)}$)
+                      </Typography>
 
-                  <Typography variant='inherit' component='p'>
-                    Total {Math.ceil(i.price) * i.count + ' $'}
-                  </Typography>
-                </Container>
+                      <Typography variant='inherit' component='p'>
+                        Total {Math.ceil(i.price) * i.count + ' $'}
+                      </Typography>
+                    </Container>
+                  </Grid>
 
-                <IconButton
-                  onClick={() => {
-                    removeItemFromCart(i)
-                  }}>
-                  <RemoveIcon fontSize='large' />
-                </IconButton>
+                  <Grid item xs={3}>
+                    <IconButton
+                      onClick={() => {
+                        removeItemFromCart(i)
+                      }}>
+                      <RemoveIcon fontSize='large' />
+                    </IconButton>
+                  </Grid>
+                </Grid>
               </CardContent>
             </Card>
           ))}

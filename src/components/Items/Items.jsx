@@ -15,12 +15,11 @@ import Grid from '@mui/material/Unstable_Grid2'
 
 // Hooks
 import useResizeImage from '../../utils/hooks/useResizeImage'
-import { AspectRatio } from '@mui/icons-material'
 
 /* Imports */
 
 const Item = ({ product }) => {
-  const { width, height, aspectRatio } = useResizeImage(20 * 16, 20 * 16, 4 / 3)
+  const { width, height } = useResizeImage(15 * 16, 15 * 16)
   const navigateToPage = useNavigate()
   const { id, title, price, image } = product
 
@@ -41,7 +40,7 @@ const Item = ({ product }) => {
           <Container className='items-img-container'>
             <CardContent className='item-img-card-content'>
               <CardMedia
-                style={{ width, height, aspectRatio }}
+                style={{ width, height }}
                 component='img'
                 image={image}
                 alt={title}

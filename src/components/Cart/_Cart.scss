@@ -12,7 +12,6 @@ article {
 
     .card-container {
       width: auto;
-      max-height: 20rem;
       margin-top: 1rem;
 
       .cart-cards-content {
@@ -21,27 +20,31 @@ article {
         justify-content: space-around;
 
         .cart-img-container {
-          max-width: 10rem;
-          aspect-ratio: 16/9;
-        }
-
-        .cart-typography-container {
-          line-height: 2rem;
-          font-size: 1rem;
+          width: 100%;
+          object-fit: contain;
         }
       }
     }
   }
+}
 
-  .cart-btns-container {
-    margin-top: 1rem;
+.cart-typography-container {
+  line-height: 2rem;
+  font-size: 1rem;
+}
 
-    .cart-proceed-btn {
-      margin-right: 1rem;
-    }
+.cart-btns-container {
+  margin-top: 1rem;
 
-    .cart-clear-btn {
-      margin-left: 1rem;
-    }
+  .cart-proceed-btn {
+    margin-right: 1rem;
   }
+
+  .cart-clear-btn {
+    margin-left: 1rem;
+  }
+}
+
+.MuiCardMedia-root {
+  object-fit: contain;
 }

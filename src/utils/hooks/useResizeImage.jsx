@@ -20,7 +20,9 @@ const useResizeImage = (initialWidth, initialHeight, aspectRatio) => {
         newWidth = newHeight * aspectRatio
       }
 
-      setDimension({ width: newWidth, height: newHeight })
+      if (!isNaN(newWidth) && !isNaN(newHeight)) {
+        setDimension({ width: newWidth, height: newHeight })
+      }
     }
 
     window.addEventListener('resize', updateDimensions)
