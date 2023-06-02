@@ -9,6 +9,7 @@ import { CartProvider } from './contexts/CartContext'
 
 // Components
 import NavBar from './components/NavBar/NavBar'
+import Header from './components/Header/Header'
 
 // Pages
 import Home from './pages/Home/Home'
@@ -28,6 +29,8 @@ function App() {
       <Router>
         <CartProvider>
           <QueryClientProvider client={client}>
+            <Header />
+
             <NavBar />
 
             <Routes>

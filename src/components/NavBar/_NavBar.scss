@@ -15,21 +15,29 @@ header {
       padding: 0;
       flex-direction: row;
 
-      .nav-title {
-        font-size: 2rem;
-        font-family: monospace;
-        font-weight: bold;
-        letter-spacing: normal;
-        color: rgb(255, 0, 0);
-        text-align: center;
-      }
-
       .settings-btn {
         padding: 0;
         margin: 0;
       }
     }
   }
+}
+
+.nav-title {
+  font-size: 2rem;
+  font-family: monospace;
+  font-weight: bold;
+  letter-spacing: normal;
+  color: rgb(255, 0, 0);
+  text-align: center;
+}
+
+.category-selector-container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex: 1;
+  margin-top: 0.5rem;
 }
 
 .home-link-container {
