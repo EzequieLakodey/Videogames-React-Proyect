@@ -8,8 +8,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { CartProvider } from './contexts/CartContext'
 
 // Components
-import NavBar from './components/NavBar/NavBar'
-import Header from './components/Header/Header'
+import Navigator from './components/Navigator/Navigator'
 
 // Pages
 import Home from './pages/Home/Home'
@@ -29,9 +28,7 @@ function App() {
       <Router>
         <CartProvider>
           <QueryClientProvider client={client}>
-            <Header />
-
-            <NavBar />
+            <Navigator />
 
             <Routes>
               <Route path='/' element={<Home />} />

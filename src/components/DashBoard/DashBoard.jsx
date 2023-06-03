@@ -57,7 +57,11 @@ const DashBoard = () => {
       <Box>
         <Tooltip title='Open settings'>
           <IconButton className='settings-btn' onClick={handleOpenUserMenu}>
-            <Avatar src={user?.picture} alt='User profile image' />
+            <Avatar
+              src={user?.picture}
+              alt='User profile image'
+              className='dashboard-user-icon'
+            />
           </IconButton>
         </Tooltip>
       </Box>

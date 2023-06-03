@@ -40,41 +40,33 @@ const Cart = () => {
           {cart.map((i, index) => (
             <Card className='card-container' key={index}>
               <CardContent className='cart-cards-content'>
-                <Grid container spacing={2} alignItems='center'>
-                  <Grid item xs={4}>
-                    <CardMedia
-                      style={{ width: width, height: height }}
-                      component='img'
-                      image={i.image}
-                      alt={i.title}
-                    />
-                  </Grid>
+                <CardMedia
+                  style={{ width: width, height: height }}
+                  component='img'
+                  image={i.image}
+                  alt={i.title}
+                />
 
-                  <Grid item xs={5}>
-                    <Container className='cart-typography-container'>
-                      <Typography variant='inherit' component='p'>
-                        {i.title}
-                      </Typography>
+                <Container className='cart-typography-container'>
+                  <Typography variant='inherit' component='p'>
+                    {i.title}
+                  </Typography>
 
-                      <Typography variant='inherit' component='p'>
-                        Qty {i.count} ({Math.ceil(i.price)}$)
-                      </Typography>
+                  <Typography variant='inherit' component='p'>
+                    Qty {i.count} ({Math.ceil(i.price)}$)
+                  </Typography>
 
-                      <Typography variant='inherit' component='p'>
-                        Total {Math.ceil(i.price) * i.count + ' $'}
-                      </Typography>
-                    </Container>
-                  </Grid>
+                  <Typography variant='inherit' component='p'>
+                    Total {Math.ceil(i.price) * i.count + ' $'}
+                  </Typography>
+                </Container>
 
-                  <Grid item xs={3}>
-                    <IconButton
-                      onClick={() => {
-                        removeItemFromCart(i)
-                      }}>
-                      <RemoveIcon fontSize='large' />
-                    </IconButton>
-                  </Grid>
-                </Grid>
+                <IconButton
+                  onClick={() => {
+                    removeItemFromCart(i)
+                  }}>
+                  <RemoveIcon fontSize='large' />
+                </IconButton>
               </CardContent>
             </Card>
           ))}

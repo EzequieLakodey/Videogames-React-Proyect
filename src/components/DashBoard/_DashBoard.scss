@@ -1,15 +1,12 @@
 .dashboard-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  flex: 1;
-}
+  .settings-btn {
+    border-radius: 0;
+    height: 2.5rem;
+    display: flex;
 
-.user-settings-container {
-  margin-right: 2rem;
-}
-
-#menu-appbar {
-  margin-top: 3rem;
+    .dashboard-user-icon {
+      border-radius: 0;
+      height: 2.5rem;
+    }
+  }
 }

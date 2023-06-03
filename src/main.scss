@@ -8,11 +8,13 @@
 
 /******* Components *******/
 
-// Header
-@use './components/Header/Header';
+/* Navigator */
+@use './components/Navigator/Header/Header';
 
-// NavBar
-@use './components//NavBar/NavBar';
+@use './components/Navigator/NavBar/NavBar';
+
+@use './components/Navigator/Navigator.scss';
+/* Navigator */
 
 // Items
 @use './components/Items/Items';
@@ -34,3 +36,6 @@
 
 // CategorySelector
 @use './components/CategorySelector/CategorySelector';
+
+// Searcher
+@use './components/Searcher/Searcher';
