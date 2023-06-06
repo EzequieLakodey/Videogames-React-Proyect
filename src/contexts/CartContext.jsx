@@ -24,6 +24,7 @@ export const CartProvider = ({ children }) => {
     return (
       <Badge badgeContent={total} color='info'>
         <ShoppingCartIcon
+          className='cart-icon'
           fontSize='large'
           onClick={() => navigateToPage('/cart')}
         />

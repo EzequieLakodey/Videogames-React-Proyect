@@ -1,5 +1,5 @@
 // Material Ui
-import { InputBase, IconButton } from '@mui/material'
+import { InputBase } from '@mui/material'
 
 // Icons
 import SearchIcon from '@mui/icons-material/Search'

@@ -4,8 +4,8 @@ import { CartContext } from '../../../contexts/CartContext'
 
 // Components
 
-import DashBoard from '../../DashBoard/DashBoard'
-import Searcher from '../../Searcher/Searcher'
+import DashBoard from './DashBoard/DashBoard'
+import Searcher from './Searcher/Searcher'
 
 // Router Dom
 import { NavLink } from 'react-router-dom'
@@ -27,27 +27,29 @@ const Header = () => {
 
   return (
     <header>
-      <Container maxWidth={'xl'}>
-        <Grid columns={12} container className='header-grid-container'>
-          <Grid className='header-grid-items'>
-            <Toolbar className='header-toolbar'>
-              <MenuItem className='header-menu-items'>
-                <NavLink to={'/cart'}>
+      <Container maxWidth={'xl'} disableGutters>
+        <Grid container columns={12} className='header-grid-container'>
+          <Grid className='header-grid-items' xs={12} sm={6} xl={2}>
+            <Toolbar className='header-toolbar' disableGutters>
+              <NavLink to={'/cart'}>
+                <MenuItem className='header-menu-items' disableGutters>
                   <Tooltip title='Cart'>
-                    <IconButton>{CartItemCount()}</IconButton>
+                    <IconButton className='cart-btn'>
+                      {CartItemCount()}
+                    </IconButton>
                   </Tooltip>
-                </NavLink>
-              </MenuItem>
+                </MenuItem>
+              </NavLink>
 
-              <MenuItem className='header-menu-items'>
+              <MenuItem className='header-menu-items' disableGutters>
                 <DashBoard />
               </MenuItem>
             </Toolbar>
           </Grid>
 
-          <Grid className='header-grid-items'>
-            <Toolbar className='header-toolbar'>
-              <MenuItem className='header-menu-items'>
+          <Grid className='header-grid-items' xs={12} sm={6} xl={2}>
+            <Toolbar className='header-toolbar' disableGutters>
+              <MenuItem className='header-menu-items' disableGutters>
                 <Searcher />
               </MenuItem>
             </Toolbar>

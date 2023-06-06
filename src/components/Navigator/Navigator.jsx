@@ -1,6 +1,5 @@
 // Material Ui
-import { AppBar, Container } from '@mui/material'
-import Grid from '@mui/material/Unstable_Grid2'
+import { AppBar, Container, Grid, Box } from '@mui/material'
 
 // Icons
 
@@ -12,16 +11,16 @@ import NavBar from './NavBar/NavBar'
 const Navigator = () => {
   return (
     <Container maxWidth={'xl'}>
-      <Grid container>
-        <AppBar color='inherit'>
-          <Grid id='header'>
+      <Grid container direction={'column'}>
+        <Grid>
+          <AppBar id='header' color='inherit' position='fixed'>
             <Header />
-          </Grid>
+          </AppBar>
+        </Grid>
 
-          <Grid id='navbar' mt={'1rem'}>
-            <NavBar />
-          </Grid>
-        </AppBar>
+        <Grid mt={'5rem'}>
+          <NavBar />
+        </Grid>
       </Grid>
     </Container>
   )

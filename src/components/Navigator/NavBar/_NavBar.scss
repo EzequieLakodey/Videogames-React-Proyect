@@ -1,21 +1,37 @@
 .navbar-grid-container {
-  justify-content: space-around;
+  justify-content: center;
   align-content: center;
-  border: 1px solid black;
-}
 
-.navbar-grid-items {
-  display: flex;
-  border: 1px solid black;
-  justify-content: space-around;
-  align-items: center;
-}
+  @media (min-width: 600px) {
+    padding: 0;
+  }
 
-.nav-title {
-  font-size: 2rem;
-  font-family: monospace;
-  font-weight: bold;
-  letter-spacing: normal;
-  color: rgb(255, 0, 0);
-  text-align: center;
+  .navbar-grid-items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media (min-width: 600px) {
+      justify-content: center;
+    }
+
+    .navbar-menu-items {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: auto;
+      min-width: auto;
+      padding: 0;
+    }
+
+    .nav-title {
+      font-size: 4rem;
+      font-family: 'Nabla', cursive;
+      text-align: center;
+
+      @media (max-width: 720px) {
+        font-size: 3rem;
+      }
+    }
+  }
 }

@@ -1,7 +1,3 @@
-// Context
-import { useContext } from 'react'
-import { CartContext } from '../../../contexts/CartContext'
-
 // Components
 import CategorySelector from '../../CategorySelector/CategorySelector'
 
@@ -15,27 +11,23 @@ import Grid from '@mui/material/Unstable_Grid2'
 /* Imports */
 
 function NavBar() {
-  const { CartItemCount } = useContext(CartContext)
-
   return (
     <nav>
-      <Container maxWidth={'xl'}>
-        <Grid container columns={12} className='navbar-grid-container'>
-          <Grid className='navbar-grid-items'>
-            <Toolbar>
-              <MenuItem>
-                <NavLink to={'/'} className={'home-link-container'}>
-                  <Typography element='h1' className='nav-title'>
-                    BoombleGoom
-                  </Typography>
-                </NavLink>
-              </MenuItem>
+      <Container maxWidth={'xl'} disableGutters>
+        <Grid container className='navbar-grid-container'>
+          <Grid className='navbar-grid-items' xs={12} sm={6} xl={6}>
+            <Toolbar disableGutters>
+              <NavLink to={'/'}>
+                <Typography element='h1' className='nav-title'>
+                  BoombleGoom
+                </Typography>
+              </NavLink>
             </Toolbar>
           </Grid>
 
-          <Grid className='navbar-grid-items'>
-            <Toolbar>
-              <MenuItem>
+          <Grid className='navbar-grid-items' xs={12} sm={6} xl={6}>
+            <Toolbar disableGutters>
+              <MenuItem className='navbar-menu-items' disableGutters>
                 <CategorySelector />
               </MenuItem>
             </Toolbar>

@@ -3,7 +3,7 @@ import ItemsListContainer from '../../components/ItemsListContainer/ItemsListCon
 
 /* Imports */
 
-const ItemsCateogries = () => {
+const ItemsCategories = () => {
   return (
     <main>
       <ItemsListContainer></ItemsListContainer>
@@ -11,4 +11,4 @@ const ItemsCateogries = () => {
   )
 }
 
-export default ItemsCateogries
+export default ItemsCategories
