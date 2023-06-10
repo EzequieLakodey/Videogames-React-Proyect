@@ -13,10 +13,15 @@ import Grid from '@mui/material/Unstable_Grid2'
 function NavBar() {
   return (
     <nav>
-      <Container maxWidth={'xl'} disableGutters>
-        <Grid container className='navbar-grid-container'>
-          <Grid className='navbar-grid-items' xs={12} sm={6} xl={6}>
-            <Toolbar disableGutters>
+      <Container disableGutters maxWidth={'xl'}>
+        <Grid container className='navbar-grid-container' alignItems='center'>
+          <Grid
+            className='navbar-grid-items'
+            xs={12}
+            sm={6}
+            xl={6}
+            justifyContent='flex-start'>
+            <Toolbar disableGutters className='navbar-toolbar'>
               <NavLink to={'/'}>
                 <Typography element='h1' className='nav-title'>
                   BoombleGoom
@@ -25,9 +30,14 @@ function NavBar() {
             </Toolbar>
           </Grid>
 
-          <Grid className='navbar-grid-items' xs={12} sm={6} xl={6}>
-            <Toolbar disableGutters>
-              <MenuItem className='navbar-menu-items' disableGutters>
+          <Grid
+            className='navbar-grid-items'
+            xs={12}
+            sm={6}
+            xl={6}
+            justifyContent='flex-end'>
+            <Toolbar disableGutters className='navbar-toolbar'>
+              <MenuItem disableGutters className='navbar-menu-items'>
                 <CategorySelector />
               </MenuItem>
             </Toolbar>

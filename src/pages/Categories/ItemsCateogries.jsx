@@ -6,7 +6,7 @@ import ItemsListContainer from '../../components/ItemsListContainer/ItemsListCon
 const ItemsCategories = () => {
   return (
     <main>
-      <ItemsListContainer></ItemsListContainer>
+      <ItemsListContainer />
     </main>
   )
 }

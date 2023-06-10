@@ -19,26 +19,23 @@ import useResizeImage from '../../utils/hooks/useResizeImage'
 /* Imports */
 
 const Item = ({ product }) => {
-  const { width, height } = useResizeImage(15 * 16, 15 * 16)
+  const { width, height } = useResizeImage(13 * 16, 13 * 16)
   const navigateToPage = useNavigate()
   const { id, title, price, image } = product
 
   return (
-    <Grid xs={12} sm={6} xl={4}>
+    <Grid
+      xs={12}
+      sm={4}
+      xl={3}
+      direction={'column'}
+      className='items-card-container'>
       <CardActionArea className='card-btn-item'>
         <Card
           onClick={() => navigateToPage(`/item/${id}`)}
           className='card-item'>
-          <CardContent>
-            <Typography component='h5'>{title}</Typography>
-
-            <Typography component='h6' fontSize={'2em'}>
-              {Math.ceil(price) + ' $'}
-            </Typography>
-          </CardContent>
-
-          <Container className='items-img-container'>
-            <CardContent className='item-img-card-content'>
+          <Grid justifyContent={'flex-start'} alignContent={'center'}>
+            <CardContent className='item-img-card-content '>
               <CardMedia
                 style={{ width, height }}
                 component='img'
@@ -46,7 +43,19 @@ const Item = ({ product }) => {
                 alt={title}
               />
             </CardContent>
-          </Container>
+          </Grid>
+
+          <Grid justifyContent={'flex-end'} alignContent={'center'}>
+            <CardContent>
+              <Typography className='card-item-title' component='h3'>
+                {title}
+              </Typography>
+
+              <Typography className='card-item-price' component='h4'>
+                {'$' + price}
+              </Typography>
+            </CardContent>
+          </Grid>
         </Card>
       </CardActionArea>
     </Grid>

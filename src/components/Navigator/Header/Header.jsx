@@ -3,7 +3,6 @@ import { useContext } from 'react'
 import { CartContext } from '../../../contexts/CartContext'
 
 // Components
-
 import DashBoard from './DashBoard/DashBoard'
 import Searcher from './Searcher/Searcher'
 
@@ -24,15 +23,19 @@ import Grid from '@mui/material/Unstable_Grid2'
 
 const Header = () => {
   const { CartItemCount } = useContext(CartContext)
-
   return (
     <header>
-      <Container maxWidth={'xl'} disableGutters>
-        <Grid container columns={12} className='header-grid-container'>
-          <Grid className='header-grid-items' xs={12} sm={6} xl={2}>
-            <Toolbar className='header-toolbar' disableGutters>
+      <Container disableGutters maxWidth={'xl'} className='header-container'>
+        <Grid container className='header-grid-container'>
+          <Grid
+            className='header-grid-items'
+            xs={12}
+            sm={2}
+            xl={2}
+            justifyContent='flex-start'>
+            <Toolbar disableGutters className='header-toolbar'>
               <NavLink to={'/cart'}>
-                <MenuItem className='header-menu-items' disableGutters>
+                <MenuItem disableGutters className='header-menu-items'>
                   <Tooltip title='Cart'>
                     <IconButton className='cart-btn'>
                       {CartItemCount()}
@@ -41,15 +44,20 @@ const Header = () => {
                 </MenuItem>
               </NavLink>
 
-              <MenuItem className='header-menu-items' disableGutters>
+              <MenuItem className='header-menu-items'>
                 <DashBoard />
               </MenuItem>
             </Toolbar>
           </Grid>
 
-          <Grid className='header-grid-items' xs={12} sm={6} xl={2}>
-            <Toolbar className='header-toolbar' disableGutters>
-              <MenuItem className='header-menu-items' disableGutters>
+          <Grid
+            className='header-grid-items'
+            xs={12}
+            sm={2}
+            xl={2}
+            justifyContent='flex-end'>
+            <Toolbar disableGutters className='header-toolbar'>
+              <MenuItem disableGutters className='header-menu-items'>
                 <Searcher />
               </MenuItem>
             </Toolbar>

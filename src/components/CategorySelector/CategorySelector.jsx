@@ -40,6 +40,7 @@ const CategorySelector = () => {
           value={selectedCategory}
           onChange={refreshCategoryId}>
           <MenuItem
+            disableGutters
             className='categories-options-container'
             value={'All'}
             sx={{ m: 0, p: 0 }}
@@ -51,6 +52,7 @@ const CategorySelector = () => {
 
           {categories?.map((category) => (
             <MenuItem
+              disableGutters
               className='categories-options-container'
               value={category}
               sx={{ m: 0, p: 0 }}

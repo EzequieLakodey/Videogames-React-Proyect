@@ -9,10 +9,14 @@ import useGetProducts from '../../utils/hooks/GetProductsCategories'
 
 /* Imports */
 
-const ItemsListContainer = categoryId => {
+const ItemsListContainer = (categoryId) => {
   const { isLoading } = useGetProducts()
 
-  return <div>{isLoading ? <CircularProgress color='success' /> : <ItemsList />}</div>
+  return (
+    <main>
+      {isLoading ? <CircularProgress color='success' /> : <ItemsList />}
+    </main>
+  )
 }
 
 export default ItemsListContainer
