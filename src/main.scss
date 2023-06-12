@@ -13,9 +13,7 @@
 @use './components/Navigator/Header/Header';
 @use './components/Navigator/Header/DashBoard/DashBoard';
 @use './components/Navigator/Header/Searcher/Searcher';
-
 @use './components/Navigator/NavBar/NavBar';
-
 @use './components/Navigator/Navigator.scss';
 
 /* Navigator */
@@ -25,6 +23,9 @@
 
 // ItemsDetails
 @use './components/ItemsDetails/ItemsDetails';
+
+// ItemsListContainer
+@use './components/ItemsListContainer/ItemListContainer';
 
 // Cart
 @use './components/Cart/Cart';

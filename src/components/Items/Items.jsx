@@ -9,7 +9,7 @@ import {
   CardMedia,
   Typography,
   CardActionArea,
-  Container,
+  Button,
 } from '@mui/material'
 import Grid from '@mui/material/Unstable_Grid2'
 
@@ -24,18 +24,11 @@ const Item = ({ product }) => {
   const { id, title, price, image } = product
 
   return (
-    <Grid
-      xs={12}
-      sm={4}
-      xl={3}
-      direction={'column'}
-      className='items-card-container'>
-      <CardActionArea className='card-btn-item'>
-        <Card
-          onClick={() => navigateToPage(`/item/${id}`)}
-          className='card-item'>
-          <Grid justifyContent={'flex-start'} alignContent={'center'}>
-            <CardContent className='item-img-card-content '>
+    <Grid className='items-card-container' xs={12} sm={4} xl={3}>
+      <Card onClick={() => navigateToPage(`/item/${id}`)} className='card-item'>
+        <Grid container direction={'column'} className='card-content-container'>
+          <CardActionArea>
+            <CardContent className='item-card-img'>
               <CardMedia
                 style={{ width, height }}
                 component='img'
@@ -43,21 +36,29 @@ const Item = ({ product }) => {
                 alt={title}
               />
             </CardContent>
-          </Grid>
 
-          <Grid justifyContent={'flex-end'} alignContent={'center'}>
             <CardContent>
               <Typography className='card-item-title' component='h3'>
                 {title}
+              </Typography>
+
+              <Typography className='card-item-rating' component='p'>
+                NOT RATED
               </Typography>
 
               <Typography className='card-item-price' component='h4'>
                 {'$' + price}
               </Typography>
             </CardContent>
-          </Grid>
-        </Card>
-      </CardActionArea>
+          </CardActionArea>
+
+          <CardContent className='item-btn'>
+            <Button variant='contained' color='secondary' fullWidth>
+              Add to cart
+            </Button>
+          </CardContent>
+        </Grid>
+      </Card>
     </Grid>
   )
 }
