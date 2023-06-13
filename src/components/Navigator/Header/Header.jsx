@@ -25,7 +25,7 @@ const Header = () => {
   const { CartItemCount } = useContext(CartContext)
   return (
     <header>
-      <Container disableGutters maxWidth={'xl'} className='header-container'>
+      <Container maxWidth={'lg'} className='header-container'>
         <Grid container className='header-grid-container'>
           <Grid
             className='header-grid-items'

@@ -13,7 +13,7 @@ import Grid from '@mui/material/Unstable_Grid2'
 function NavBar() {
   return (
     <nav>
-      <Container disableGutters maxWidth={'xl'}>
+      <Container maxWidth={'lg'}>
         <Grid container className='navbar-grid-container' alignItems='center'>
           <Grid
             className='navbar-grid-items'

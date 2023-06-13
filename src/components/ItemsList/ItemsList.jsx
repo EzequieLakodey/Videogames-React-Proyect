@@ -14,8 +14,8 @@ const ItemsList = () => {
   const { data: productsData } = useGetProducts()
 
   return (
-    <Container disableGutters maxWidth={'xl'}>
-      <Grid container spacing={3}>
+    <Container maxWidth={'lg'}>
+      <Grid container spacing={2}>
         {productsData?.map((i, index) => (
           <Items key={`item-${i.id}-${index}`} product={i} />
         ))}

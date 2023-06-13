@@ -35,65 +35,67 @@ const Cart = () => {
 
   return (
     <article>
-      <Grid mt={'1rem'} maxWidth={'xl'}>
-        <Box maxWidth={1} className='card-box-container'>
-          {cart.map((i, index) => (
-            <Card className='card-container' key={index}>
-              <CardContent className='cart-cards-content'>
-                <CardMedia
-                  style={{ width: width, height: height }}
-                  component='img'
-                  image={i.image}
-                  alt={i.title}
-                />
+      <Container maxWidth={'lg'}>
+        <Grid mt={'1rem'}>
+          <Container className='card-box-container'>
+            {cart.map((i, index) => (
+              <Card className='card-container' key={index}>
+                <CardContent className='cart-cards-content'>
+                  <CardMedia
+                    style={{ width: width, height: height }}
+                    component='img'
+                    image={i.image}
+                    alt={i.title}
+                  />
 
-                <Container className='cart-typography-container'>
-                  <Typography variant='inherit' component='p'>
-                    {i.title}
-                  </Typography>
+                  <Container className='cart-typography-container'>
+                    <Typography variant='inherit' component='p'>
+                      {i.title}
+                    </Typography>
 
-                  <Typography variant='inherit' component='p'>
-                    Qty {i.count} ({Math.ceil(i.price)}$)
-                  </Typography>
+                    <Typography variant='inherit' component='p'>
+                      Qty {i.count} ({Math.ceil(i.price)}$)
+                    </Typography>
 
-                  <Typography variant='inherit' component='p'>
-                    Total {Math.ceil(i.price) * i.count + ' $'}
-                  </Typography>
-                </Container>
+                    <Typography variant='inherit' component='p'>
+                      Total {Math.ceil(i.price) * i.count + ' $'}
+                    </Typography>
+                  </Container>
 
-                <IconButton
+                  <IconButton
+                    onClick={() => {
+                      removeItemFromCart(i)
+                    }}>
+                    <RemoveIcon fontSize='large' />
+                  </IconButton>
+                </CardContent>
+              </Card>
+            ))}
+
+            <Container className='cart-btns-container'>
+              {hasItems && (
+                <Button
+                  className='cart-proceed-btn'
+                  variant='outlined'
                   onClick={() => {
-                    removeItemFromCart(i)
+                    navigateToPage('/order')
                   }}>
-                  <RemoveIcon fontSize='large' />
-                </IconButton>
-              </CardContent>
-            </Card>
-          ))}
+                  Proceed
+                </Button>
+              )}
 
-          <Container className='cart-btns-container'>
-            {hasItems && (
-              <Button
-                className='cart-proceed-btn'
-                variant='outlined'
-                onClick={() => {
-                  navigateToPage('/order')
-                }}>
-                Proceed
-              </Button>
-            )}
-
-            {hasItems && (
-              <Button
-                variant='outlined'
-                onClick={clearCart}
-                className='cart-clear-btn'>
-                Clear cart
-              </Button>
-            )}
+              {hasItems && (
+                <Button
+                  variant='outlined'
+                  onClick={clearCart}
+                  className='cart-clear-btn'>
+                  Clear cart
+                </Button>
+              )}
+            </Container>
           </Container>
-        </Box>
-      </Grid>
+        </Grid>
+      </Container>
     </article>
   )
 }
