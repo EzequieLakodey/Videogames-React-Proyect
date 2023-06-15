@@ -1,68 +1,64 @@
 .items-card-container {
-  .card-item {
-    min-height: 0;
-    max-height: 25rem;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    border-radius: 0;
-
-    .card-content-container {
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-      border-radius: 0;
-
-      .item-action-area {
-        height: auto;
+    .card-item {
+        height: 25rem;
+        display: flex;
+        flex-direction: column;
         border-radius: 0;
 
-        .item-card-img {
-          display: flex;
-          justify-content: center;
-          align-items: center;
+        .card-content-container {
+            display: flex;
+            flex-direction: column;
 
-          img {
-            object-fit: contain;
-          }
-        }
+            .item-action-area {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                align-items: center;
+                height: 23rem;
+                border-radius: 0;
 
-        .card-item-title,
-        .card-item-rating,
-        .card-item-price {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 3rem;
-          word-wrap: break-word;
-          text-align: center;
-        }
+                .item-card-img {
+                    img {
+                        object-fit: contain;
+                    }
+                }
 
-        .card-item-title {
-          font-size: 100%;
-          font-weight: 500;
-          white-space: nowrap;
-        }
+                .card-item-title,
+                .card-item-rating,
+                .card-item-price {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-top: 1rem;
+                    font-size: 100%;
+                    text-align: center;
+                }
 
-        .card-item-price {
-          font-weight: bold;
-        }
+                .card-item-title {
+                    font-weight: 500;
+                }
 
-        .card-item-rating {
-          font-size: 0.7rem;
-          color: gray;
-        }
+                .card-item-price {
+                    font-weight: bold;
+                    letter-spacing: 0.1rem;
+                    font-size: 1rem;
+                }
 
-        .item-btn {
-          display: flex;
-          width: 100%;
-          padding: 0;
-          border-radius: 0;
-          button {
-            border-radius: 0;
-          }
+                .card-item-rating {
+                    font-size: 0.7rem;
+                    color: gray;
+                }
+
+                .item-btn {
+                    display: flex;
+                    width: 100%;
+                    padding: 0;
+                    border-radius: 0;
+                    button {
+                        border-radius: 0;
+                    }
+                }
+            }
         }
-      }
     }
-  }
 }

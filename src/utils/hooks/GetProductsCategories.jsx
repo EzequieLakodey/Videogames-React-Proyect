@@ -1,35 +1,35 @@
 // FireBase
-import { collection, getDocs, query, where } from 'firebase/firestore'
-import { db } from '../firebase/FireBaseConfig'
+import { collection, getDocs, query, where } from 'firebase/firestore';
+import { db } from '../firebase/FireBaseConfig';
 
 // Tanstack Query
-import { useQuery } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query';
 
 // Router Dom
-import { useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom';
 
 /* Imports */
 
 const useGetProducts = () => {
-  const { categoryId } = useParams()
+    const { categoryId } = useParams();
 
-  const productsData = []
+    const productsData = [];
 
-  const fetchData = async () => {
-    const productsCollection = !categoryId
-      ? collection(db, 'Fake Store Api ')
-      : query(collection(db, 'Fake Store Api '), where('category', '==', categoryId))
+    const fetchData = async () => {
+        const productsCollection = !categoryId
+            ? collection(db, 'Fake Store Api ')
+            : query(collection(db, 'Fake Store Api '), where('category', '==', categoryId));
 
-    const querySnapshot = await getDocs(productsCollection)
+        const querySnapshot = await getDocs(productsCollection);
 
-    querySnapshot.forEach(doc => {
-      productsData.push({ ...doc.data(), id: doc.id })
-    })
+        querySnapshot.forEach((doc) => {
+            productsData.push({ ...doc.data(), id: doc.id });
+        });
 
-    return productsData
-  }
+        return productsData;
+    };
 
-  return useQuery(['products', categoryId], fetchData)
-}
+    return useQuery(['products', categoryId], fetchData);
+};
 
-export default useGetProducts
+export default useGetProducts;

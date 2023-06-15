@@ -8,7 +8,7 @@ import { Container } from '@mui/material';
 
 /* Imports */
 
-const Home = () => {
+const ItemsCategories = () => {
     return (
         <main>
             <Container maxWidth={'lg'}>
@@ -27,4 +27,5 @@ const Home = () => {
         </main>
     );
 };
-export default Home;
+
+export default ItemsCategories;

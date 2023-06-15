@@ -1,60 +1,74 @@
 // CSS
-import './App.scss'
+import './App.scss';
 
 // React Router Dom
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 // Context
-import { CartProvider } from './contexts/CartContext'
+import { CartProvider } from './contexts/CartContext';
 
 // Components
-import Navigator from './components/Navigator/Navigator'
+import Navigator from './components/Navigator/Navigator';
 
 // Pages
-import Home from './pages/Home/Home'
-import ItemsCategories from './pages/Categories/ItemsCateogries'
-import ItemDetail from './pages/ItemDetail/ItemDetail'
-import Cart from './pages/Cart/Cart'
-import OrderForm from './pages/OrderForm/OrderForm'
-import UserData from './pages/User/UserData'
+import Home from './pages/Home/Home';
+import ItemsCategories from './pages/ItemsCategories/ItemsCateogries';
+import ItemDetail from './pages/ItemDetail/ItemDetail';
+import Cart from './pages/Cart/Cart';
+import OrderForm from './pages/OrderForm/OrderForm';
+import UserData from './pages/User/UserData';
 
 // TanStack
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 /* Imports */
 
 function App() {
-  const client = new QueryClient()
-  return (
-    <div className='App'>
-      <Router>
-        <CartProvider>
-          <QueryClientProvider client={client}>
-            <Navigator />
+    const client = new QueryClient();
+    return (
+        <div className='App'>
+            <Router>
+                <CartProvider>
+                    <QueryClientProvider client={client}>
+                        <Navigator />
 
-            <Routes>
-              <Route path='/' element={<Home />} />
+                        <Routes>
+                            <Route
+                                path='/'
+                                element={<Home />}
+                            />
 
-              <Route
-                path='/category/:categoryId'
-                element={<ItemsCategories />}
-              />
+                            <Route
+                                path='/category/:categoryId'
+                                element={<ItemsCategories />}
+                            />
 
-              <Route path='/item/:id' element={<ItemDetail />} />
+                            <Route
+                                path='/item/:id'
+                                element={<ItemDetail />}
+                            />
 
-              <Route path='*' />
+                            <Route path='*' />
 
-              <Route path='/cart' element={<Cart />} />
+                            <Route
+                                path='/cart'
+                                element={<Cart />}
+                            />
 
-              <Route path='/order' element={<OrderForm />} />
+                            <Route
+                                path='/order'
+                                element={<OrderForm />}
+                            />
 
-              <Route path='/user' element={<UserData />}></Route>
-            </Routes>
-          </QueryClientProvider>
-        </CartProvider>
-      </Router>
-    </div>
-  )
+                            <Route
+                                path='/user'
+                                element={<UserData />}></Route>
+                        </Routes>
+                    </QueryClientProvider>
+                </CartProvider>
+            </Router>
+        </div>
+    );
 }
 
-export default App
+export default App;
