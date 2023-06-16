@@ -1,18 +1,18 @@
 // Components
-import ItemsDetails from '../ItemsDetails/ItemsDetails'
+import ItemsDetails from '../ItemsDetails/ItemsDetails';
 
 // Material Ui
-import CircularProgress from '@mui/material/CircularProgress'
+import CircularProgress from '@mui/material/CircularProgress';
 
 // Data Hook
-import useGetProductDetails from '../../utils/hooks/GetProductsCategories'
+import useGetProductDetails from '../../utils/hooks/useGetProductsCategories';
 
 /* Imports */
 
 export const ItemsDetailsContainer = () => {
-  const { isLoading } = useGetProductDetails()
+    const { isLoading } = useGetProductDetails();
 
-  return <div>{isLoading ? <CircularProgress color='success' /> : <ItemsDetails />}</div>
-}
+    return <div>{isLoading ? <CircularProgress color='success' /> : <ItemsDetails />}</div>;
+};
 
-export default ItemsDetailsContainer
+export default ItemsDetailsContainer;

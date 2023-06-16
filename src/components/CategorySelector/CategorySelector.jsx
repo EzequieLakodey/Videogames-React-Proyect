@@ -1,34 +1,25 @@
-/* eslint-disable react/react-in-jsx-scope */
 // React
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 // Router Dom
-import { NavLink, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 // Material Ui
-import { MenuItem, FormControl, Select, InputLabel } from '@mui/material';
+import { MenuItem, FormControl, Select, InputLabel, Container } from '@mui/material';
 
 // Data Hook
-import useGetProducts from '../../utils/hooks/GetProductsCategories';
+import useGetCategories from '../../utils/hooks/useGetCategories';
 
 const CategorySelector = () => {
-    const { data: productsData } = useGetProducts();
+    const { data: categories } = useGetCategories();
     const { categoryId } = useParams();
     const [selectedCategory, setSelectedCategory] = useState(categoryId || '');
+    const navigateToPage = useNavigate();
 
-    useEffect(() => {
-        setSelectedCategory(categoryId || '');
-    }, [categoryId]);
-
-    const refreshCategoryId = (e) => {
-        setSelectedCategory(e.target.value);
-    };
-
-    let categories = [];
-
-    if (productsData) {
-        categories = [...new Set(productsData.map((item) => item.category))];
+    if (selectedCategory && !categories.includes(selectedCategory)) {
+        categories.push(selectedCategory);
     }
+
     return (
         <div>
             <FormControl className='category-selector-container'>
@@ -38,32 +29,37 @@ const CategorySelector = () => {
                     className='category-selector'
                     label='Category'
                     value={selectedCategory}
-                    onChange={refreshCategoryId}>
+                    onChange={(e) => {
+                        setSelectedCategory(e.target.value);
+                        navigateToPage(
+                            e.target.value === 'All' ? '/' : `/category/${e.target.value}`
+                        );
+                    }}>
                     <MenuItem
                         disableGutters
                         className='categories-options-container'
                         value={'All'}
-                        sx={{ m: 0, p: 0 }}
+                        sx={{ m: 0, p: 0, fontWeight: 'bold', textAlign: 'center' }}
                         key='menu-item-all'>
-                        <NavLink
-                            to={'/'}
-                            className='categories-menu-links'>
+                        <Container
+                            disableGutters
+                            sx={{ m: 0, p: 0, fontWeight: 'bold', textAlign: 'center' }}>
                             All
-                        </NavLink>
+                        </Container>
                     </MenuItem>
 
                     {categories?.map((category) => (
                         <MenuItem
+                            key={`menu-item-${category}`}
                             disableGutters
                             className='categories-options-container'
                             value={category}
-                            sx={{ m: 0, p: 0 }}
-                            key={`menu-item-${category}`}>
-                            <NavLink
-                                className='categories-menu-links'
-                                to={`/category/${category}`}>
+                            sx={{ m: 0, p: 0, fontWeight: 'bold', textAlign: 'center' }}>
+                            <Container
+                                disableGutters
+                                sx={{ m: 0, p: 0, fontWeight: 'bold', textAlign: 'center' }}>
                                 {category.charAt(0).toUpperCase() + category.slice(1)}
-                            </NavLink>
+                            </Container>
                         </MenuItem>
                     ))}
                 </Select>
