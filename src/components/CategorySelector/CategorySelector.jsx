@@ -5,7 +5,13 @@ import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 // Material Ui
-import { MenuItem, FormControl, Select, InputLabel, Container } from '@mui/material';
+import {
+    MenuItem,
+    FormControl,
+    Select,
+    InputLabel,
+    Container,
+} from '@mui/material';
 
 // Data Hook
 import useGetCategories from '../../utils/hooks/useGetCategories';
@@ -16,7 +22,11 @@ const CategorySelector = () => {
     const [selectedCategory, setSelectedCategory] = useState(categoryId || '');
     const navigateToPage = useNavigate();
 
-    if (selectedCategory && !categories.includes(selectedCategory)) {
+    if (
+        selectedCategory &&
+        selectedCategory !== 'All' &&
+        !categories.includes(selectedCategory)
+    ) {
         categories.push(selectedCategory);
     }
 
@@ -32,18 +42,30 @@ const CategorySelector = () => {
                     onChange={(e) => {
                         setSelectedCategory(e.target.value);
                         navigateToPage(
-                            e.target.value === 'All' ? '/' : `/category/${e.target.value}`
+                            e.target.value === 'All'
+                                ? '/'
+                                : `/category/${e.target.value}`
                         );
                     }}>
                     <MenuItem
                         disableGutters
                         className='categories-options-container'
                         value={'All'}
-                        sx={{ m: 0, p: 0, fontWeight: 'bold', textAlign: 'center' }}
+                        sx={{
+                            m: 0,
+                            p: 0,
+                            fontWeight: 'bold',
+                            textAlign: 'center',
+                        }}
                         key='menu-item-all'>
                         <Container
                             disableGutters
-                            sx={{ m: 0, p: 0, fontWeight: 'bold', textAlign: 'center' }}>
+                            sx={{
+                                m: 0,
+                                p: 0,
+                                fontWeight: 'bold',
+                                textAlign: 'center',
+                            }}>
                             All
                         </Container>
                     </MenuItem>
@@ -54,11 +76,22 @@ const CategorySelector = () => {
                             disableGutters
                             className='categories-options-container'
                             value={category}
-                            sx={{ m: 0, p: 0, fontWeight: 'bold', textAlign: 'center' }}>
+                            sx={{
+                                m: 0,
+                                p: 0,
+                                fontWeight: 'bold',
+                                textAlign: 'center',
+                            }}>
                             <Container
                                 disableGutters
-                                sx={{ m: 0, p: 0, fontWeight: 'bold', textAlign: 'center' }}>
-                                {category.charAt(0).toUpperCase() + category.slice(1)}
+                                sx={{
+                                    m: 0,
+                                    p: 0,
+                                    fontWeight: 'bold',
+                                    textAlign: 'center',
+                                }}>
+                                {category.charAt(0).toUpperCase() +
+                                    category.slice(1)}
                             </Container>
                         </MenuItem>
                     ))}

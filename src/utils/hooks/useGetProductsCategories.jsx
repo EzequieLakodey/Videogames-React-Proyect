@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 // FireBase
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../firebase/FireBaseConfig';
@@ -18,7 +19,10 @@ const useGetProducts = () => {
     const fetchData = async () => {
         const productsCollection = !categoryId
             ? collection(db, 'Fake Store Api ')
-            : query(collection(db, 'Fake Store Api '), where('category', '==', categoryId));
+            : query(
+                  collection(db, 'Fake Store Api '),
+                  where('category', '==', categoryId)
+              );
 
         const querySnapshot = await getDocs(productsCollection);
 

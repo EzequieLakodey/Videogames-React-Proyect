@@ -1,14 +1,14 @@
 // Components
-import ItemsDetailsContainer from '../../components/ItemsDetailsContainer/ItemsDetailsContainer'
+import ItemsDetailsContainer from '../../components/ItemsDetailsContainer/ItemsDetailsContainer';
 
 /* Imports */
 
 const ItemDetail = () => {
-  return (
-    <article>
-      <ItemsDetailsContainer />
-    </article>
-  )
-}
+    return (
+        <article>
+            <ItemsDetailsContainer />
+        </article>
+    );
+};
 
-export default ItemDetail
+export default ItemDetail;

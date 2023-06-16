@@ -9,7 +9,13 @@ import ItemsCounter from '../ItemsCounter/ItemsCounter';
 import { useNavigate } from 'react-router';
 
 // Material Ui
-import { Card, CardContent, CardMedia, Typography, Container } from '@mui/material';
+import {
+    Card,
+    CardContent,
+    CardMedia,
+    Typography,
+    Container,
+} from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 
 // Data Hook

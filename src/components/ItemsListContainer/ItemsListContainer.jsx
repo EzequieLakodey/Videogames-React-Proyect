@@ -6,7 +6,6 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 // Data
 import useGetProducts from '../../utils/hooks/useGetProductsCategories';
-import Grid from '@mui/material/Unstable_Grid2';
 
 /* Imports */
 

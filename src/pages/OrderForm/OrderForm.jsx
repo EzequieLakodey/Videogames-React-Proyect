@@ -1,14 +1,14 @@
 // Components
-import OrderCreator from '../../components/OrderCreator/OrderCreator'
+import OrderCreator from '../../components/OrderCreator/OrderCreator';
 
 /* Imports */
 
 const OrderForm = () => {
-  return (
-    <div>
-      <OrderCreator></OrderCreator>
-    </div>
-  )
-}
+    return (
+        <div>
+            <OrderCreator></OrderCreator>
+        </div>
+    );
+};
 
-export default OrderForm
+export default OrderForm;

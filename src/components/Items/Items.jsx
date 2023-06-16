@@ -1,7 +1,3 @@
-/* eslint-disable react/prop-types */
-// React
-import { useRef, useEffect } from 'react';
-
 // Router Dom
 import { useNavigate } from 'react-router';
 
@@ -13,12 +9,14 @@ import {
     Typography,
     CardActionArea,
     Button,
-    Container,
 } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 
 // Hooks
 import useResizeImage from '../../utils/hooks/useResizeImage';
+
+// PropTypes
+import PropTypes from 'prop-types';
 
 /* Imports */
 
@@ -84,6 +82,15 @@ const Item = ({ product }) => {
             </Card>
         </Grid>
     );
+};
+
+Item.propTypes = {
+    product: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        price: PropTypes.number.isRequired,
+        image: PropTypes.string.isRequired,
+    }).isRequired,
 };
 
 export default Item;

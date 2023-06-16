@@ -12,7 +12,15 @@ import useGetProductDetails from '../../utils/hooks/useGetProductsCategories';
 export const ItemsDetailsContainer = () => {
     const { isLoading } = useGetProductDetails();
 
-    return <div>{isLoading ? <CircularProgress color='success' /> : <ItemsDetails />}</div>;
+    return (
+        <div>
+            {isLoading ? (
+                <CircularProgress color='success' />
+            ) : (
+                <ItemsDetails />
+            )}
+        </div>
+    );
 };
 
 export default ItemsDetailsContainer;

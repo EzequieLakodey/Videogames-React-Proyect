@@ -1,13 +1,13 @@
 // Components
-import RegisterForm from '../../components/RegisterForm/RegisterForm'
+import RegisterForm from '../../components/RegisterForm/RegisterForm';
 
 const Register = () => {
-  return (
-    <div>
-      <h1>Register</h1>
-      <RegisterForm />
-    </div>
-  )
-}
+    return (
+        <div>
+            <h1>Register</h1>
+            <RegisterForm />
+        </div>
+    );
+};
 
-export default Register
+export default Register;
