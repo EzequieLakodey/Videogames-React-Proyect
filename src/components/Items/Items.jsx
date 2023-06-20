@@ -54,18 +54,21 @@ const Item = ({ product }) => {
                         <CardContent sx={{ m: 0, p: 0 }}>
                             <Typography
                                 className='card-item-title'
+                                variant='inherit'
                                 component='h3'>
                                 {title}
                             </Typography>
 
                             <Typography
                                 className='card-item-rating'
+                                variant='inherit'
                                 component='p'>
                                 NOT RATED
                             </Typography>
 
                             <Typography
                                 className='card-item-price'
+                                variant='inherit'
                                 component='h4'>
                                 {'$' + price}
                             </Typography>

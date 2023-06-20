@@ -42,18 +42,14 @@ const ItemsDetails = () => {
                 <CardContent>
                     <Container>
                         <Typography
-                            gutterBottom
-                            variant='overline'
-                            component='h6'
-                            fontSize={'100%'}>
+                            variant='inherit'
+                            component='h3'>
                             {productsData?.title}
                         </Typography>
 
                         <Typography
-                            gutterBottom
-                            variant='overline'
-                            component='h5'
-                            fontSize={'100%'}>
+                            variant='inherit'
+                            component='h5'>
                             {productsData?.category}
                         </Typography>
                     </Container>
@@ -70,17 +66,16 @@ const ItemsDetails = () => {
                 <CardContent>
                     <Container>
                         <Typography
-                            gutterBottom
-                            variant='h6'
-                            component='div'>
+                            variant='inherit'
+                            component='h4'>
                             {productsData?.price} $
                         </Typography>
                     </Container>
 
                     <Container>
                         <Typography
-                            variant='body'
-                            color='text.secondary'>
+                            variant='inherit'
+                            component='em'>
                             {productsData?.description}
                         </Typography>
                     </Container>

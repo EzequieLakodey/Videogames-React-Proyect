@@ -9,13 +9,11 @@
 /******* Components *******/
 
 /* Navigator */
-
 @use './components/Navigator/Header/Header';
 @use './components/Navigator/Header/DashBoard/DashBoard';
 @use './components/Navigator/Header/Searcher/Searcher';
 @use './components/Navigator/NavBar/NavBar';
 @use './components/Navigator/Navigator.scss';
-
 /* Navigator */
 
 // Items
@@ -38,3 +36,9 @@
 
 // CategorySelector
 @use './components/CategorySelector/CategorySelector';
+
+// Shop
+@use './components/Shop/Shop';
+
+// Home
+@use './pages/Home/Home';

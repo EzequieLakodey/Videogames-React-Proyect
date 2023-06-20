@@ -1,17 +1,15 @@
 .dashboard-container {
-  border-radius: 0;
-  height: 2.5rem;
-  width: 5rem;
-
-  .settings-btn {
     height: 2.5rem;
     width: 5rem;
     border-radius: 0;
-
-    .dashboard-user-icon {
-      border-radius: 0;
-      height: 2rem;
-      width: 2.5rem;
+    .settings-btn {
+        height: 2.5rem;
+        width: 5rem;
+        border-radius: 0;
+        .dashboard-user-icon {
+            border-radius: 0;
+            height: 20px;
+            width: 20px;
+        }
     }
-  }
 }

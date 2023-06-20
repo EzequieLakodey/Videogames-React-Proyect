@@ -36,7 +36,6 @@ const CategorySelector = () => {
                 <InputLabel>Category</InputLabel>
 
                 <Select
-                    className='category-selector'
                     label='Category'
                     value={selectedCategory}
                     onChange={(e) => {
@@ -48,48 +47,18 @@ const CategorySelector = () => {
                         );
                     }}>
                     <MenuItem
-                        disableGutters
-                        className='categories-options-container'
+                        className='category-selector-options'
                         value={'All'}
-                        sx={{
-                            m: 0,
-                            p: 0,
-                            fontWeight: 'bold',
-                            textAlign: 'center',
-                        }}
                         key='menu-item-all'>
-                        <Container
-                            disableGutters
-                            sx={{
-                                m: 0,
-                                p: 0,
-                                fontWeight: 'bold',
-                                textAlign: 'center',
-                            }}>
-                            All
-                        </Container>
+                        <Container>All</Container>
                     </MenuItem>
 
                     {categories?.map((category) => (
                         <MenuItem
                             key={`menu-item-${category}`}
-                            disableGutters
-                            className='categories-options-container'
-                            value={category}
-                            sx={{
-                                m: 0,
-                                p: 0,
-                                fontWeight: 'bold',
-                                textAlign: 'center',
-                            }}>
-                            <Container
-                                disableGutters
-                                sx={{
-                                    m: 0,
-                                    p: 0,
-                                    fontWeight: 'bold',
-                                    textAlign: 'center',
-                                }}>
+                            className='category-selector-options'
+                            value={category}>
+                            <Container>
                                 {category.charAt(0).toUpperCase() +
                                     category.slice(1)}
                             </Container>

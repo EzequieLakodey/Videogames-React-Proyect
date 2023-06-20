@@ -1,6 +1,3 @@
-// Components
-import CategorySelector from '../../CategorySelector/CategorySelector';
-
 // Router Dom
 import { NavLink } from 'react-router-dom';
 

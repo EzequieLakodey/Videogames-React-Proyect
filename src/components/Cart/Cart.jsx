@@ -1,4 +1,3 @@
-/* eslint-disable react/react-in-jsx-scope */
 // React
 import { useContext } from 'react';
 
@@ -35,7 +34,7 @@ const Cart = () => {
     return (
         <article>
             <Container maxWidth={'lg'}>
-                <Grid mt={'1rem'}>
+                <Grid>
                     <Container className='card-box-container'>
                         {cart.map((i, index) => (
                             <Card
@@ -51,8 +50,8 @@ const Cart = () => {
 
                                     <Container className='cart-typography-container'>
                                         <Typography
-                                            variant='inherit'
-                                            component='p'>
+                                            component='p'
+                                            variant='inherit'>
                                             {i.title}
                                         </Typography>
 

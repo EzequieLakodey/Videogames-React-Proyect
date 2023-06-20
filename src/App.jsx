@@ -48,8 +48,6 @@ function App() {
                                 element={<ItemDetail />}
                             />
 
-                            <Route path='*' />
-
                             <Route
                                 path='/cart'
                                 element={<Cart />}

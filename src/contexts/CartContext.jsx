@@ -31,7 +31,6 @@ export const CartProvider = ({ children }) => {
                 sx={{ color: 'rgba(255,255,255,0.5)' }}>
                 <ShoppingCartIcon
                     onClick={() => navigateToPage('/cart')}
-                    fontSize='medium'
                     sx={{ color: 'rgba(255,255,255,0.7)' }}
                     className='cart-icon'
                 />

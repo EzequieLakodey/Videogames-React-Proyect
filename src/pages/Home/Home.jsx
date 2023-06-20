@@ -1,6 +1,6 @@
 // Components
 import ItemsListContainer from '../../components/ItemsListContainer/ItemsListContainer';
-import CategorySelector from '../../components/CategorySelector/CategorySelector';
+import Shop from '../../components/Shop/Shop';
 
 // Material Ui
 import Grid from '@mui/material/Unstable_Grid2';
@@ -13,12 +13,18 @@ const Home = () => {
         <main>
             <Container maxWidth={'lg'}>
                 <Grid
+                    mt={2}
                     container
                     flexDirection={'column'}
-                    spacing={2}>
-                    <Grid>
-                        <CategorySelector />
+                    rowSpacing={5}>
+                    <Grid
+                        sx={{
+                            borderTop: '0.1rem solid #f0efed',
+                            borderBottom: '0.1rem solid #f0efed',
+                        }}>
+                        <Shop />
                     </Grid>
+
                     <Grid>
                         <ItemsListContainer />
                     </Grid>
@@ -27,4 +33,5 @@ const Home = () => {
         </main>
     );
 };
+
 export default Home;

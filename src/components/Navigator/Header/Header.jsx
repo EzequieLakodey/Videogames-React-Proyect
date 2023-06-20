@@ -34,8 +34,8 @@ const Header = () => {
                     <Grid
                         className='header-grid-items'
                         xs={12}
-                        sm={2}
-                        xl={2}
+                        sm={1}
+                        xl={1}
                         justifyContent='flex-start'>
                         <Toolbar
                             disableGutters
@@ -61,8 +61,8 @@ const Header = () => {
                     <Grid
                         className='header-grid-items'
                         xs={12}
-                        sm={2}
-                        xl={2}
+                        sm={1}
+                        xl={1}
                         justifyContent='flex-end'>
                         <Toolbar
                             disableGutters

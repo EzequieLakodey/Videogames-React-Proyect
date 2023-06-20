@@ -2,8 +2,7 @@
 import { AppBar } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 
-// Icons
-
+// Components
 import Header from './Header/Header';
 import NavBar from './NavBar/NavBar';
 
@@ -13,17 +12,15 @@ const Navigator = () => {
     return (
         <Grid
             container
-            direction={'column'}>
+            direction={'column'}
+            rowSpacing={7.5}>
             <Grid>
-                <AppBar
-                    id='header'
-                    color='inherit'
-                    position='fixed'>
+                <AppBar id='header'>
                     <Header />
                 </AppBar>
             </Grid>
 
-            <Grid mt={7.5}>
+            <Grid>
                 <NavBar />
             </Grid>
         </Grid>
