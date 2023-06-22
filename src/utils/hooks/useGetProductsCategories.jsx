@@ -1,6 +1,14 @@
 /* eslint-disable indent */
 // FireBase
-import { collection, getDocs, query, where } from 'firebase/firestore';
+import {
+    collection,
+    getDocs,
+    query,
+    where,
+    orderBy,
+    startAfter,
+    limit,
+} from 'firebase/firestore';
 import { db } from '../firebase/FireBaseConfig';
 
 // Tanstack Query

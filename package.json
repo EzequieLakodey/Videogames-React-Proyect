@@ -28,7 +28,7 @@
     "react-dom": "18.2.0",
     "react-router": "^6.13.0",
     "react-router-dom": "^6.13.0",
-    "sass": "^1.63.4",
+    "sass": "^1.63.6",
     "yup": "^1.2.0"
   },
   "description": "<h1 align=\"center\">Hi 👋, I'm Ezequiel</h1> <h3 align=\"center\">A proactive web developer from Argentina</h3>",
