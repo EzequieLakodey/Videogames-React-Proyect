@@ -1,28 +1,12 @@
 // Components
 import ItemsList from '../ItemsList/ItemsList';
 
-// Material Ui
-import CircularProgress from '@mui/material/CircularProgress';
-
-// Data
-import useGetProducts from '../../utils/hooks/useGetProductsCategories';
-
 /* Imports */
 
 const ItemsListContainer = () => {
-    const { isLoading } = useGetProducts();
+    const itemsPerPage = 12;
 
-    return (
-        <>
-            {isLoading ? (
-                <div className='spinner-container'>
-                    <CircularProgress color='success' />
-                </div>
-            ) : (
-                <ItemsList />
-            )}
-        </>
-    );
+    return <ItemsList itemsPerPage={itemsPerPage} />;
 };
 
 export default ItemsListContainer;

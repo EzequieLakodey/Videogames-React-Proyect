@@ -25,7 +25,6 @@ import useGetProductDetails from '../../utils/hooks/useGetProductsDetails';
 
 const ItemsDetails = () => {
     const { AddItemsToCart } = useContext(CartContext);
-
     const { data: productsData } = useGetProductDetails();
 
     const navigateToPage = useNavigate();

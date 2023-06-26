@@ -60,7 +60,8 @@ function App() {
 
                             <Route
                                 path='/user'
-                                element={<UserData />}></Route>
+                                element={<UserData />}
+                            />
                         </Routes>
                     </QueryClientProvider>
                 </CartProvider>

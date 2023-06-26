@@ -5,7 +5,7 @@ import ItemsDetails from '../ItemsDetails/ItemsDetails';
 import CircularProgress from '@mui/material/CircularProgress';
 
 // Data Hook
-import useGetProductDetails from '../../utils/hooks/useGetProductsCategories';
+import useGetProductDetails from '../../utils/hooks/useGetProductsDetails';
 
 /* Imports */
 
