@@ -8,7 +8,7 @@ import { Container } from '@mui/material';
 
 /* Imports */
 
-const Home = () => {
+const Home = ({ pageNum = 1 }) => {
     return (
         <main>
             <Container maxWidth={'lg'}>

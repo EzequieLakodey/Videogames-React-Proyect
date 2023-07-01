@@ -1,0 +1,17 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+
+    li {
+        margin: 1rem;
+        a {
+            border: 1px solid #ccc;
+
+            li.active a {
+                background-color: #007bff;
+                color: white;
+            }
+        }
+    }
+}

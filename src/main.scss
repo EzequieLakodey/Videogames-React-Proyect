@@ -19,11 +19,14 @@
 // Items
 @use './components/Items/Items';
 
-// ItemsDetails
-@use './components/ItemsDetails/ItemsDetails';
+// ItemsList
+@use './components/ItemsList/ItemsList';
 
 // ItemsListContainer
 @use './components/ItemsListContainer/ItemListContainer';
+
+// ItemsDetails
+@use './components/ItemsDetails/ItemsDetails';
 
 // Cart
 @use './components/Cart/Cart';

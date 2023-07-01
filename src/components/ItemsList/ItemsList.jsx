@@ -5,33 +5,30 @@ import Items from '../Items/Items';
 import useGetProducts from '../../utils/hooks/useGetProducts';
 
 // Material Ui
-import CircularProgress from '@mui/material/CircularProgress';
+import { Button, CircularProgress } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
-
-// React Paginate
-import ReactPaginate from 'react-paginate';
 
 // PropTypes
 import PropTypes from 'prop-types';
 
+// React Router
+import { useNavigate } from 'react-router';
+
 /* Imports */
 
-const ItemsList = ({ itemsPerPage }) => {
-    const { data, isLoading, fetchNextPage, hasNextPage } =
-        useGetProducts(itemsPerPage);
-
-    const items = data?.pages.map((page) =>
-        page.map((i, index) => (
-            <Items
-                key={`ìtem-${i.id}-${index}`}
-                product={i}
-            />
-        ))
+const ItemsList = ({ itemsPerPage, pageNum }) => {
+    const navigateToPage = useNavigate();
+    const { data, isLoading, productsLoaderLimiter } = useGetProducts(
+        itemsPerPage,
+        pageNum
     );
 
-    const handlePageChange = () => {
-        fetchNextPage();
-    };
+    const items = data?.map((i, index) => (
+        <Items
+            key={`ìtem-${i.id}-${index}`}
+            product={i}
+        />
+    ));
 
     return (
         <>
@@ -46,23 +43,13 @@ const ItemsList = ({ itemsPerPage }) => {
                     {items}
                 </Grid>
             )}
-            <ReactPaginate
-                pageCount={
-                    hasNextPage ? data?.pages.length + 1 : data?.pages.length
-                }
-                pageRangeDisplayed={5}
-                marginPagesDisplayed={2}
-                onPageChange={handlePageChange}
-                containerClassName={'pagination'}
-                activeClassName={'active'}
-                initialPage={0}
-            />
         </>
     );
 };
 
 ItemsList.propTypes = {
     itemsPerPage: PropTypes.number.isRequired,
+    pageNum: PropTypes.number.isRequired,
 };
 
 export default ItemsList;

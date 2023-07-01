@@ -25,6 +25,7 @@ const CategorySelector = () => {
     if (
         selectedCategory &&
         selectedCategory !== 'All' &&
+        categories &&
         !categories.includes(selectedCategory)
     ) {
         categories.push(selectedCategory);

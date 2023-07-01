@@ -35,6 +35,11 @@ function App() {
                         <Routes>
                             <Route
                                 path='/'
+                                element={<Home pageNum={1} />}
+                            />
+
+                            <Route
+                                path='/page/:pageNum'
                                 element={<Home />}
                             />
 
