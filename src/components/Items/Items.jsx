@@ -55,7 +55,7 @@ const Item = ({ product }) => {
                             <Typography
                                 className='card-item-title'
                                 variant='inherit'
-                                component='h3'>
+                                component='h4'>
                                 {title}
                             </Typography>
 

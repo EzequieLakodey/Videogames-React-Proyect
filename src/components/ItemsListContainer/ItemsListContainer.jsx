@@ -1,5 +1,5 @@
 // React
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 // Components
 import ItemsList from '../ItemsList/ItemsList';
@@ -18,6 +18,10 @@ const ItemsListContainer = () => {
     const initialPage = Number(params.pageNum) || 1;
     const [page, setPage] = useState(initialPage);
     const itemsPerPage = page === 1 ? 12 : 8;
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [page]);
 
     return (
         <>

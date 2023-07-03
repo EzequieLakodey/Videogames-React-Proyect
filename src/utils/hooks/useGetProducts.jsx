@@ -37,15 +37,11 @@ const fetchProducts = async (itemsPerPage, pageNum) => {
         }
     }
     const querySnapshot = await getDocs(productsQuery);
-
     const productsData = querySnapshot.docs.map((doc) => ({
         ...doc.data(),
         id: doc.id,
     }));
-    console.log(
-        '🚀 ~ file: useGetProducts.jsx:47 ~ productsData ~ productsData:',
-        productsData
-    );
+
     const productsLoaderLimiter = productsData.length === itemsPerPage;
     return { productsData, productsLoaderLimiter };
 };
@@ -57,7 +53,6 @@ const getCursor = async (itemsPerPage, pageNum) => {
         limit(pageNum === 1 ? itemsPerPage : itemsPerPage + 4)
     );
     const cursorSnapshot = await getDocs(cursorQuery);
-    console.log(cursorSnapshot.docs[cursorSnapshot.docs.length - 1]);
 
     if (cursorSnapshot.docs.length > 0) {
         return cursorSnapshot.docs[cursorSnapshot.docs.length - 1];
@@ -71,7 +66,7 @@ const useGetProducts = (itemsPerPage, pageNum) => {
         () => fetchProducts(itemsPerPage, pageNum)
     );
     if (error) {
-        console.log`${error}`;
+        `${error}`;
     }
     return {
         data: data?.productsData,

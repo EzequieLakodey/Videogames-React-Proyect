@@ -5,23 +5,16 @@ import Items from '../Items/Items';
 import useGetProducts from '../../utils/hooks/useGetProducts';
 
 // Material Ui
-import { Button, CircularProgress } from '@mui/material';
+import { CircularProgress } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 
 // PropTypes
 import PropTypes from 'prop-types';
 
-// React Router
-import { useNavigate } from 'react-router';
-
 /* Imports */
 
 const ItemsList = ({ itemsPerPage, pageNum }) => {
-    const navigateToPage = useNavigate();
-    const { data, isLoading, productsLoaderLimiter } = useGetProducts(
-        itemsPerPage,
-        pageNum
-    );
+    const { data, isLoading } = useGetProducts(itemsPerPage, pageNum);
 
     const items = data?.map((i, index) => (
         <Items

@@ -5,7 +5,7 @@ import { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 
 // Context
-import { CartContext } from '../../contexts/CartContext';
+import { CartContext } from '../../context/CartContext';
 
 // Components
 import Cart from '../../components/Cart/Cart';

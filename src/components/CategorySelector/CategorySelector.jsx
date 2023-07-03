@@ -11,6 +11,7 @@ import {
     Select,
     InputLabel,
     Container,
+    Typography,
 } from '@mui/material';
 
 // Data Hook
@@ -37,6 +38,9 @@ const CategorySelector = () => {
                 <InputLabel>Category</InputLabel>
 
                 <Select
+                    sx={{
+                        textAlign: 'center',
+                    }}
                     label='Category'
                     value={selectedCategory}
                     onChange={(e) => {
@@ -51,7 +55,13 @@ const CategorySelector = () => {
                         className='category-selector-options'
                         value={'All'}
                         key='menu-item-all'>
-                        <Container>All</Container>
+                        <Container disableGutters>
+                            <Typography
+                                component={'h3'}
+                                variant='inherit'>
+                                All
+                            </Typography>
+                        </Container>
                     </MenuItem>
 
                     {categories?.map((category) => (
@@ -59,9 +69,13 @@ const CategorySelector = () => {
                             key={`menu-item-${category}`}
                             className='category-selector-options'
                             value={category}>
-                            <Container>
-                                {category.charAt(0).toUpperCase() +
-                                    category.slice(1)}
+                            <Container disableGutters>
+                                <Typography
+                                    component={'h3'}
+                                    variant='inherit'>
+                                    {category.charAt(0).toUpperCase() +
+                                        category.slice(1)}
+                                </Typography>
                             </Container>
                         </MenuItem>
                     ))}

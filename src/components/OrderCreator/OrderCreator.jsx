@@ -2,7 +2,7 @@
 import { useState, useContext } from 'react';
 
 // Context
-import { CartContext } from '../../contexts/CartContext';
+import { CartContext } from '../../context/CartContext';
 
 // Components
 import OrderSuccess from '../OrderSuccess/OrderSuccess';
@@ -125,7 +125,7 @@ const Order = () => {
                 <section>
                     <Container className='form-title-container'>
                         <Typography
-                            variant='h4'
+                            variant='inherit'
                             component='h6'>
                             Order Form
                         </Typography>

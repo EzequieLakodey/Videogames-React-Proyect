@@ -5,7 +5,7 @@ import './App.scss';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 // Context
-import { CartProvider } from './contexts/CartContext';
+import { CartProvider } from './context/CartContext';
 
 // Components
 import Navigator from './components/Navigator/Navigator';
