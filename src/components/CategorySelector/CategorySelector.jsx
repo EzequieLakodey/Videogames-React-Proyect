@@ -31,12 +31,10 @@ const CategorySelector = () => {
     ) {
         categories.push(selectedCategory);
     }
-
     return (
         <div>
             <FormControl className='category-selector-container'>
                 <InputLabel>Category</InputLabel>
-
                 <Select
                     sx={{
                         textAlign: 'center',
@@ -63,7 +61,6 @@ const CategorySelector = () => {
                             </Typography>
                         </Container>
                     </MenuItem>
-
                     {categories?.map((category) => (
                         <MenuItem
                             key={`menu-item-${category}`}
@@ -84,5 +81,4 @@ const CategorySelector = () => {
         </div>
     );
 };
-
 export default CategorySelector;

@@ -6,6 +6,7 @@ import {
     orderBy,
     limit,
     startAfter,
+    where,
 } from 'firebase/firestore';
 import { db } from '../firebase/FireBaseConfig';
 
@@ -14,60 +15,53 @@ import { useQuery } from '@tanstack/react-query';
 
 /* Imports */
 
-const fetchProducts = async (itemsPerPage, pageNum) => {
+const fetchProducts = async (itemsPerPage, pageNum, categoryId) => {
     let productsQuery;
     let baseQuery = collection(db, 'Fake Store Api ');
-    if (pageNum == 1) {
-        productsQuery = query(baseQuery, orderBy('title'), limit(itemsPerPage));
-    } else {
-        const cursor = await getCursor(itemsPerPage, pageNum);
-        if (cursor !== null) {
-            productsQuery = query(
-                baseQuery,
-                orderBy('title'),
-                startAfter(cursor),
-                limit(itemsPerPage)
-            );
-        } else {
-            productsQuery = query(
-                baseQuery,
-                orderBy('title'),
-                limit(itemsPerPage)
-            );
-        }
+    const cursorIndex = (pageNum - 1) * itemsPerPage;
+
+    if (categoryId) {
+        baseQuery = query(baseQuery, where('category', '==', categoryId));
     }
+
+    if (cursorIndex > 0) {
+        const cursorQuery = query(
+            baseQuery,
+            orderBy('title'),
+            limit(cursorIndex)
+        );
+        const cursorSnapshot = await getDocs(cursorQuery);
+        const cursor = cursorSnapshot.docs[cursorSnapshot.docs.length - 1];
+        console.log('Cursor:', cursor.data());
+        productsQuery = query(
+            baseQuery,
+            orderBy('title'),
+            startAfter(cursor),
+            limit(itemsPerPage)
+        );
+    } else {
+        productsQuery = query(baseQuery, orderBy('title'), limit(itemsPerPage));
+    }
+
     const querySnapshot = await getDocs(productsQuery);
     const productsData = querySnapshot.docs.map((doc) => ({
         ...doc.data(),
         id: doc.id,
     }));
-
     const productsLoaderLimiter = productsData.length === itemsPerPage;
     return { productsData, productsLoaderLimiter };
 };
-const getCursor = async (itemsPerPage, pageNum) => {
-    const baseQuery = collection(db, 'Fake Store Api ');
-    const cursorQuery = query(
-        baseQuery,
-        orderBy('title'),
-        limit(pageNum === 1 ? itemsPerPage : itemsPerPage + 4)
-    );
-    const cursorSnapshot = await getDocs(cursorQuery);
 
-    if (cursorSnapshot.docs.length > 0) {
-        return cursorSnapshot.docs[cursorSnapshot.docs.length - 1];
-    } else {
-        return null;
-    }
-};
-const useGetProducts = (itemsPerPage, pageNum) => {
+const useGetProducts = (itemsPerPage, pageNum, categoryId) => {
     const { data, isLoading, error } = useQuery(
-        ['products', itemsPerPage, pageNum],
-        () => fetchProducts(itemsPerPage, pageNum)
+        ['products', itemsPerPage, pageNum, categoryId],
+        () => fetchProducts(itemsPerPage, pageNum, categoryId)
     );
+
     if (error) {
         `${error}`;
     }
+
     return {
         data: data?.productsData,
         isLoading,
@@ -75,4 +69,5 @@ const useGetProducts = (itemsPerPage, pageNum) => {
         productsLoaderLimiter: data?.productsLoaderLimiter,
     };
 };
+
 export default useGetProducts;

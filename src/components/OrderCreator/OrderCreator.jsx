@@ -2,7 +2,7 @@
 import { useState, useContext } from 'react';
 
 // Context
-import { CartContext } from '../../context/CartContext';
+import { CartContext } from '../../context/Cart/CartContext';
 
 // Components
 import OrderSuccess from '../OrderSuccess/OrderSuccess';

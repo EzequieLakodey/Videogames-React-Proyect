@@ -18,7 +18,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 import RemoveIcon from '@mui/icons-material/Remove';
 
 // Context
-import { CartContext } from '../../context/CartContext';
+import { CartContext } from '../../context/Cart/CartContext';
 
 // Hooks
 import useResizeImage from '../../utils/hooks/useResizeImage';

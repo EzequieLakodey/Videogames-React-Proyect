@@ -1,20 +1,17 @@
 // Components
 import Items from '../Items/Items';
 
-// Data Hook
-import useGetProducts from '../../utils/hooks/useGetProducts';
+// Hook
+import usePagination from '../../context/Pagination/usePagination';
 
 // Material Ui
 import { CircularProgress } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 
-// PropTypes
-import PropTypes from 'prop-types';
-
 /* Imports */
 
-const ItemsList = ({ itemsPerPage, pageNum }) => {
-    const { data, isLoading } = useGetProducts(itemsPerPage, pageNum);
+const ItemsList = () => {
+    const { data, isLoading } = usePagination();
 
     const items = data?.map((i, index) => (
         <Items
@@ -39,10 +36,4 @@ const ItemsList = ({ itemsPerPage, pageNum }) => {
         </>
     );
 };
-
-ItemsList.propTypes = {
-    itemsPerPage: PropTypes.number.isRequired,
-    pageNum: PropTypes.number.isRequired,
-};
-
 export default ItemsList;
