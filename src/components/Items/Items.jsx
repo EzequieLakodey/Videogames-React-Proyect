@@ -20,10 +20,10 @@ import PropTypes from 'prop-types';
 
 /* Imports */
 
-const Item = ({ product }) => {
+const Item = ({ producto }) => {
     const { width, height } = useResizeImage(13 * 16, 13 * 16);
     const navigateToPage = useNavigate();
-    const { id, title, price, image } = product;
+    const { id, title, price, image } = producto;
 
     return (
         <Grid

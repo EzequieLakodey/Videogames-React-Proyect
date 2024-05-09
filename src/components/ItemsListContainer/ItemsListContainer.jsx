@@ -1,40 +1,20 @@
 // Components
 import ItemsList from '../ItemsList/ItemsList';
 
-// Material Ui
-import { Pagination } from '@mui/material';
-
-// Hook
-import usePagination from '../../context/Pagination/usePagination';
+import useGetProducts from '../../utils/hooks/useGetProducts';
 
 /* Imports */
 
 const ItemsListContainer = () => {
-    const { data, page, setPage, itemsPerPage, navigateToPage } =
-        usePagination();
+    const { data, isLoading } = useGetProducts();
+    console.log('🚀 ~ ItemsListContainer ~ data:', data);
 
     return (
         <>
-            <ItemsList />
-            {data && data.length >= itemsPerPage ? (
-                <Pagination
-                    sx={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignContent: 'center',
-                        mt: '1rem',
-                    }}
-                    page={page}
-                    count={2}
-                    variant='outlined'
-                    color='secondary'
-                    shape='rounded'
-                    onChange={(e, v) => {
-                        setPage(v);
-                        navigateToPage(v);
-                    }}
-                />
-            ) : null}
+            <ItemsList
+                isLoading={isLoading}
+                data={data}
+            />
         </>
     );
 };

@@ -6,15 +6,9 @@ import Shop from '../../components/Shop/Shop';
 import { Container } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 
-// React Router
-import { useParams } from 'react-router';
-
 /* Imports */
 
 const Home = () => {
-    const { pageNum = 1 } = useParams();
-    const pageNumber = Number(pageNum);
-
     return (
         <main>
             <Container maxWidth={'lg'}>

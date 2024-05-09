@@ -1,22 +1,17 @@
 // Components
 import Items from '../Items/Items';
 
-// Hook
-import usePagination from '../../context/Pagination/usePagination';
-
 // Material Ui
 import { CircularProgress } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 
 /* Imports */
 
-const ItemsList = () => {
-    const { data, isLoading } = usePagination();
-
-    const items = data?.map((i, index) => (
+const ItemsList = ({ data, isLoading }) => {
+    const items = data?.map((producto, indice) => (
         <Items
-            key={`ìtem-${i.id}-${index}`}
-            product={i}
+            key={`item-${producto.id}-${indice}`}
+            producto={producto}
         />
     ));
 
@@ -36,4 +31,5 @@ const ItemsList = () => {
         </>
     );
 };
+
 export default ItemsList;

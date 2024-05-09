@@ -6,7 +6,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 // Context
 import { CartProvider } from './context/Cart/CartContext';
-import PaginationProvider from './context/Pagination/PaginationContext';
 
 // Components
 import Navigator from './components/Navigator/Navigator';
@@ -31,46 +30,44 @@ function App() {
             <Router>
                 <QueryClientProvider client={client}>
                     <CartProvider>
-                        <PaginationProvider>
-                            <Navigator />
+                        <Navigator />
 
-                            <Routes>
-                                <Route
-                                    path='/'
-                                    element={<Home pageNum={1} />}
-                                />
+                        <Routes>
+                            <Route
+                                path='/'
+                                element={<Home />}
+                            />
 
-                                <Route
-                                    path='/page/:pageNum'
-                                    element={<Home />}
-                                />
+                            <Route
+                                path='/page/:pageNum'
+                                element={<Home />}
+                            />
 
-                                <Route
-                                    path='/category/:categoryId'
-                                    element={<ItemsCategories />}
-                                />
+                            <Route
+                                path='/category/:categoryId'
+                                element={<ItemsCategories />}
+                            />
 
-                                <Route
-                                    path='/item/:id'
-                                    element={<ItemDetail />}
-                                />
+                            <Route
+                                path='/item/:id'
+                                element={<ItemDetail />}
+                            />
 
-                                <Route
-                                    path='/cart'
-                                    element={<Cart />}
-                                />
+                            <Route
+                                path='/cart'
+                                element={<Cart />}
+                            />
 
-                                <Route
-                                    path='/order'
-                                    element={<OrderForm />}
-                                />
+                            <Route
+                                path='/order'
+                                element={<OrderForm />}
+                            />
 
-                                <Route
-                                    path='/user'
-                                    element={<UserData />}
-                                />
-                            </Routes>
-                        </PaginationProvider>
+                            <Route
+                                path='/user'
+                                element={<UserData />}
+                            />
+                        </Routes>
                     </CartProvider>
                 </QueryClientProvider>
             </Router>

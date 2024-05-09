@@ -17,20 +17,18 @@ import {
 // Data Hook
 import useGetCategories from '../../utils/hooks/useGetCategories';
 
-const CategorySelector = () => {
+const CategorySelector = ({ onSelectCategory }) => {
     const { data: categories } = useGetCategories();
     const { categoryId } = useParams();
     const [selectedCategory, setSelectedCategory] = useState(categoryId || '');
     const navigateToPage = useNavigate();
 
-    if (
-        selectedCategory &&
-        selectedCategory !== 'All' &&
-        categories &&
-        !categories.includes(selectedCategory)
-    ) {
-        categories.push(selectedCategory);
-    }
+    const handleCategoryChanger = (category) => {
+        setSelectedCategory(category);
+        onSelectCategory(category);
+        navigateToPage(category == 'All' ? '/' : `/category/${category}`);
+    };
+
     return (
         <div>
             <FormControl className='category-selector-container'>
@@ -42,12 +40,7 @@ const CategorySelector = () => {
                     label='Category'
                     value={selectedCategory}
                     onChange={(e) => {
-                        setSelectedCategory(e.target.value);
-                        navigateToPage(
-                            e.target.value === 'All'
-                                ? '/'
-                                : `/category/${e.target.value}`
-                        );
+                        handleCategoryChanger(e.target.value);
                     }}>
                     <MenuItem
                         className='category-selector-options'

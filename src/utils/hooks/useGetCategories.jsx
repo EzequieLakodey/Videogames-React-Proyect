@@ -18,7 +18,7 @@ const useGetCategories = () => {
         return [...new Set(categoriesData)];
     };
 
-    return useQuery(['categories'], fetchData);
+    return useQuery(['category'], fetchData);
 };
 
 export default useGetCategories;

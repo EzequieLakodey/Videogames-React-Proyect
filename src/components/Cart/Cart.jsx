@@ -42,7 +42,7 @@ const Cart = () => {
                                 key={index}>
                                 <CardContent className='cart-cards-content'>
                                     <CardMedia
-                                        style={{ width: width, height: height }}
+                                        style={{ maxWidth: 50 }}
                                         component='img'
                                         image={i.image}
                                         alt={i.title}
