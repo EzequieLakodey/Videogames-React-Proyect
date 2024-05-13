@@ -1,8 +1,8 @@
 // React
-import { useState } from 'react';
+import { useState } from "react";
 
 // Router Dom
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from "react-router-dom";
 
 // Material Ui
 import {
@@ -12,57 +12,59 @@ import {
     InputLabel,
     Container,
     Typography,
-} from '@mui/material';
+} from "@mui/material";
 
 // Data Hook
-import useGetCategories from '../../utils/hooks/useGetCategories';
+import useGetCategories from "../../utils/hooks/useGetCategories";
 
-const CategorySelector = ({ onSelectCategory }) => {
+const CategorySelector = () => {
     const { data: categories } = useGetCategories();
     const { categoryId } = useParams();
-    const [selectedCategory, setSelectedCategory] = useState(categoryId || '');
+    const [selectedCategory, setSelectedCategory] = useState(categoryId || "");
     const navigateToPage = useNavigate();
 
     const handleCategoryChanger = (category) => {
         setSelectedCategory(category);
-        onSelectCategory(category);
-        navigateToPage(category == 'All' ? '/' : `/category/${category}`);
+
+        navigateToPage(category == "All" ? "/" : `/category/${category}`);
     };
 
     return (
         <div>
-            <FormControl className='category-selector-container'>
+            <FormControl className="category-selector-container">
                 <InputLabel>Category</InputLabel>
+
                 <Select
                     sx={{
-                        textAlign: 'center',
+                        textAlign: "center",
                     }}
-                    label='Category'
+                    label="Category"
                     value={selectedCategory}
                     onChange={(e) => {
                         handleCategoryChanger(e.target.value);
                     }}>
                     <MenuItem
-                        className='category-selector-options'
-                        value={'All'}
-                        key='menu-item-all'>
+                        className="category-selector-options"
+                        value={"All"}
+                        key="menu-item-all">
                         <Container disableGutters>
                             <Typography
-                                component={'h3'}
-                                variant='inherit'>
+                                component={"h3"}
+                                variant="inherit">
                                 All
                             </Typography>
                         </Container>
                     </MenuItem>
+
                     {categories?.map((category) => (
                         <MenuItem
                             key={`menu-item-${category}`}
-                            className='category-selector-options'
+                            className="category-selector-options"
                             value={category}>
                             <Container disableGutters>
                                 <Typography
-                                    component={'h3'}
-                                    variant='inherit'>
+                                    component={"h3"}
+                                    variant="inherit">
                                     {category.charAt(0).toUpperCase() +
                                         category.slice(1)}
                                 </Typography>

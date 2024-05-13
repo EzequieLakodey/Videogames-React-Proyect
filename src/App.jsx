@@ -1,32 +1,32 @@
 // CSS
-import './App.scss';
+import "./App.scss";
 
 // React Router Dom
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // Context
-import { CartProvider } from './context/Cart/CartContext';
+import { CartProvider } from "./context/Cart/CartContext";
 
 // Components
-import Navigator from './components/Navigator/Navigator';
+import Navigator from "./components/Navigator/Navigator";
 
 // Pages
-import Home from './pages/Home/Home';
-import ItemsCategories from './pages/ItemsCategories/ItemsCateogries';
-import ItemDetail from './pages/ItemDetail/ItemDetail';
-import Cart from './pages/Cart/Cart';
-import OrderForm from './pages/OrderForm/OrderForm';
-import UserData from './pages/User/UserData';
+import Home from "./pages/Home/Home";
+import ItemsCategories from "./pages/ItemsCategories/ItemsCateogries";
+import ItemDetail from "./pages/ItemDetail/ItemDetail";
+import Cart from "./pages/Cart/Cart";
+import OrderForm from "./pages/OrderForm/OrderForm";
+import UserData from "./pages/User/UserData";
 
 // TanStack
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 /* Imports */
 
 function App() {
     const client = new QueryClient();
     return (
-        <div className='App'>
+        <div className="App">
             <Router>
                 <QueryClientProvider client={client}>
                     <CartProvider>
@@ -34,37 +34,37 @@ function App() {
 
                         <Routes>
                             <Route
-                                path='/'
+                                path="/"
                                 element={<Home />}
                             />
 
                             <Route
-                                path='/page/:pageNum'
+                                path="/page/:pageNum"
                                 element={<Home />}
                             />
 
                             <Route
-                                path='/category/:categoryId'
-                                element={<ItemsCategories />}
+                                path="/category/:categoryId"
+                                element={<Home />}
                             />
 
                             <Route
-                                path='/item/:id'
+                                path="/item/:id"
                                 element={<ItemDetail />}
                             />
 
                             <Route
-                                path='/cart'
+                                path="/cart"
                                 element={<Cart />}
                             />
 
                             <Route
-                                path='/order'
+                                path="/order"
                                 element={<OrderForm />}
                             />
 
                             <Route
-                                path='/user'
+                                path="/user"
                                 element={<UserData />}
                             />
                         </Routes>
