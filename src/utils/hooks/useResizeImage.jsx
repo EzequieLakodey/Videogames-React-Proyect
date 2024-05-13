@@ -1,5 +1,5 @@
 // React
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 const useResizeImage = (initialWidth, initialHeight, aspectRatio) => {
     const [dimensions, setDimension] = useState({
@@ -24,11 +24,11 @@ const useResizeImage = (initialWidth, initialHeight, aspectRatio) => {
             }
         };
 
-        window.addEventListener('resize', updateDimensions);
+        window.addEventListener("resize", updateDimensions);
         updateDimensions();
 
         return () => {
-            window.removeEventListener('resize', updateDimensions);
+            window.removeEventListener("resize", updateDimensions);
         };
     }, [initialWidth, initialHeight, aspectRatio]);
 
@@ -36,3 +36,4 @@ const useResizeImage = (initialWidth, initialHeight, aspectRatio) => {
 };
 
 export default useResizeImage;
+
